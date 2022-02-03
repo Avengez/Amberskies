@@ -96,6 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sand_Rogue.cpp" />
     <ClCompile Include="Source\SandboxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
