@@ -70,8 +70,12 @@
 #include <utility>
 #include <vector>
 
-#include "Platform/OpenGL/glad.h"
+
+
 #include "Amberskies/Core/Log.h"
+#include "Platform/OpenGL/glad.h"
+
+
 
 // Typedefs *********************************************
 
