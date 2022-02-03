@@ -67,7 +67,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\ImGui;$(SolutionDir)Amberskies\Dependencies\glm</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26812;5105</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -97,7 +97,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\glm;$(SolutionDir)Amberskies\Dependencies\ImGui</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>26812</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26812;5105</DisableSpecificWarnings>
       <TreatSpecificWarningsAsErrors>
       </TreatSpecificWarningsAsErrors>
     </ClCompile>

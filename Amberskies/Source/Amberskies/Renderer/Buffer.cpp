@@ -26,23 +26,42 @@ namespace Amber
 {
 	VertexBuffer* VertexBuffer::Create(
 		float* vertices, 
-		u32 size
-	)
+		u32 size)
 	{
 
 		switch (Renderer::GetAPI())
 		{
 
-		case RendererAPI::API::None:	AMBER_ASSERT(false, "[Buffer] no Renderer API specified.")
+			case RendererAPI::API::None:	
+			{
 
-		case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(
-												vertices, 
-												size
-												);
+				AMBER_ASSERT(false, "[Buffer] no Renderer API specified.")
+
+				break;
+
+			}
+
+			case RendererAPI::API::OpenGL:	
+			{
+				return new OpenGLVertexBuffer(
+					vertices,
+					size
+				);
+
+				break;
+			}
+
+			default:
+			{
+
+				AMBER_ASSERT(
+					false, 
+					"[Buffer] Unknown Renderer API."
+				);
+
+			}
 
 		}
-
-		AMBER_ASSERT(false, "[Buffer] Unknown Renderer API.");
 
 		return nullptr;
 	
@@ -52,26 +71,50 @@ namespace Amber
 
 	IndexBuffer* IndexBuffer::Create(
 		u32* indices, 
-		u32 size
-	)
+		u32 size)
 	{
 
 		switch (Renderer::GetAPI())
 		{
 
-		case RendererAPI::API::None:	AMBER_ASSERT(false, "[Buffer] no Renderer API specified.")
+			case RendererAPI::API::None:	
+			{
 
-		case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(
-												indices, 
-												size
-												);
+				AMBER_ASSERT(
+					false,
+					"[Buffer] no Renderer API specified."
+				);
+
+				break;
+
+			}
+
+			case RendererAPI::API::OpenGL:	
+			{
+
+				return new OpenGLIndexBuffer(
+					indices,
+					size
+				);
+
+				break;
+			
+			}
+
+			default:
+			{
+
+				AMBER_ASSERT(
+					false, 
+					"[Buffer] Unknown Renderer API."
+				);
+
+			}
 
 		}
 
-		AMBER_ASSERT(false, "[Buffer] Unknown Renderer API.");
-
-	
 		return nullptr;
 	
 	}
+
 }

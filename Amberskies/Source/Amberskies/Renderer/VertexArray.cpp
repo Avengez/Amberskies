@@ -32,17 +32,41 @@ namespace Amber
 		switch (Renderer::GetAPI())
 		{
 
-		case RendererAPI::API::None:	AMBER_ASSERT(false, "[VertexArray] no Renderer API specified.")
+			case RendererAPI::API::None:
+			{
 
-		case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();
+				AMBER_ASSERT(
+					false,
+					"[VertexArray] no Renderer API specified."
+				);
+
+				break;
+
+			}
+
+			case RendererAPI::API::OpenGL:
+			{
+
+				return new OpenGLVertexArray();
+
+				break;
+
+			}
+
+			default:
+			{
+
+				AMBER_ASSERT(
+					false,
+					"[VertexArray] Unknown Renderer API."
+				);
+
+			}
 
 		}
 
-		AMBER_ASSERT(false, "[VertexArray] Unknown Renderer API.");
-
 		return nullptr;
 
-		
 	}
 
 }
