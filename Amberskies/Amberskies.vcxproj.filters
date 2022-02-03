@@ -90,7 +90,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\glad.h">
+    <ClInclude Include="Source\Platform\OpenGL\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Core\Input.h">
@@ -99,7 +99,7 @@
     <ClInclude Include="Source\Amberskies\Core\KeyCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\khrplatform.h">
+    <ClInclude Include="Source\Platform\OpenGL\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Core\MouseCodes.h">
@@ -197,7 +197,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Core\glad.c">
+    <ClCompile Include="Source\Platform\OpenGL\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Amberskies\Renderer\OrthographicCamera.cpp">

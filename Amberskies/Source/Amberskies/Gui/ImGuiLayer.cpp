@@ -23,7 +23,7 @@
 
 #include "Amberskies/Core/Application.h"
 
-#include "Amberskies/Core/glad.h"
+#include "Platform/OpenGL/glad.h"
 #include <GLFW/glfw3.h>
 
 

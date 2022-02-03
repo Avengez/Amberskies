@@ -128,10 +128,10 @@
     <ClInclude Include="Dependencies\ImGui\imstb_textedit.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Source\Amberskies.h" />
-    <ClInclude Include="Source\Amberskies\Core\glad.h" />
+    <ClInclude Include="Source\Platform\OpenGL\glad.h" />
     <ClInclude Include="Source\Amberskies\Core\Input.h" />
     <ClInclude Include="Source\Amberskies\Core\KeyCodes.h" />
-    <ClInclude Include="Source\Amberskies\Core\khrplatform.h" />
+    <ClInclude Include="Source\Platform\OpenGL\khrplatform.h" />
     <ClInclude Include="Source\Amberskies\Core\MouseCodes.h" />
     <ClInclude Include="Source\Amberskies\Core\DeltaTime.h" />
     <ClInclude Include="Source\Amberskies\Core\Window.h" />
@@ -175,7 +175,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Source\Amberskies\Core\Application.cpp" />
-    <ClCompile Include="Source\Amberskies\Core\glad.c" />
+    <ClCompile Include="Source\Platform\OpenGL\glad.c" />
     <ClCompile Include="Source\Amberskies\GUI\ImGuiLayer.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\Buffer.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\OrthographicCamera.cpp" />

@@ -20,7 +20,7 @@
 #include "Common.h"
 #include "Amberskies/Renderer/GFXContext.h"
 
-#include "Amberskies/Core/glad.h"
+#include "glad.h"
 #include "GLFW/glfw3.h"
 
 
