@@ -236,11 +236,21 @@ public:
 		float dt = 
 			deltaTime.GetSeconds();
 
-		DEV_INFO(
-			"Delta time : {0}s   {1}ms",
-			dt,
-			deltaTime.GetMilliseconds()
-		);
+		m_SimpleTimer +=
+			dt;
+
+		if (m_SimpleTimer >= 1)
+		{
+
+			DEV_INFO(
+				"Delta time : {0}s   {1}ms",
+				dt,
+				deltaTime.GetMilliseconds()
+			);
+
+			m_SimpleTimer = 0.0f;
+
+		}
 
 		// This needs Delta Time
 		// Key Left
@@ -393,6 +403,8 @@ private:
 	float m_CameraRotation = 0.0f;
 
 	float m_CameraRotationSpeed = 180.0f;	// 180 degrees per second
+
+	float m_SimpleTimer = 0.0f;
 
 };
 
