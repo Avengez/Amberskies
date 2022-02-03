@@ -18,10 +18,13 @@
 
 
 #include "Common.h"
+
+#include <GLFW/glfw3.h>
+
 #include "Amberskies/Renderer/GFXContext.h"
 
-#include "glad.h"
-#include "GLFW/glfw3.h"
+#include "Platform/OpenGL/glad.h"
+
 
 
 namespace Amber
