@@ -19,6 +19,7 @@
 
 #include "Common.h"
 #include "Amberskies/Events/Event.h"
+#include "DeltaTime.h"
 
 
 
@@ -40,7 +41,7 @@ namespace Amber
 		
 		virtual void OnDetach() {}
 
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(DeltaTime deltaTime) {}
 
 		virtual void OnImGuiRender() {}
 

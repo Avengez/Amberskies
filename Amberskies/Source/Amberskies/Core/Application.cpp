@@ -17,10 +17,10 @@
 
 
 
+#include <backends/imgui_impl_glfw.h>
 #include "Amberskies/Core/Log.h"
 #include "Amberskies/Renderer/Renderer.h"
 #include "Amberskies/Core/Input.h"
-
 
 
 
@@ -76,6 +76,14 @@ namespace Amber
 		while(m_Running)
 		{
 
+			float time =
+				(float)ImGui::GetTime();
+
+			DeltaTime deltaTime = 
+				time - m_LastFrameTime;
+
+			m_LastFrameTime = time;
+
 			if (Amber::Input::IsKeyPressed(AMBER_KEY_ESCAPE))
 			{
 
@@ -86,7 +94,7 @@ namespace Amber
 			}
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(deltaTime);
 
 			m_ImGuiLayer->Begin();
 

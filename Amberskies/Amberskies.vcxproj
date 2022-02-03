@@ -133,7 +133,7 @@
     <ClInclude Include="Source\Amberskies\Core\KeyCodes.h" />
     <ClInclude Include="Source\Amberskies\Core\khrplatform.h" />
     <ClInclude Include="Source\Amberskies\Core\MouseCodes.h" />
-    <ClInclude Include="Source\Amberskies\Core\Time.h" />
+    <ClInclude Include="Source\Amberskies\Core\DeltaTime.h" />
     <ClInclude Include="Source\Amberskies\Core\Window.h" />
     <ClInclude Include="Source\Amberskies\Events\ApplicationEvent.h" />
     <ClInclude Include="Source\Amberskies\Events\Event.h" />

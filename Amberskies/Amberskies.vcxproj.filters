@@ -54,7 +54,7 @@
     <ClInclude Include="Source\Amberskies\Input\InputAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\Time.h">
+    <ClInclude Include="Source\Amberskies\Core\DeltaTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\GUI\ImGuiLayer.h">

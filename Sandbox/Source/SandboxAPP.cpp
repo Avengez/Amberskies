@@ -230,33 +230,42 @@ public:
 
 
 
-	void OnUpdate() override
+	void OnUpdate(Amber::DeltaTime deltaTime) override
 	{
+
+		float dt = 
+			deltaTime.GetSeconds();
+
+		DEV_INFO(
+			"Delta time : {0}s   {1}ms",
+			dt,
+			deltaTime.GetMilliseconds()
+		);
 
 		// This needs Delta Time
 		// Key Left
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_A))
-			m_CameraPosition.x -= m_CameraSpeed;
+			m_CameraPosition.x -= m_CameraSpeed * dt;
 
 		// Key Right
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_D))
-			m_CameraPosition.x += m_CameraSpeed;
+			m_CameraPosition.x += m_CameraSpeed * dt;
 
 		// Key UP
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_W))
-			m_CameraPosition.y += m_CameraSpeed;
+			m_CameraPosition.y += m_CameraSpeed * dt;
 
 		// Key Down
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_S))
-			m_CameraPosition.y -= m_CameraSpeed;
+			m_CameraPosition.y -= m_CameraSpeed * dt;
 
 		// Rotate Anti-Clockwise
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_Q))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * dt;
 
 		// Rotate Clockwise
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_E))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * dt;
 
 		m_Camera.SetPosition(
 			m_CameraPosition
@@ -379,11 +388,11 @@ private:
 
 	glm::vec3 m_CameraPosition;
 
-	float m_CameraSpeed = 0.03f;
+	float m_CameraSpeed = 3.0f;				// ie 3 units per second
 
 	float m_CameraRotation = 0.0f;
 
-	float m_CameraRotationSpeed = 1.0f;
+	float m_CameraRotationSpeed = 180.0f;	// 180 degrees per second
 
 };
 

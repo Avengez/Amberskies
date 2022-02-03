@@ -17,7 +17,8 @@
 
 #include "Common.h"
 #include "Window.h"
-#include "Amberskies/Core/LayerStack.h"
+#include "DeltaTime.h"
+#include "LayerStack.h"
 #include "Amberskies/Events/Event.h"
 #include "Amberskies/Events/ApplicationEvent.h"
 
@@ -41,6 +42,8 @@ namespace Amber
 		std::unique_ptr<Window> m_Window;
 
 		ImGuiLayer* m_ImGuiLayer;
+
+		float m_LastFrameTime = 0.0f;
 
 	public:
 

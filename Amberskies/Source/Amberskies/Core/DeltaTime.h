@@ -24,14 +24,14 @@
 namespace Amber
 {
 
-	class Time
+	class DeltaTime
 	{
 		 
 		float m_Time;	// stored in seconds.
 
 	public:
 
-		Time(
+		DeltaTime(
 			float time = 0.0f) :
 			m_Time(time)
 		{}
