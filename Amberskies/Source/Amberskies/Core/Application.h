@@ -16,9 +16,11 @@
 
 
 #include "Common.h"
-#include "Window.h"
-#include "DeltaTime.h"
-#include "LayerStack.h"
+
+#include "Amberskies/Core/Window.h"
+#include "Amberskies/Core/DeltaTime.h"
+#include "Amberskies/Core/LayerStack.h"
+
 #include "Amberskies/Events/Event.h"
 #include "Amberskies/Events/ApplicationEvent.h"
 
