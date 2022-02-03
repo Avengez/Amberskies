@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/bin-intermediate/Debug-x64/Amberskies/Amberskies.tlog
+/bin-intermediate/Debug-x64/Sandbox/Sandbox.tlog
+/bin-intermediate/Debug-x64/Sandbox/vc143.idb
+/bin-intermediate/Debug-x64/Sandbox/Sandbox.exe.recipe
+/bin-intermediate/Debug-x64/Amberskies/Amberskies.lib.recipe
