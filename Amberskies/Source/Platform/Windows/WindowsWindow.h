@@ -18,7 +18,9 @@
 
 
 #include "Common.h"
+
 #include "Amberskies/Core/Window.h"
+
 #include "Platform/OpenGL/OpenGLContext.h"
 
 
