@@ -18,10 +18,13 @@
 
 
 #include "Common.h"
-#include "RenderCommand.h"
-#include "OrthographicCamera.h"
-#include "Shader.h"
+
 #include <glm/glm.hpp>
+
+#include "Amberskies/Renderer/RenderCommand.h"
+#include "Amberskies/Renderer/OrthographicCamera.h"
+#include "Amberskies/Renderer/Shader.h"
+
 
 
 namespace Amber

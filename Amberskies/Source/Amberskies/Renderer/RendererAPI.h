@@ -18,9 +18,10 @@
 
 
 #include "Common.h"
+
 #include <glm/glm.hpp>
 
-#include "VertexArray.h"
+#include "Amberskies/Renderer/VertexArray.h"
 
 
 namespace Amber

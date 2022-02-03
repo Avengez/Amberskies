@@ -17,10 +17,6 @@
 
 
 
-
-
-
-
 namespace Amber
 {
 
