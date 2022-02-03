@@ -93,16 +93,16 @@
     <ClInclude Include="Source\Platform\OpenGL\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\Input.h">
+    <ClInclude Include="Source\Amberskies\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\KeyCodes.h">
+    <ClInclude Include="Source\Amberskies\Input\KeyCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Platform\OpenGL\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Core\MouseCodes.h">
+    <ClInclude Include="Source\Amberskies\Input\MouseCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Core\Window.h">

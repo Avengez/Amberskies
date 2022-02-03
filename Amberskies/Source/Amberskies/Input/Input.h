@@ -18,7 +18,8 @@
 
 
 #include "Common.h"
-#include "Amberskies/Core/KeyCodes.h"
+#include "KeyCodes.h"
+#include "MouseCodes.h"
 
 
 

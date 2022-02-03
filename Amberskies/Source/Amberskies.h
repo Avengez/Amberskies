@@ -34,13 +34,16 @@
 
 #include "Amberskies/Core/DeltaTime.h"
 #include "Amberskies/Core/Application.h"
-#include "Amberskies/Core/Input.h"
-#include "Amberskies/Core/KeyCodes.h"
 #include "Amberskies/Core/Layer.h"
 #include "Amberskies/Core/Log.h"
-#include "Amberskies/Core/MouseCodes.h"
 
 #include "Amberskies/Gui/ImGuiLayer.h"
+
+#include "Amberskies/Input/Input.h"
+#include "Amberskies/Input/KeyCodes.h"
+#include "Amberskies/Input/MouseCodes.h"
+
+
 
 //*******************************
 //		Renderer
@@ -51,6 +54,8 @@
 #include "Amberskies/Renderer/Renderer.h"
 #include "Amberskies/Renderer/Shader.h"
 #include "Amberskies/Renderer/VertexArray.h"
+
+
 
 //*******************************
 // Main Entry Point for the User
