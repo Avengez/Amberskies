@@ -200,7 +200,7 @@ public:
 			)
 		);
 
-		std::string blueVertexSource =
+		std::string flatColorVertexSource =
 			R"(
 				#version 330 core
 				
@@ -218,7 +218,7 @@ public:
 				}
 		)";
 
-		std::string blueFragmentSource =
+		std::string flatColorFragmentSource =
 			R"(
 				#version 330 core
 				
@@ -226,16 +226,18 @@ public:
 
 				in vec3 v_Position;
 
+				uniform vec4 u_Color;
+
 				void main()
 				{
-					f_Color = vec4(0.1f, 0.15f, 0.75f, 1.0f);
+					f_Color = u_Color;
 				}
 		)";
 
-		m_BlueShader.reset(
+		m_FlatColorShader.reset(
 			new Amber::Shader(
-				blueVertexSource,
-				blueFragmentSource
+				flatColorVertexSource,
+				flatColorFragmentSource
 			)
 		);
 	}
@@ -308,10 +310,23 @@ public:
 				glm::vec3(0.1f)
 			);
 
-		for (int indexX = -10; indexX < 10; indexX++)
+		glm::vec4 redColor(
+			0.75f, 
+			0.15f, 
+			0.10f, 
+			1.0f
+		);
+
+		glm::vec4 blueColor(
+			0.10f, 
+			0.15f, 
+			0.75f, 
+			1.0f);
+
+		for (int indexY = -10; indexY < 10; indexY++)
 		{
 
-			for (int indexY = -10; indexY < 10; indexY++)
+			for (int indexX = -10; indexX < 10; indexX++)
 			{
 				glm::vec3 position(
 					indexX * 0.11,
@@ -326,8 +341,17 @@ public:
 					) *
 					squareModelScale;
 
+				if (indexX % 2 == 0)
+					m_FlatColorShader->UploadUniformFloat4(
+						"u_Color", redColor
+					);
+				else
+					m_FlatColorShader->UploadUniformFloat4(
+						"u_Color", blueColor
+					);
+
 				Amber::Renderer::Submit(
-					m_BlueShader,
+					m_FlatColorShader,
 					m_SquareVertexArray,
 					squareModelMatrix
 				);
@@ -413,7 +437,7 @@ private:
 
 	std::shared_ptr<Amber::Shader> m_Shader;
 
-	std::shared_ptr<Amber::Shader> m_BlueShader;
+	std::shared_ptr<Amber::Shader> m_FlatColorShader;
 
 	std::shared_ptr<Amber::VertexArray> m_VertexArray;
 
@@ -427,7 +451,7 @@ private:
 
 	float m_CameraRotation = 0.0f;
 
-	float m_CameraRotationSpeed = 180.0f;	// 180 degrees per second
+	float m_CameraRotationSpeed = 90.0f;	// 90 degrees per second
 
 	float m_SimpleTimer = 0.0f;
 

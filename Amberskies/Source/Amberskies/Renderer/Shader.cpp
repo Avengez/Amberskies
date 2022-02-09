@@ -312,8 +312,7 @@ namespace Amber
 
 	void Shader::UploadUniformMat4(
 		const std::string& name,
-		const glm::mat4 matrix
-	)
+		const glm::mat4& matrix)
 	{
 
 		GLint location =
@@ -327,6 +326,27 @@ namespace Amber
 			1,
 			GL_FALSE,
 			glm::value_ptr(matrix)
+		);
+
+	}
+
+	void Shader::UploadUniformFloat4(
+		const std::string& name, 
+		const glm::vec4& vec4Floats)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+		);
+
+		glUniform4f(
+			location,
+			vec4Floats.x,
+			vec4Floats.y,
+			vec4Floats.z,
+			vec4Floats.w
 		);
 
 	}
