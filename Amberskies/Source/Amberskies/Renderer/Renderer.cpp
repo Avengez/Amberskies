@@ -20,14 +20,15 @@
 namespace Amber
 {
 
-	//Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
+	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
 	void Renderer::BeginScene(
 		OrthographicCamera& camera
 	)
 	{
 
-		// will need to place data in a backing store
+		m_SceneData->ViewProjectionMatrix =
+			camera.GetViewProjectionMatrix();
 
 	}
 
@@ -41,7 +42,6 @@ namespace Amber
 
 
 	void Renderer::Submit(
-		const glm::mat4& viewProjectionMatrix,
 		const std::shared_ptr<Shader>& shader,
 		const std::shared_ptr<VertexArray>& vertexArray
 	)
@@ -51,7 +51,7 @@ namespace Amber
 
 		shader->UploadUniformMat4(
 			"u_ViewProjection",
-			viewProjectionMatrix
+			m_SceneData->ViewProjectionMatrix
 		);
 
 		vertexArray->Bind();

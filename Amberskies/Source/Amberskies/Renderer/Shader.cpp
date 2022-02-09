@@ -316,7 +316,7 @@ namespace Amber
 	)
 	{
 
-		int location =
+		GLint location =
 			glGetUniformLocation(
 				m_RendererID,
 				name.c_str()

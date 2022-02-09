@@ -97,8 +97,6 @@ namespace Amber
 		
 		}
 
-	//	SetDarkThemeColors();
-
 		Application& app = 
 			Application::Get();
 		
@@ -136,13 +134,8 @@ namespace Amber
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-
-		static bool show =
-			true;
-
-		ImGui::ShowDemoWindow(
-			&show
-		);
+		
+		// Empty
 
 	}
 

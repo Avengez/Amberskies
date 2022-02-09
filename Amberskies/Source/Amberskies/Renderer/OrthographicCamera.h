@@ -53,14 +53,26 @@ namespace Amber
 		const glm::vec3& GetPosition() const { 
 			return m_Position; }
 
-		void SetPosition(const glm::vec3& position) {
-			m_Position = position; RecalculateViewMatrix();
+		void SetPosition(const glm::vec3& position) 
+		{
+			
+			m_Position = position; 
+			
+			RecalculateViewMatrix();
+		
 		}
 
-		float GetRotation() const { return m_RotationZ; }
+		float GetRotation() const { 
+			return m_RotationZ; }
 
-		void SetRotationZ(const float rotationZ) { 
-			m_RotationZ = rotationZ; RecalculateViewMatrix(); }
+		void SetRotationZ(const float rotationZ) 
+		{
+
+			m_RotationZ = rotationZ; 
+			
+			RecalculateViewMatrix(); 
+		
+		}
 
 		const glm::mat4& GetProjectionMatrix() const { 
 			return m_ProjectionMatrix; }

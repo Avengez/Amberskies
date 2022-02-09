@@ -32,6 +32,15 @@ public:
 		m_Camera(-1.0f, 1.0f, -1080.0f / 1920.0f - 0.05f, 1080.0f / 1920.0f + 0.05f),
 		m_CameraPosition(0.0f)
 	{
+
+		Amber::RenderCommand::SetClearColor(
+			{
+			0.05f,
+			0.05f,
+			0.5f,
+			1.0f
+			}
+		);
 	
 		m_VertexArray.reset(
 			Amber::VertexArray::Create()
@@ -252,7 +261,6 @@ public:
 
 		}
 
-		// This needs Delta Time
 		// Key Left
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_A))
 			m_CameraPosition.x -= m_CameraSpeed * dt;
@@ -285,27 +293,16 @@ public:
 			m_CameraRotation
 		);
 
-		Amber::RenderCommand::SetClearColor(
-			{
-			0.05f,
-			0.05f,
-			0.5f,
-			1.0f
-			}
-		);
-
 		Amber::RenderCommand::Clear();
 
 		Amber::Renderer::BeginScene(m_Camera);
 
 		Amber::Renderer::Submit(
-			m_Camera.GetViewProjectionMatrix(),
 			m_BlueShader,
 			m_SquareVertexArray
 		);
 
 		Amber::Renderer::Submit(
-			m_Camera.GetViewProjectionMatrix(),
 			m_Shader,
 			m_VertexArray
 		);
@@ -321,12 +318,6 @@ public:
 		
 		if (m_ShowFirstWindow)
 		{
-
-			/*
-			ImGui::ShowDemoWindow(
-				&show
-			);*/
-
 
 			ImGui::Begin(
 				"First Window",

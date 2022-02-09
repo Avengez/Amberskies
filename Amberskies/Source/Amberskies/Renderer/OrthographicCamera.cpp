@@ -30,16 +30,13 @@ namespace Amber
 		float bottom, 
 		float top
 	) :
-		m_ProjectionMatrix(glm::ortho(left, right, bottom, top, 0.0f, 2.0f)),
+		m_ProjectionMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f)),
 		m_ViewMatrix(1.0f),
 		m_Position(0.0f, 0.0f, 0.0f)
 	{
 
-		m_ViewProjectionMatrix =	// note for openGL we multiply
-			m_ProjectionMatrix *	// matrices in reverse order.
-			m_ViewMatrix;
-
 		RecalculateViewMatrix();
+
 	}
 
 
