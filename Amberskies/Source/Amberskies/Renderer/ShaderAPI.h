@@ -2,7 +2,7 @@
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 19/01/2022
+* Project Created by Frazor Sharp : 09/02/2022
 *
 * Twitch : Simple Server Programming in C/C++
 *
@@ -19,7 +19,6 @@
 
 #include "Common.h"
 
-#include <glm/glm.hpp>
 
 
 namespace Amber
@@ -28,29 +27,17 @@ namespace Amber
 	class Shader
 	{
 
-		u32 m_RendererID;
-
 	public:
 
-		Shader(
+		virtual ~Shader() = default;
+
+		virtual void Bind() const = 0;
+
+		virtual void Unbind() const = 0;
+
+		static Shader* Create(
 			const std::string& ShaderVertexSource,
 			const std::string& ShaderFragmentSource
-		);
-
-		~Shader();
-
-		void Bind() const;
-
-		void Unbind() const;
-
-		void UploadUniformMat4(
-			const std::string& name,
-			const glm::mat4& matrix
-		);
-
-		void UploadUniformFloat4(
-			const std::string& name,
-			const glm::vec4& vec4Floats
 		);
 
 	};

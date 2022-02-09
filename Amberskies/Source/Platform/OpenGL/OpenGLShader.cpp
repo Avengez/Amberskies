@@ -1,8 +1,9 @@
-#include "Shader.h"
+
+#include "OpenGLShader.h"
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 19/01/2022
+* Project Created by Frazor Sharp : 20/01/2022
 *
 * Twitch : Simple Server Programming in C/C++
 *
@@ -16,7 +17,6 @@
 
 
 
-
 #include <glm/gtc/type_ptr.hpp>
 
 
@@ -24,7 +24,7 @@
 namespace Amber
 {
 
-	Shader::Shader(
+	OpenGLShader::OpenGLShader(
 		const std::string& ShaderVertexSource,
 		const std::string& ShaderFragmentSource
 	) :
@@ -34,23 +34,23 @@ namespace Amber
 		// Read our shaders into the appropriate buffers
 		std::string vertexSource =
 			ShaderVertexSource;// Get source code for vertex shader.
-		
+
 		std::string fragmentSource =
 			ShaderFragmentSource;// Get source code for fragment shader.
 
 		// Create an empty vertex shader handle
-		GLuint vertexShader = 
+		GLuint vertexShader =
 			glCreateShader(GL_VERTEX_SHADER);
 
 		// Send the vertex shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
-		const GLchar* source = 
+		const GLchar* source =
 			(const GLchar*)vertexSource.c_str();
 
 		glShaderSource(
 			vertexShader,
-			1, 
-			&source, 
+			1,
+			&source,
 			0
 		);
 
@@ -59,24 +59,24 @@ namespace Amber
 			vertexShader
 		);
 
-		GLint isCompiled = 
+		GLint isCompiled =
 			0;
 
 		glGetShaderiv(
-			vertexShader, 
-			GL_COMPILE_STATUS, 
+			vertexShader,
+			GL_COMPILE_STATUS,
 			&isCompiled
 		);
 
 		if (isCompiled == GL_FALSE)
 		{
 
-			GLint maxLength = 
+			GLint maxLength =
 				0;
 
 			glGetShaderiv(
-				vertexShader, 
-				GL_INFO_LOG_LENGTH, 
+				vertexShader,
+				GL_INFO_LOG_LENGTH,
 				&maxLength
 			);
 
@@ -86,9 +86,9 @@ namespace Amber
 			);
 
 			glGetShaderInfoLog(
-				vertexShader, 
-				maxLength, 
-				&maxLength, 
+				vertexShader,
+				maxLength,
+				&maxLength,
 				&infoLog[0]
 			);
 
@@ -108,19 +108,19 @@ namespace Amber
 		}
 
 		// Create an empty fragment shader handle
-		GLuint fragmentShader = 
+		GLuint fragmentShader =
 			glCreateShader(
 				GL_FRAGMENT_SHADER
 			);
 
 		// Send the fragment shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
-		source = 
+		source =
 			(const GLchar*)fragmentSource.c_str();
 
 		glShaderSource(
-			fragmentShader, 
-			1, 
+			fragmentShader,
+			1,
 			&source,
 			0
 		);
@@ -131,20 +131,20 @@ namespace Amber
 		);
 
 		glGetShaderiv(
-			fragmentShader, 
-			GL_COMPILE_STATUS, 
+			fragmentShader,
+			GL_COMPILE_STATUS,
 			&isCompiled
 		);
 
 		if (isCompiled == GL_FALSE)
 		{
 
-			GLint maxLength = 
+			GLint maxLength =
 				0;
 
 			glGetShaderiv(
-				fragmentShader, 
-				GL_INFO_LOG_LENGTH, 
+				fragmentShader,
+				GL_INFO_LOG_LENGTH,
 				&maxLength
 			);
 
@@ -154,9 +154,9 @@ namespace Amber
 			);
 
 			glGetShaderInfoLog(
-				fragmentShader, 
-				maxLength, 
-				&maxLength, 
+				fragmentShader,
+				maxLength,
+				&maxLength,
 				&infoLog[0]
 			);
 
@@ -184,17 +184,17 @@ namespace Amber
 		// Now time to link them together into a program.
 		// Get a program object.
 
-		GLuint program = 
+		GLuint program =
 			glCreateProgram();
 
 		// Attach our shaders to our program
 		glAttachShader(
-			program, 
+			program,
 			vertexShader
 		);
 
 		glAttachShader(
-			program, 
+			program,
 			fragmentShader
 		);
 
@@ -204,12 +204,12 @@ namespace Amber
 		);
 
 		// Note the different functions here: glGetProgram* instead of glGetShader*.
-		GLint isLinked = 
+		GLint isLinked =
 			0;
 
 		glGetProgramiv(
-			program, 
-			GL_LINK_STATUS, 
+			program,
+			GL_LINK_STATUS,
 			(int*)&isLinked);
 
 		if (isLinked == GL_FALSE)
@@ -219,8 +219,8 @@ namespace Amber
 				0;
 
 			glGetProgramiv(
-				program, 
-				GL_INFO_LOG_LENGTH, 
+				program,
+				GL_INFO_LOG_LENGTH,
 				&maxLength
 			);
 
@@ -230,9 +230,9 @@ namespace Amber
 			);
 
 			glGetProgramInfoLog(
-				program, 
-				maxLength, 
-				&maxLength, 
+				program,
+				maxLength,
+				&maxLength,
 				&infoLog[0]
 			);
 
@@ -251,9 +251,9 @@ namespace Amber
 			);
 
 			// Use the infoLog as you see fit.
-			
+
 			AMBER_ERROR("[Shader] Error : Shader Link");
-			
+
 			AMBER_ERROR("[Shader] {0}", infoLog.data());
 
 			// In this simple program, we'll just leave
@@ -261,24 +261,24 @@ namespace Amber
 
 		}
 
-		m_RendererID = 
+		m_RendererID =
 			program;
 
 		// Always detach shaders after a successful link.
 		glDetachShader(
-			program, 
+			program,
 			vertexShader
 		);
 
 		glDetachShader(
-			program, 
+			program,
 			fragmentShader
 		);
 	}
 
 
 
-	Shader::~Shader()
+	OpenGLShader::~OpenGLShader()
 	{
 
 		glDeleteProgram(
@@ -289,7 +289,7 @@ namespace Amber
 
 
 
-	void Shader::Bind() const
+	void OpenGLShader::Bind() const
 	{
 
 		glUseProgram(
@@ -300,7 +300,7 @@ namespace Amber
 
 
 
-	void Shader::Unbind() const
+	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(
 			GL_FALSE
@@ -310,28 +310,52 @@ namespace Amber
 
 
 
-	void Shader::UploadUniformMat4(
+	void OpenGLShader::UploadUniformMat4(
 		const std::string& name,
-		const glm::mat4& matrix)
+		const glm::mat4& matrix4x)
 	{
 
 		GLint location =
 			glGetUniformLocation(
 				m_RendererID,
 				name.c_str()
-		);
+			);
 
 		glUniformMatrix4fv(
 			location,
 			1,
 			GL_FALSE,
-			glm::value_ptr(matrix)
+			glm::value_ptr(matrix4x)
 		);
 
 	}
 
-	void Shader::UploadUniformFloat4(
+
+
+	void OpenGLShader::UploadUniformMat3(
 		const std::string& name, 
+		const glm::mat3& matrix3x)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniformMatrix3fv(
+			location,
+			1,
+			GL_FALSE,
+			glm::value_ptr(matrix3x)
+		);
+	
+	}
+
+
+
+	void OpenGLShader::UploadUniformFloat4(
+		const std::string& name,
 		const glm::vec4& vec4Floats)
 	{
 
@@ -339,7 +363,7 @@ namespace Amber
 			glGetUniformLocation(
 				m_RendererID,
 				name.c_str()
-		);
+			);
 
 		glUniform4f(
 			location,
@@ -351,5 +375,87 @@ namespace Amber
 
 	}
 
-}
 
+
+	void OpenGLShader::UploadUniformFloat3(
+		const std::string& name,
+		const glm::vec3& vec3Floats)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniform3f(
+			location,
+			vec3Floats.x,
+			vec3Floats.y,
+			vec3Floats.z
+		);
+
+	}
+
+
+
+	void OpenGLShader::UploadUniformFloat2(
+		const std::string& name,
+		const glm::vec2& vec2Floats)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniform2f(
+			location,
+			vec2Floats.x,
+			vec2Floats.y
+		);
+	
+	}
+
+
+
+	void OpenGLShader::UploadUniformFloat(
+		const std::string& name,
+		const float& singleFloat)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniform1f(
+			location,
+			singleFloat
+		);
+
+	}
+
+
+
+	void OpenGLShader::UploadUniformInt(
+		const std::string& name, 
+		const int& singleInt)
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniform1i(
+			location,
+			singleInt
+		);
+
+	}
+
+}

@@ -17,6 +17,8 @@
 
 
 
+#include <Platform/OpenGL/OpenGLShader.h>
+
 namespace Amber
 {
 
@@ -50,14 +52,16 @@ namespace Amber
 
 		shader->Bind();
 
-		shader->UploadUniformMat4(
-			"u_ViewProjection",
-			m_SceneData->ViewProjectionMatrix
+		std::dynamic_pointer_cast<OpenGLShader>(
+			shader)->UploadUniformMat4(
+				"u_ViewProjection",
+				m_SceneData->ViewProjectionMatrix			
 		);
 
-		shader->UploadUniformMat4(
-			"u_ModelMatrix",
-			modelTransform
+		std::dynamic_pointer_cast<OpenGLShader>(
+			shader)->UploadUniformMat4(
+				"u_ModelMatrix",
+				modelTransform
 		);
 
 		vertexArray->Bind();

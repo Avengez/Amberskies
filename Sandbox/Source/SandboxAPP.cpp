@@ -20,6 +20,8 @@
 #include <Amberskies.h>
 #include <imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <Platform/OpenGL/OpenGLShader.h>
 
 
 
@@ -194,7 +196,7 @@ public:
 		)";
 
 		m_Shader.reset(
-			new Amber::Shader(
+			Amber::Shader::Create(
 				vertexSource,
 				fragmentSource
 			)
@@ -235,7 +237,7 @@ public:
 		)";
 
 		m_FlatColorShader.reset(
-			new Amber::Shader(
+			Amber::Shader::Create(
 				flatColorVertexSource,
 				flatColorFragmentSource
 			)
@@ -310,18 +312,15 @@ public:
 				glm::vec3(0.1f)
 			);
 
-		glm::vec4 redColor(
-			0.75f, 
-			0.15f, 
-			0.10f, 
-			1.0f
-		);
-
 		glm::vec4 blueColor(
 			0.10f, 
 			0.15f, 
 			0.75f, 
 			1.0f);
+
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(
+			m_FlatColorShader
+		)->Bind();
 
 		for (int indexY = -10; indexY < 10; indexY++)
 		{
@@ -341,12 +340,17 @@ public:
 					) *
 					squareModelScale;
 
+				glm::vec4 aColor =
+					glm::vec4(m_SquareColor, 0.1f);
+
 				if (indexX % 2 == 0)
-					m_FlatColorShader->UploadUniformFloat4(
-						"u_Color", redColor
+					std::dynamic_pointer_cast<Amber::OpenGLShader>(
+						m_FlatColorShader)->UploadUniformFloat4(
+						"u_Color", aColor
 					);
 				else
-					m_FlatColorShader->UploadUniformFloat4(
+					std::dynamic_pointer_cast<Amber::OpenGLShader>(
+						m_FlatColorShader)->UploadUniformFloat4(
 						"u_Color", blueColor
 					);
 
@@ -359,6 +363,11 @@ public:
 			}
 		
 		}
+
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(
+			m_Shader
+			)->Bind();
+
 
 		Amber::Renderer::Submit(
 			m_Shader,
@@ -378,12 +387,15 @@ public:
 		{
 
 			ImGui::Begin(
-				"First Window",
+				"Settings",
 				&m_ShowFirstWindow
 			);
 
-			ImGui::Text(
-				"Hello from another window!"
+			ImGui::ColorEdit3(
+				"Square Color",
+				glm::value_ptr(
+					m_SquareColor
+				)
 			);
 
 			ImGui::End();
@@ -455,7 +467,7 @@ private:
 
 	float m_SimpleTimer = 0.0f;
 
-	glm::vec3 m_SquarePosition = glm::vec3(0.0f);
+	glm::vec3 m_SquareColor = glm::vec3(1.0f);
 
 };
 
