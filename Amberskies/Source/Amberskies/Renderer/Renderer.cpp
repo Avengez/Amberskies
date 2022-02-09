@@ -43,7 +43,8 @@ namespace Amber
 
 	void Renderer::Submit(
 		const std::shared_ptr<Shader>& shader,
-		const std::shared_ptr<VertexArray>& vertexArray
+		const std::shared_ptr<VertexArray>& vertexArray,
+		const glm::mat4& modelTransform
 	)
 	{
 
@@ -52,6 +53,11 @@ namespace Amber
 		shader->UploadUniformMat4(
 			"u_ViewProjection",
 			m_SceneData->ViewProjectionMatrix
+		);
+
+		shader->UploadUniformMat4(
+			"u_ModelMatrix",
+			modelTransform
 		);
 
 		vertexArray->Bind();

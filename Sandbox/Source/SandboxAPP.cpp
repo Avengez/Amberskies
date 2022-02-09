@@ -19,6 +19,7 @@
 
 #include <Amberskies.h>
 #include <imgui.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 
 
@@ -29,8 +30,8 @@ public:
 
 	ExampleLayer() : 
 		Layer("Example"),
-		m_Camera(-1.0f, 1.0f, -1080.0f / 1920.0f - 0.05f, 1080.0f / 1920.0f + 0.05f),
-		m_CameraPosition(0.0f)
+		m_Camera(-2.0f, 2.0f, -1.08f / 1.92f - 0.5f , 1.08f / 1.92f + 0.5f),
+		m_CameraPosition({ 0.0f, 0.0f, -1.0 })
 	{
 
 		Amber::RenderCommand::SetClearColor(
@@ -48,13 +49,13 @@ public:
 
 		float vertices[3 * 7] =
 		{
-			-0.2f, -0.2f, 0.0f,			// Position 1
+			-0.5f, -0.5f, 0.0f,			// Position 1
 			 1.0f,  0.0f, 0.0f, 1.0f,	// Color 1
 
-			 0.2f, -0.2f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
 			 0.0f,  1.0f, 0.0f, 1.0f,
 
-			 0.0f,  0.2f, 0.0f,
+			 0.0f,  0.5f, 0.0f,
 			 0.0f,  0.0f, 1.0f, 1.0f
 		};
 
@@ -112,10 +113,10 @@ public:
 
 		float squareVertices[3 * 4] =
 		{
-			-0.3f, -0.3f, 0.0f,			// Position 1
-			 0.3f, -0.3f, 0.0f,
-			 0.3f,  0.3f, 0.0f,
-			-0.3f,  0.3f, 0.0f
+			-0.5f, -0.5f, 0.0f,			// Position 1
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		std::shared_ptr<Amber::VertexBuffer> squareVertexBuffer;
@@ -167,13 +168,14 @@ public:
 				layout(location = 1) in vec4 a_Color;
 
 				uniform mat4 u_ViewProjection;
+				uniform mat4 u_ModelMatrix;
 
 				out vec4 v_Color;
 
 				void main()
 				{
 					v_Color = a_Color;
-					gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
+					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
 				}
 		)";
 
@@ -205,13 +207,14 @@ public:
 				layout(location = 0) in vec3 a_Position;
 				
 				uniform mat4 u_ViewProjection;
+				uniform mat4 u_ModelMatrix;
 
 				out vec3 v_Position;
 
 				void main()
 				{
 					v_Position = a_Position;
-					gl_Position = u_ViewProjection * vec4(a_Position, 1.0f);
+					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
 				}
 		)";
 
@@ -293,14 +296,45 @@ public:
 			m_CameraRotation
 		);
 
+		
+
 		Amber::RenderCommand::Clear();
 
 		Amber::Renderer::BeginScene(m_Camera);
 
-		Amber::Renderer::Submit(
-			m_BlueShader,
-			m_SquareVertexArray
-		);
+		glm::mat4 squareModelScale =
+			glm::scale(
+				glm::mat4(1.0f),
+				glm::vec3(0.1f)
+			);
+
+		for (int indexX = -10; indexX < 10; indexX++)
+		{
+
+			for (int indexY = -10; indexY < 10; indexY++)
+			{
+				glm::vec3 position(
+					indexX * 0.11,
+					indexY * 0.11,
+					0.0f
+				);
+
+				glm::mat4 squareModelMatrix =
+					glm::translate(
+						glm::mat4(1.0f),
+						position
+					) *
+					squareModelScale;
+
+				Amber::Renderer::Submit(
+					m_BlueShader,
+					m_SquareVertexArray,
+					squareModelMatrix
+				);
+
+			}
+		
+		}
 
 		Amber::Renderer::Submit(
 			m_Shader,
@@ -396,6 +430,8 @@ private:
 	float m_CameraRotationSpeed = 180.0f;	// 180 degrees per second
 
 	float m_SimpleTimer = 0.0f;
+
+	glm::vec3 m_SquarePosition = glm::vec3(0.0f);
 
 };
 
