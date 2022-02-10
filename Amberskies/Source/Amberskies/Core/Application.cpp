@@ -55,6 +55,8 @@ namespace Amber
 			BIND_EVENT_FN(Application::OnEvent)
 		);
 
+		Renderer::Initialize();
+
 		m_ImGuiLayer =
 			new ImGuiLayer();
 

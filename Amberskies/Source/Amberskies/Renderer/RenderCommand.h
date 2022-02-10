@@ -32,6 +32,13 @@ namespace Amber
 
 	public:
 
+		inline static void Initialize()
+		{
+
+			s_RendererAPI->Initialize();
+
+		}
+
 		inline static void SetClearColor(const glm::vec4& color)
 		{
 

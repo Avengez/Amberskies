@@ -24,6 +24,17 @@ namespace Amber
 
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
+
+
+	void Renderer::Initialize()
+	{
+
+		RenderCommand::Initialize();
+
+	}
+
+
+
 	void Renderer::BeginScene(
 		OrthographicCamera& camera
 	)

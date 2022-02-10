@@ -43,6 +43,8 @@ namespace Amber
 
 	public:
 
+		static void Initialize();
+
 		static void BeginScene(
 			OrthographicCamera& camera
 		);

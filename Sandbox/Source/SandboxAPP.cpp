@@ -40,7 +40,7 @@ public:
 			{
 			0.05f,
 			0.05f,
-			0.5f,
+			0.2f,
 			1.0f
 			}
 		);
@@ -411,7 +411,7 @@ public:
 					squareModelScale;
 
 				glm::vec4 aColor =
-					glm::vec4(m_SquareColor, 0.1f);
+					glm::vec4(m_SquareColor, 1.0f);
 
 				if (indexX % 2 == 0)
 				{

@@ -60,6 +60,34 @@ namespace Amber
 
 		m_Height = height;
 
+		GLenum channelFormat =
+			0;
+
+		GLenum dataFormat =
+			0;
+
+		if (channels == 4)
+		{
+
+			channelFormat = GL_RGBA8;
+
+			dataFormat = GL_RGBA;
+
+		}
+		else if (channels == 3)
+		{
+
+			channelFormat = GL_RGB8;
+
+			dataFormat = GL_RGB;
+
+		}
+		
+		AMBER_ASSERT(
+			channelFormat & dataFormat,
+			"[OpenGLTexture2D] Image format not supported."
+		);
+
 		glCreateTextures(
 			GL_TEXTURE_2D,
 			1,
@@ -69,7 +97,7 @@ namespace Amber
 		glTextureStorage2D(
 			m_RendererID,
 			1,
-			GL_RGB8,
+			channelFormat,
 			m_Width,
 			m_Height
 		);
@@ -93,7 +121,7 @@ namespace Amber
 			0,
 			m_Width,
 			m_Height,
-			GL_RGB,
+			dataFormat,
 			GL_UNSIGNED_BYTE,
 			imageData
 		);

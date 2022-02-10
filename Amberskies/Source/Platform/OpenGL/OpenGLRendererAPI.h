@@ -30,6 +30,8 @@ namespace Amber
 
 	public:
 
+		virtual void Initialize() override;
+
 		virtual void SetClearColor(
 			const glm::vec4& color
 		) override;

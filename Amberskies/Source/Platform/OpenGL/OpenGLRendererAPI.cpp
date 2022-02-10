@@ -20,6 +20,31 @@
 namespace Amber
 {
 
+	void OpenGLRendererAPI::Initialize()
+	{
+
+		SetClearColor(
+			glm::vec4(
+				0.2f,
+				0.2f,
+				0.2f,
+				1.0f
+			)
+		);
+
+		glEnable(
+			GL_BLEND
+		);
+
+		glBlendFunc(
+			GL_SRC_ALPHA,
+			GL_ONE_MINUS_SRC_ALPHA
+		);
+
+	}
+
+
+
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
 	{
 
