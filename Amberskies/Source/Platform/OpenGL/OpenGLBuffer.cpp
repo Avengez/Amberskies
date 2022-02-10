@@ -22,7 +22,8 @@ namespace Amber
 	OpenGLVertexBuffer::OpenGLVertexBuffer(
 		float* vertices, 
 		u32 size
-	)
+	) :
+		m_RendererID(0)
 	{
 		glCreateBuffers(
 			1,
@@ -89,6 +90,7 @@ namespace Amber
 		u32* indices, 
 		u32 count
 	) : 
+		m_RendererID(0),
 		m_Count(count)
 	{
 

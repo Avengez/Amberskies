@@ -2,7 +2,7 @@
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 20/01/2022
+* Project Created by Frazor Sharp : 10/02/2022
 *
 * Twitch : Simple Server Programming in C/C++
 *
@@ -19,26 +19,34 @@
 
 #include "Common.h"
 
-#include "Amberskies/Renderer/RendererAPI.h"
 
 
 namespace Amber
 {
 
-	class OpenGLRendererAPI : public RendererAPI
+	class Texture
 	{
 
 	public:
 
-		virtual void SetClearColor(
-			const glm::vec4& color
-		) override;
+		virtual u32 GetWidth() const = 0;
 
-		virtual void Clear() override;
+		virtual u32 GetHeight() const = 0;
 
-		virtual void DrawIndexed(
-			const Ref<VertexArray>& vertexArray
-		) override;
+		virtual void Bind() const = 0;
+
+	};
+
+
+
+	class Texture2D : public Texture
+	{
+
+	public:
+
+		static Ref<Texture2D> Create(
+			const std::string& filePath
+		);
 
 	};
 

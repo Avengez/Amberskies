@@ -47,7 +47,7 @@ namespace Amber
 
 
 	void OpenGLRendererAPI::DrawIndexed(
-		const std::shared_ptr<VertexArray>& vertexArray
+		const Ref<VertexArray>& vertexArray
 	)
 	{
 

@@ -61,7 +61,7 @@ public:
 			 0.0f,  0.0f, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<Amber::VertexBuffer> vertexBuffer;
+		Amber::Ref<Amber::VertexBuffer> vertexBuffer;
 
 		vertexBuffer.reset(
 			Amber::VertexBuffer::Create(
@@ -94,7 +94,7 @@ public:
 			0, 1, 2
 		};
 
-		std::shared_ptr<Amber::IndexBuffer> indexBuffer;
+		Amber::Ref<Amber::IndexBuffer> indexBuffer;
 
 		indexBuffer.reset(
 			Amber::IndexBuffer::Create(
@@ -113,15 +113,19 @@ public:
 			Amber::VertexArray::Create()
 		);
 
-		float squareVertices[3 * 4] =
+		float squareVertices[5 * 4] =
 		{
-			-0.5f, -0.5f, 0.0f,			// Position 1
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f,			// btm left
+			 0.0f,  0.0f,				//Texture UV
+			 0.5f, -0.5f, 0.0f,			// btm right
+			 1.0f,  0.0f,
+			 0.5f,  0.5f, 0.0f,			// top right
+			 1.0f,  1.0f,
+			-0.5f,  0.5f, 0.0f,			// top left
+			 0.0f,  1.0f
 		};
 
-		std::shared_ptr<Amber::VertexBuffer> squareVertexBuffer;
+		Amber::Ref<Amber::VertexBuffer> squareVertexBuffer;
 
 		squareVertexBuffer.reset(
 			Amber::VertexBuffer::Create(
@@ -132,7 +136,8 @@ public:
 
 		squareVertexBuffer->SetLayout(
 			{
-				{ Amber::ShaderDataType::Float3, "a_Postion" }
+				{ Amber::ShaderDataType::Float3, "a_Postion" },
+				{ Amber::ShaderDataType::Float2, "a_TextureCoord"}
 			}
 		);
 
@@ -147,7 +152,7 @@ public:
 			0, 1, 2, 2, 3, 0
 		};
 
-		std::shared_ptr<Amber::IndexBuffer> squareIndexBuffer;
+		Amber::Ref<Amber::IndexBuffer> squareIndexBuffer;
 
 		squareIndexBuffer.reset(
 			Amber::IndexBuffer::Create(
@@ -240,6 +245,49 @@ public:
 			Amber::Shader::Create(
 				flatColorVertexSource,
 				flatColorFragmentSource
+			)
+		);
+
+
+
+		std::string textureVertexSource =
+			R"(
+				#version 330 core
+				
+				layout(location = 0) in vec3 a_Position;
+				layout(location = 1) in vec2 a_TextureCoord;
+				
+				uniform mat4 u_ViewProjection;
+				uniform mat4 u_ModelMatrix;
+
+				out vec2 v_TextureCoord;
+
+				void main()
+				{
+					v_TextureCoord = a_TextureCoord;
+					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
+				}
+		)";
+
+		std::string textureFragmentSource =
+			R"(
+				#version 330 core
+				
+				layout(location = 0) out vec4 f_Color;
+
+				in vec2 v_TextureCoord;
+
+				uniform vec4 u_Color;
+
+				void main()
+				{
+					f_Color = vec4(v_TextureCoord, 0.0f, 1.0f);
+				}
+		)";
+		m_TextureShader.reset(
+			Amber::Shader::Create(
+				textureVertexSource,
+				textureFragmentSource
 			)
 		);
 	}
@@ -344,10 +392,14 @@ public:
 					glm::vec4(m_SquareColor, 0.1f);
 
 				if (indexX % 2 == 0)
+				{
+
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
 						m_FlatColorShader)->UploadUniformFloat4(
-						"u_Color", aColor
-					);
+							"u_Color", aColor
+						);
+
+				}
 				else
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
 						m_FlatColorShader)->UploadUniformFloat4(
@@ -365,13 +417,13 @@ public:
 		}
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			m_Shader
+			m_TextureShader
 			)->Bind();
 
 
 		Amber::Renderer::Submit(
-			m_Shader,
-			m_VertexArray
+			m_TextureShader,
+			m_SquareVertexArray
 		);
 
 		Amber::Renderer::EndScene();
@@ -447,13 +499,15 @@ private:
 
 	bool m_ShowFirstWindow = true;
 
-	std::shared_ptr<Amber::Shader> m_Shader;
+	Amber::Ref<Amber::Shader> m_Shader;
 
-	std::shared_ptr<Amber::Shader> m_FlatColorShader;
+	Amber::Ref<Amber::Shader> m_FlatColorShader;
 
-	std::shared_ptr<Amber::VertexArray> m_VertexArray;
+	Amber::Ref<Amber::Shader> m_TextureShader;
 
-	std::shared_ptr<Amber::VertexArray> m_SquareVertexArray;
+	Amber::Ref<Amber::VertexArray> m_VertexArray;
+
+	Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
 
 	Amber::OrthographicCamera m_Camera;
 

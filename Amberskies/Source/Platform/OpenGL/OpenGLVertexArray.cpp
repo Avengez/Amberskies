@@ -99,7 +99,7 @@ namespace Amber
 	
 	
 	void OpenGLVertexArray::AddVertexBuffer(
-		std::shared_ptr<VertexBuffer>& vertexBuffer
+		Ref<VertexBuffer>& vertexBuffer
 	)
 	{
 		int size = 
@@ -146,7 +146,7 @@ namespace Amber
 	
 	
 	void OpenGLVertexArray::SetIndexBuffer(
-		std::shared_ptr<IndexBuffer>& indexBuffer
+		Ref<IndexBuffer>& indexBuffer
 	)
 	{
 

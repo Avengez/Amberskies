@@ -128,6 +128,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_textedit.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Source\Amberskies.h" />
+    <ClInclude Include="Source\Amberskies\Renderer\TextureAPI.h" />
     <ClInclude Include="Source\Platform\OpenGL\glad.h" />
     <ClInclude Include="Source\Amberskies\Input\Input.h" />
     <ClInclude Include="Source\Amberskies\Input\KeyCodes.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Source\Amberskies\Core\Application.cpp" />
+    <ClCompile Include="Source\Amberskies\Renderer\TextureAPI.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\glad.c" />
     <ClCompile Include="Source\Amberskies\GUI\ImGuiLayer.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\Buffer.cpp" />

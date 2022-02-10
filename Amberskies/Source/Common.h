@@ -85,3 +85,16 @@ typedef uint64_t	u64;
 typedef int8_t		i8;
 typedef int32_t     i32;
 typedef int64_t     i64;
+
+// ******************************************************
+
+namespace Amber
+{
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}
