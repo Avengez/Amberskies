@@ -287,10 +287,16 @@ public:
 				}
 		)";
 
-		m_TextureShader.reset(
+		/*m_TextureShader.reset(
 			Amber::Shader::Create(
 				textureVertexSource,
 				textureFragmentSource
+			)
+		);*/
+
+		m_TextureShader.reset(
+			Amber::Shader::Create(
+				"Assets/OpenGL_Shaders/Texture.glsl"
 			)
 		);
 
@@ -338,6 +344,8 @@ public:
 
 		}
 
+
+
 		// Key Left
 		if (Amber::Input::IsKeyPressed(AMBER_KEY_A))
 			m_CameraPosition.x -= m_CameraSpeed * dt;
@@ -376,17 +384,15 @@ public:
 
 		Amber::Renderer::BeginScene(m_Camera);
 
+
+
 		glm::mat4 squareModelScale =
 			glm::scale(
 				glm::mat4(1.0f),
 				glm::vec3(0.1f)
 			);
 
-		glm::vec4 blueColor(
-			0.10f, 
-			0.15f, 
-			0.75f, 
-			1.0f);
+		
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
 			m_FlatColorShader
@@ -410,23 +416,39 @@ public:
 					) *
 					squareModelScale;
 
-				glm::vec4 aColor =
-					glm::vec4(m_SquareColor, 1.0f);
+				
 
 				if (indexX % 2 == 0)
 				{
 
+					glm::vec4 guiColor =
+						glm::vec4(
+							m_SquareColor, 
+							1.0f
+					);
+
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
 						m_FlatColorShader)->UploadUniformFloat4(
-							"u_Color", aColor
+							"u_Color", guiColor
 						);
 
 				}
 				else
+				{
+
+					glm::vec4 blueColor(
+						0.10f,
+						0.15f,
+						0.75f,
+						1.0f
+					);
+
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
 						m_FlatColorShader)->UploadUniformFloat4(
-						"u_Color", blueColor
+							"u_Color", blueColor
 					);
+				
+				}
 
 				Amber::Renderer::Submit(
 					m_FlatColorShader,
@@ -437,6 +459,8 @@ public:
 			}
 		
 		}
+
+
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
 			m_TextureShader
@@ -450,7 +474,9 @@ public:
 		Amber::Renderer::Submit(
 			m_TextureShader,
 			m_SquareVertexArray
-		);
+		); // ModelMatrix default given by Amber Engine
+
+
 
 		Amber::Renderer::EndScene();
 

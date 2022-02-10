@@ -19,4 +19,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\OpenGL_Shaders\Texture.glsl" />
+  </ItemGroup>
 </Project>

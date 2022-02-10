@@ -24,6 +24,51 @@
 namespace Amber
 {
 
+	Shader* Shader::Create(const std::string& filePath)
+	{
+		switch (RendererAPI::GetAPI())
+		{
+
+			case RendererAPI::API::None:
+			{
+
+				AMBER_ASSERT(
+					false,
+					"[ShaderAPI] no Renderer API specified."
+				);
+
+				break;
+
+			}
+
+			case RendererAPI::API::OpenGL:
+			{
+
+				return new OpenGLShader(
+					filePath
+				);
+
+				break;
+
+			}
+
+			default:
+			{
+
+				AMBER_ASSERT(
+					false,
+					"[ShaderAPI] Unknown Renderer API."
+				);
+
+			}
+
+		}
+
+		return nullptr;
+	}
+
+
+
 	Shader* Shader::Create(
 		const std::string& ShaderVertexSource,
 		const std::string& ShaderFragmentSource)
@@ -32,39 +77,39 @@ namespace Amber
 		switch (RendererAPI::GetAPI())
 		{
 
-		case RendererAPI::API::None:
-		{
+			case RendererAPI::API::None:
+			{
 
-			AMBER_ASSERT(
-				false,
-				"[ShaderAPI] no Renderer API specified."
-			);
+				AMBER_ASSERT(
+					false,
+					"[ShaderAPI] no Renderer API specified."
+				);
 
-			break;
+				break;
 
-		}
+			}
 
-		case RendererAPI::API::OpenGL:
-		{
+			case RendererAPI::API::OpenGL:
+			{
 
-			return new OpenGLShader(
-				ShaderVertexSource,
-				ShaderFragmentSource
-			);
+				return new OpenGLShader(
+					ShaderVertexSource,
+					ShaderFragmentSource
+				);
 
-			break;
+				break;
 
-		}
+			}
 
-		default:
-		{
+			default:
+			{
 
-			AMBER_ASSERT(
-				false,
-				"[ShaderAPI] Unknown Renderer API."
-			);
+				AMBER_ASSERT(
+					false,
+					"[ShaderAPI] Unknown Renderer API."
+				);
 
-		}
+			}
 
 		}
 

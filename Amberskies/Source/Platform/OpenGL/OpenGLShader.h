@@ -34,11 +34,19 @@ namespace Amber
 	public:
 
 		OpenGLShader(
+			const std::string& filePath
+		);
+
+		OpenGLShader(
 			const std::string& ShaderVertexSource,
 			const std::string& ShaderFragmentSource
 		);
 
 		virtual ~OpenGLShader();
+
+		std::string ReadFile(
+			const std::string& filePath
+		);
 
 		virtual void Bind() const override;
 
@@ -77,6 +85,16 @@ namespace Amber
 		void UploadUniformInt(
 			const std::string& name,
 			const int& singleInt
+		);
+
+	private:
+
+		std::unordered_map<GLenum, std::string> PreProcessShaderFile(
+			const std::string& source
+		);
+		
+		void Compile(
+			std::unordered_map<GLenum, std::string> shaderSources
 		);
 
 	};
