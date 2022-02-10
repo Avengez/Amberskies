@@ -294,6 +294,7 @@ public:
 			)
 		);*/
 
+		// ***** Loading Shaders from files *****
 		m_TextureShader.reset(
 			Amber::Shader::Create(
 				"Assets/OpenGL_Shaders/Texture.glsl"

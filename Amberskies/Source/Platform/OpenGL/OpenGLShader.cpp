@@ -110,7 +110,7 @@ namespace Amber
 
 		std::ifstream in(
 			filePath,
-			std::ios::in,
+			std::ios::in |			// bit mask types
 			std::ios::binary
 		);
 
@@ -408,7 +408,7 @@ namespace Amber
 		GLuint program =
 			glCreateProgram();
 
-		GLuint ShaderID[2]; // for more than 2 shader types use a vector.
+		GLuint ShaderID[2]; // for more than 2 shader types use std::array.
 
 		u8 index = 
 			0;
@@ -451,6 +451,11 @@ namespace Amber
 				&isCompiled
 			);
 
+
+
+			ShaderID[index] =
+				shader;
+
 			if (isCompiled == GL_FALSE)
 			{
 
@@ -475,10 +480,11 @@ namespace Amber
 					&infoLog[0]
 				);
 
-				// We don't need the shader anymore.
-				glDeleteShader(
-					shader
-				);
+				// We don't need the shader(s) anymore.
+				for (GLuint id : ShaderID)
+					glDeleteShader(
+						id
+					);
 
 				glDeleteProgram(
 					program
@@ -498,9 +504,6 @@ namespace Amber
 				program,
 				shader
 			);
-
-			ShaderID[index] =
-				shader;
 
 			index++;
 
