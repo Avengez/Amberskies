@@ -277,19 +277,41 @@ public:
 
 				in vec2 v_TextureCoord;
 
-				uniform vec4 u_Color;
+				uniform sampler2D u_Texture;
+
+				
 
 				void main()
 				{
-					f_Color = vec4(v_TextureCoord, 0.0f, 1.0f);
+					f_Color = texture(u_Texture, v_TextureCoord);
 				}
 		)";
+
 		m_TextureShader.reset(
 			Amber::Shader::Create(
 				textureVertexSource,
 				textureFragmentSource
 			)
 		);
+
+
+		int slot =
+			0;
+
+		m_TestTexture =
+			Amber::Texture2D::Create(
+				"Assets/Textures/Checkerboard.png"
+		);
+
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(
+			m_TextureShader
+			)->Bind();
+
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(
+			m_TextureShader)->UploadUniformInt(
+				"u_Texture", slot
+			);
+
 	}
 
 
@@ -420,6 +442,10 @@ public:
 			m_TextureShader
 			)->Bind();
 
+		u32 slot =
+			0;
+
+		m_TestTexture->Bind(slot);
 
 		Amber::Renderer::Submit(
 			m_TextureShader,
@@ -508,6 +534,8 @@ private:
 	Amber::Ref<Amber::VertexArray> m_VertexArray;
 
 	Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
+
+	Amber::Ref<Amber::Texture2D> m_TestTexture;
 
 	Amber::OrthographicCamera m_Camera;
 

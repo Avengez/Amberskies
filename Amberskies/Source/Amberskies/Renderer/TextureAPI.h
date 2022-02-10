@@ -33,7 +33,9 @@ namespace Amber
 
 		virtual u32 GetHeight() const = 0;
 
-		virtual void Bind() const = 0;
+		virtual void Bind(
+			u32 slot = 0
+		) const = 0;
 
 	};
 
@@ -43,6 +45,8 @@ namespace Amber
 	{
 
 	public:
+
+		virtual ~Texture2D() = default;
 
 		static Ref<Texture2D> Create(
 			const std::string& filePath

@@ -53,6 +53,7 @@
 #include "Amberskies/Renderer/RenderCommand.h"
 #include "Amberskies/Renderer/Renderer.h"
 #include "Amberskies/Renderer/ShaderAPI.h"
+#include "Amberskies//Renderer/TextureAPI.h"
 #include "Amberskies/Renderer/VertexArray.h"
 
 
