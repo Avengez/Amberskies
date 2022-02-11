@@ -82,6 +82,9 @@ namespace Amber
 			m_CameraPosition
 		);
 
+		m_CameraSpeed =
+			m_Zoom;
+
 	}
 	
 	
@@ -107,10 +110,10 @@ namespace Amber
 	{
 
 		m_Zoom -= 
-			event.GetYoffset();
+			event.GetYoffset() * 0.1f;
 
-		if (m_Zoom < 0.01f)
-			m_Zoom = 0.01f;
+		if (m_Zoom < 0.1f)
+			m_Zoom = 0.1f;
 
 		m_Camera.SetProjection(
 			-m_AspectRatio * m_Zoom,
