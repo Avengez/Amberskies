@@ -42,6 +42,7 @@
 #include "Amberskies/Input/Input.h"
 #include "Amberskies/Input/KeyCodes.h"
 #include "Amberskies/Input/MouseCodes.h"
+#include "Amberskies/Input/OrthographicCameraController.h"
 
 
 
@@ -49,7 +50,7 @@
 //		Renderer
 //*******************************
 #include "Amberskies/Renderer/Buffer.h"
-#include "Amberskies/Renderer/OrthographicCamera.h"
+//#include "Amberskies/Renderer/OrthographicCamera.h"
 #include "Amberskies/Renderer/RenderCommand.h"
 #include "Amberskies/Renderer/Renderer.h"
 #include "Amberskies/Renderer/ShaderAPI.h"

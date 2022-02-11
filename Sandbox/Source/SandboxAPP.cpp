@@ -32,8 +32,7 @@ public:
 
 	ExampleLayer() : 
 		Layer("Example"),
-		m_Camera(-2.0f, 2.0f, -1.08f / 1.92f - 0.5f , 1.08f / 1.92f + 0.5f),
-		m_CameraPosition({ 0.0f, 0.0f, -1.0 })
+		m_CameraController(1920.0f / 1080.0f, true)
 	{
 
 		Amber::RenderCommand::SetClearColor(
@@ -348,45 +347,17 @@ public:
 
 		}
 
-
-
-		// Key Left
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_A))
-			m_CameraPosition.x -= m_CameraSpeed * dt;
-
-		// Key Right
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_D))
-			m_CameraPosition.x += m_CameraSpeed * dt;
-
-		// Key UP
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_W))
-			m_CameraPosition.y += m_CameraSpeed * dt;
-
-		// Key Down
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_S))
-			m_CameraPosition.y -= m_CameraSpeed * dt;
-
-		// Rotate Anti-Clockwise
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_Q))
-			m_CameraRotation += m_CameraRotationSpeed * dt;
-
-		// Rotate Clockwise
-		if (Amber::Input::IsKeyPressed(AMBER_KEY_E))
-			m_CameraRotation -= m_CameraRotationSpeed * dt;
-
-		m_Camera.SetPosition(
-			m_CameraPosition
+		// *** Update ***
+		m_CameraController.OnUpdate(
+			deltaTime
 		);
 
-		m_Camera.SetRotationZ(
-			m_CameraRotation
-		);
 
-		
 
+		// *** Render ***
 		Amber::RenderCommand::Clear();
 
-		Amber::Renderer::BeginScene(m_Camera);
+		Amber::Renderer::BeginScene(m_CameraController.GetCamera());
 
 
 
@@ -523,13 +494,17 @@ public:
 	)	override
 	{
 
+		m_CameraController.OnEvent(
+			event
+		);
+
 		Amber::EventDispatcher dispatcher(
 			event
 		);
 
 		dispatcher.Dispatch<Amber::KeyPressedEvent>(
 			BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent)
-			);
+		);
 
 	}
 
@@ -572,15 +547,7 @@ private:
 
 	Amber::Ref<Amber::Texture2D> m_TestTexture;
 
-	Amber::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition;
-
-	float m_CameraSpeed = 3.0f;				// ie 3 units per second
-
-	float m_CameraRotation = 0.0f;
-
-	float m_CameraRotationSpeed = 90.0f;	// 90 degrees per second
+	Amber::OrthographicCameraController m_CameraController;
 
 	float m_SimpleTimer = 0.0f;
 
