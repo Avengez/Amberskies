@@ -39,6 +39,9 @@ namespace Amber
 		bool m_Running =
 			true;
 
+		bool m_WindowVisible =
+			true;
+
 		LayerStack m_LayerStack;
 
 		std::unique_ptr<Window> m_Window;
@@ -73,6 +76,10 @@ namespace Amber
 		inline Window& GetWindow() { return *m_Window; }
 
 	private:
+
+		bool OnWindowResize(
+			WindowResizeEvent& e
+		);
 
 		bool OnWindowClose(
 			WindowCloseEvent& e

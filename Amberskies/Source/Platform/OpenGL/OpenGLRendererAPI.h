@@ -42,6 +42,12 @@ namespace Amber
 			const Ref<VertexArray>& vertexArray
 		) override;
 
+		virtual void SetViewport(
+			u32 x,
+			u32 y,
+			u32 width,
+			u32 height) override;
+
 	};
 
 }

@@ -35,6 +35,22 @@ namespace Amber
 
 
 
+	void Renderer::OnWindowResize(
+		u32 width, 
+		u32 height)
+	{
+
+		RenderCommand::SetViewport(
+			0,
+			0,
+			width,
+			height
+		);
+
+	}
+
+
+
 	void Renderer::BeginScene(
 		OrthographicCamera& camera
 	)

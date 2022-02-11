@@ -45,6 +45,11 @@ namespace Amber
 
 		static void Initialize();
 
+		static void OnWindowResize(
+			u32 width,
+			u32 height
+		);
+
 		static void BeginScene(
 			OrthographicCamera& camera
 		);

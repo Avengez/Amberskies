@@ -61,7 +61,25 @@ namespace Amber
 		)
 		{
 
-			s_RendererAPI->DrawIndexed(vertexArray);
+			s_RendererAPI->DrawIndexed(
+				vertexArray
+			);
+
+		}
+
+		inline static void SetViewport(
+			u32 x,
+			u32 y,
+			u32 width,
+			u32 height)
+		{
+
+			s_RendererAPI->SetViewport(
+				x,
+				y,
+				width,
+				height
+			);
 
 		}
 

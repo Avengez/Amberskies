@@ -91,17 +91,26 @@ namespace Amber
 
 			m_LastFrameTime = time;
 
-			if (Amber::Input::IsKeyPressed(AMBER_KEY_ESCAPE))
+
+
+			if (m_WindowVisible)
 			{
 
-				CloseApplication();
+				if (Amber::Input::IsKeyPressed(AMBER_KEY_ESCAPE))
+				{
 
-				DEV_INFO("The escape key was pressed");
+					CloseApplication();
 
+					DEV_INFO("The escape key was pressed");
+
+				}
+
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(deltaTime);
+			
 			}
 
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(deltaTime);
+
 
 			m_ImGuiLayer->Begin();
 
@@ -130,6 +139,10 @@ namespace Amber
 		dispatcher.Dispatch<WindowCloseEvent>(
 			BIND_EVENT_FN(Application::OnWindowClose)
 		);
+
+		dispatcher.Dispatch<WindowResizeEvent>(
+			BIND_EVENT_FN(Application::OnWindowResize)
+			);
 
 		//AMBER_TRACE("event : {0}", e);
 
@@ -184,6 +197,26 @@ namespace Amber
 
 		m_Running =
 			false;
+	}
+
+
+
+	bool Application::OnWindowResize(
+		WindowResizeEvent& e)
+	{
+
+		if (e.GetWidth() <= 0 || e.GetHeight() <= 0)
+			m_WindowVisible = false;
+		else
+			m_WindowVisible = true;
+
+		Renderer::OnWindowResize(
+			e.GetWidth(),
+			e.GetHeight()
+		);
+
+		return false;
+	
 	}
 
 

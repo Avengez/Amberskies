@@ -45,7 +45,8 @@ namespace Amber
 
 
 
-	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)
+	void OpenGLRendererAPI::SetClearColor(
+		const glm::vec4& color)
 	{
 
 		glClearColor(
@@ -72,8 +73,7 @@ namespace Amber
 
 
 	void OpenGLRendererAPI::DrawIndexed(
-		const Ref<VertexArray>& vertexArray
-	)
+		const Ref<VertexArray>& vertexArray)
 	{
 
 		glDrawElements(
@@ -81,6 +81,24 @@ namespace Amber
 			vertexArray->GetIndexBuffer()->GetCount(),
 			GL_UNSIGNED_INT,
 			nullptr
+		);
+
+	}
+
+
+
+	void OpenGLRendererAPI::SetViewport(
+		u32 x, 
+		u32 y, 
+		u32 width, 
+		u32 height)
+	{
+
+		glViewport(
+			x,
+			y,
+			width,
+			height
 		);
 
 	}
