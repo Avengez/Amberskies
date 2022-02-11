@@ -24,7 +24,7 @@
 namespace Amber
 {
 
-	Shader* Shader::Create(const std::string& filePath)
+	Ref<Shader> Shader::Create(const std::string& filePath)
 	{
 		switch (RendererAPI::GetAPI())
 		{
@@ -44,7 +44,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return new OpenGLShader(
+				return std::make_shared<OpenGLShader>(
 					filePath
 				);
 
@@ -69,9 +69,10 @@ namespace Amber
 
 
 
-	Shader* Shader::Create(
-		const std::string& ShaderVertexSource,
-		const std::string& ShaderFragmentSource)
+	Ref<Shader> Shader::Create(
+		const std::string& shaderName,
+		const std::string& shaderVertexSource,
+		const std::string& shaderFragmentSource)
 	{
 
 		switch (RendererAPI::GetAPI())
@@ -92,9 +93,10 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return new OpenGLShader(
-					ShaderVertexSource,
-					ShaderFragmentSource
+				return std::make_shared<OpenGLShader>(
+					shaderName,
+					shaderVertexSource,
+					shaderFragmentSource
 				);
 
 				break;
@@ -115,6 +117,93 @@ namespace Amber
 
 		return nullptr;
 
+	}
+
+
+	// ****************************************************
+
+
+	void ShaderLibrary::Add(const Ref<Shader>& shader)
+	{
+
+		auto& name = 
+			shader->GetName();
+
+		AMBER_ASSERT(
+			!Exists(name),
+			"[ShaderAPI] Add : Shader already exists"
+		);
+
+		m_Shaders[name] = 
+			shader;
+
+	}
+
+
+
+	Ref<Shader> ShaderLibrary::Load(
+		const std::string& filePath)
+	{
+		
+		auto shader = 
+			Shader::Create(
+				filePath	
+		);
+
+		Add(
+			shader
+		);
+
+		return shader;
+
+	}
+
+
+
+	Ref<Shader> ShaderLibrary::Load(
+		const std::string& shaderName, 
+		const std::string& filePath)
+	{
+
+		auto shader =
+			Shader::Create(
+				filePath
+			);
+
+		AMBER_ASSERT(
+			!Exists(shaderName),
+			"[ShaderAPI] Load : Shader already exists"
+		);
+
+		m_Shaders[shaderName] =
+			shader;
+
+		return shader;
+	
+	}
+
+
+
+	Ref<Shader> ShaderLibrary::Get(
+		const std::string& shaderName)
+	{
+
+		AMBER_ASSERT(
+			Exists(shaderName),
+			"[ShaderAPI] Get : Shader does not exist"
+		);
+
+		return m_Shaders[shaderName];
+	
+	}
+
+
+
+	bool ShaderLibrary::Exists(
+		const std::string& shaderName) const
+	{
+	
+		return m_Shaders.find(shaderName) != m_Shaders.end();
 	}
 
 }

@@ -51,6 +51,28 @@ namespace Amber
 		m_RendererID(0)
 	{
 
+		auto lastSlash =
+			filePath.find_last_of(
+				"/\\"
+		);
+
+		lastSlash =
+			lastSlash == std::string::npos ? 0 : lastSlash + 1;
+
+		auto lastDot =
+			filePath.rfind(
+				'.'
+		);
+
+		auto count =
+			lastDot == std::string::npos ? filePath.size() - lastSlash : lastDot - lastSlash;
+
+		m_Name = 
+			filePath.substr(
+				lastSlash,
+				count
+		);
+
 		std::string source = ReadFile(
 			filePath
 		);
@@ -68,20 +90,23 @@ namespace Amber
 
 
 
+
 	OpenGLShader::OpenGLShader(
-		const std::string& ShaderVertexSource,
-		const std::string& ShaderFragmentSource
+		const std::string& shaderName,
+		const std::string& shaderVertexSource,
+		const std::string& shaderFragmentSource
 	) :
-		m_RendererID(0)
+		m_RendererID(0),
+		m_Name(shaderName)
 	{
 
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		shaderSources[GL_VERTEX_SHADER] =
-			ShaderVertexSource;
+			shaderVertexSource;
 
 		shaderSources[GL_FRAGMENT_SHADER] =
-			ShaderFragmentSource;
+			shaderFragmentSource;
 
 		Compile(
 			shaderSources
@@ -408,7 +433,12 @@ namespace Amber
 		GLuint program =
 			glCreateProgram();
 
-		GLuint ShaderID[2]; // for more than 2 shader types use std::array.
+		AMBER_ASSERT(
+			shaderSources.size() <= 2,
+			"[OpenGLShader] Compile : too many shader sources"
+		);
+
+		std::array<GLuint, 2> ShaderID; 
 
 		u8 index = 
 			0;
@@ -553,12 +583,9 @@ namespace Amber
 			);
 
 			// Don't leak shaders either.
-			glDeleteShader(
-				ShaderID[0]
-			);
-
-			glDeleteShader(
-				ShaderID[1]
+			for (GLuint id : ShaderID)
+				glDeleteShader(
+					id
 			);
 
 			// Use the infoLog as you see fit.

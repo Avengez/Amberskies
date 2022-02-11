@@ -35,14 +35,49 @@ namespace Amber
 
 		virtual void Unbind() const = 0;
 
-		static Shader* Create(
+		virtual const std::string& GetName() const = 0;
+		
+		static Ref<Shader> Create(
 			const std::string& filePath
 			);
 
-		static Shader* Create(
+		static Ref<Shader> Create(
+			const std::string& shaderName,
 			const std::string& ShaderVertexSource,
 			const std::string& ShaderFragmentSource
 		);
+
+	};
+
+
+
+	class ShaderLibrary
+	{
+
+		std::unordered_map<std::string, Ref<Shader>> m_Shaders;
+
+	public:
+
+		void Add(
+			const Ref<Shader>& shader
+		);
+
+		Ref<Shader> Load(
+			const std::string& filePath
+		);
+
+		Ref<Shader> Load(
+			const std::string& shaderName,
+			const std::string& filePath
+		);
+
+		Ref<Shader> Get(
+			const std::string& shaderName
+		);
+
+		bool Exists(
+			const std::string& shaderName
+		) const;
 
 	};
 

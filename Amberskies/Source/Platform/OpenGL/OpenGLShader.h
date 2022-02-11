@@ -31,6 +31,8 @@ namespace Amber
 
 		u32 m_RendererID;
 
+		std::string m_Name;
+
 	public:
 
 		OpenGLShader(
@@ -38,8 +40,9 @@ namespace Amber
 		);
 
 		OpenGLShader(
-			const std::string& ShaderVertexSource,
-			const std::string& ShaderFragmentSource
+			const std::string& shaderName,
+			const std::string& shaderVertexSource,
+			const std::string& shaderFragmentSource
 		);
 
 		virtual ~OpenGLShader();
@@ -51,6 +54,9 @@ namespace Amber
 		virtual void Bind() const override;
 
 		virtual void Unbind() const override;
+
+		virtual const std::string& GetName() const override {
+			return m_Name; }
 
 		void UploadUniformMat4(
 			const std::string& name,

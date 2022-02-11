@@ -200,12 +200,13 @@ public:
 				}
 		)";
 
-		m_Shader.reset(
+		m_Shader =
 			Amber::Shader::Create(
+				"BasicTriangleShader",
 				vertexSource,
 				fragmentSource
-			)
 		);
+		
 
 		std::string flatColorVertexSource =
 			R"(
@@ -241,12 +242,13 @@ public:
 				}
 		)";
 
-		m_FlatColorShader.reset(
+		m_FlatColorShader =
 			Amber::Shader::Create(
+				"FlatColorShader",
 				flatColorVertexSource,
 				flatColorFragmentSource
-			)
 		);
+		
 
 
 
@@ -295,11 +297,12 @@ public:
 		);*/
 
 		// ***** Loading Shaders from files *****
-		m_TextureShader.reset(
-			Amber::Shader::Create(
+		// ***** Using the Shader Library   *****
+		auto textureShader = 
+			m_ShaderLibrary.Load(
 				"Assets/OpenGL_Shaders/Texture.glsl"
-			)
 		);
+		
 
 
 		int slot =
@@ -311,11 +314,11 @@ public:
 		);
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			m_TextureShader
+			textureShader
 			)->Bind();
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			m_TextureShader)->UploadUniformInt(
+			textureShader)->UploadUniformInt(
 				"u_Texture", slot
 			);
 
@@ -462,9 +465,13 @@ public:
 		}
 
 
+		auto textureShader =
+			m_ShaderLibrary.Get(
+				"Texture"
+		);
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			m_TextureShader
+			textureShader
 			)->Bind();
 
 		u32 slot =
@@ -473,7 +480,7 @@ public:
 		m_TestTexture->Bind(slot);
 
 		Amber::Renderer::Submit(
-			m_TextureShader,
+			textureShader,
 			m_SquareVertexArray
 		); // ModelMatrix default given by Amber Engine
 
@@ -552,11 +559,12 @@ private:
 
 	bool m_ShowFirstWindow = true;
 
+	Amber::ShaderLibrary m_ShaderLibrary;
+
 	Amber::Ref<Amber::Shader> m_Shader;
 
 	Amber::Ref<Amber::Shader> m_FlatColorShader;
 
-	Amber::Ref<Amber::Shader> m_TextureShader;
 
 	Amber::Ref<Amber::VertexArray> m_VertexArray;
 
