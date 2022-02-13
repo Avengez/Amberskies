@@ -17,7 +17,9 @@
 
 
 #include "Amberskies/Renderer/RendererAPI.h"
+#include "Amberskies/Render2D/TextureAPI.h"
 #include <Platform/OpenGL/OpenGLShader.h>
+
 
 
 
@@ -121,6 +123,33 @@ namespace Amber
 
 
 	// ****************************************************
+
+
+	void ShaderLibrary::Initialize()
+	{
+
+		Load(
+			"../Amberskies/Assets/OpenGL_Shaders/FlatColor.glsl"
+		);
+		
+		Load(
+			"../Amberskies/Assets/OpenGL_Shaders/Texture.glsl"
+		);
+
+		//int slot =
+		//	0;
+
+		//std::dynamic_pointer_cast<OpenGLShader>(
+		//	textureShader
+		//	)->Bind();
+
+		//std::dynamic_pointer_cast<OpenGLShader>(
+		//	textureShader)->UploadUniformInt(
+		//		"u_Texture", slot
+		//	);
+
+	}
+
 
 
 	void ShaderLibrary::Add(const Ref<Shader>& shader)

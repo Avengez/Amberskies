@@ -58,6 +58,8 @@ namespace Amber
 
 	public:
 
+		void Initialize();
+
 		void Add(
 			const Ref<Shader>& shader
 		);

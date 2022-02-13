@@ -120,7 +120,7 @@
     <ClInclude Include="Source\Amberskies\Events\MouseEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\OrthographicCamera.h">
+    <ClInclude Include="Source\Amberskies\Render2D\OrthographicCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Renderer\RenderCommand.h">
@@ -159,7 +159,7 @@
     <ClInclude Include="Source\Platform\OpenGL\OpenGLShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\TextureAPI.h">
+    <ClInclude Include="Source\Amberskies\Render2D\TextureAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Platform\OpenGL\OpenGLTexture2D.h">
@@ -169,6 +169,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Amberskies\Renderer\PerspectiveCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -215,7 +218,7 @@
     <ClCompile Include="Source\Platform\OpenGL\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\OrthographicCamera.cpp">
+    <ClCompile Include="Source\Amberskies\Render2D\OrthographicCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Amberskies\Renderer\RenderCommand.cpp">
@@ -254,7 +257,7 @@
     <ClCompile Include="Source\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\TextureAPI.cpp">
+    <ClCompile Include="Source\Amberskies\Render2D\TextureAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Platform\OpenGL\OpenGLTexture2D.cpp">
@@ -266,5 +269,12 @@
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamerra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\OpenGL_Shaders\Texture.glsl" />
+    <None Include="Assets\OpenGL_Shaders\FlatColor.glsl" />
   </ItemGroup>
 </Project>

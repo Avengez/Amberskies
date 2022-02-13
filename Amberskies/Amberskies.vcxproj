@@ -129,7 +129,8 @@
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Source\Amberskies.h" />
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h" />
-    <ClInclude Include="Source\Amberskies\Renderer\TextureAPI.h" />
+    <ClInclude Include="Source\Amberskies\Render2D\TextureAPI.h" />
+    <ClInclude Include="Source\Amberskies\Renderer\PerspectiveCamera.h" />
     <ClInclude Include="Source\Platform\OpenGL\glad.h" />
     <ClInclude Include="Source\Amberskies\Input\Input.h" />
     <ClInclude Include="Source\Amberskies\Input\KeyCodes.h" />
@@ -143,7 +144,7 @@
     <ClInclude Include="Source\Amberskies\Events\MouseEvent.h" />
     <ClInclude Include="Source\Amberskies\GUI\ImGuiLayer.h" />
     <ClInclude Include="Source\Amberskies\Renderer\Buffer.h" />
-    <ClInclude Include="Source\Amberskies\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="Source\Amberskies\Render2D\OrthographicCamera.h" />
     <ClInclude Include="Source\Amberskies\Renderer\RenderCommand.h" />
     <ClInclude Include="Source\Amberskies\Renderer\Renderer.h" />
     <ClInclude Include="Source\Amberskies\Renderer\RendererAPI.h" />
@@ -181,12 +182,13 @@
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Source\Amberskies\Core\Application.cpp" />
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp" />
-    <ClCompile Include="Source\Amberskies\Renderer\TextureAPI.cpp" />
+    <ClCompile Include="Source\Amberskies\Render2D\TextureAPI.cpp" />
+    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamerra.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\OpenGLTexture2D.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\glad.c" />
     <ClCompile Include="Source\Amberskies\GUI\ImGuiLayer.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\Buffer.cpp" />
-    <ClCompile Include="Source\Amberskies\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="Source\Amberskies\Render2D\OrthographicCamera.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\RenderCommand.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\RendererAPI.cpp" />
@@ -203,6 +205,10 @@
     <ClCompile Include="Source\Platform\OpenGL\stb_image.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\OpenGL_Shaders\FlatColor.glsl" />
+    <None Include="Assets\OpenGL_Shaders\Texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

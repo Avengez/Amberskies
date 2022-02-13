@@ -41,6 +41,10 @@ namespace Amber
 			GL_ONE_MINUS_SRC_ALPHA
 		);
 
+		glEnable(
+			GL_DEPTH_TEST
+		);
+
 	}
 
 

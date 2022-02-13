@@ -46,31 +46,31 @@ namespace Amber
 			deltaTime.GetSeconds();
 
 		// Key Left
-		if (Input::IsKeyPressed(AMBER_KEY_A))
+		if (Input::IsKeyPressed(AMBER_KEY_LEFT))
 			m_CameraPosition.x -= m_CameraSpeed * dt;
 
 		// Key Right
-		if (Input::IsKeyPressed(AMBER_KEY_D))
+		if (Input::IsKeyPressed(AMBER_KEY_RIGHT))
 			m_CameraPosition.x += m_CameraSpeed * dt;
 
 		// Key UP
-		if (Input::IsKeyPressed(AMBER_KEY_W))
+		if (Input::IsKeyPressed(AMBER_KEY_UP))
 			m_CameraPosition.y += m_CameraSpeed * dt;
 
 		// Key Down
-		if (Input::IsKeyPressed(AMBER_KEY_S))
+		if (Input::IsKeyPressed(AMBER_KEY_DOWN))
 			m_CameraPosition.y -= m_CameraSpeed * dt;
 
 		if (m_Rotate)
 		{
 
 			// Rotate Anti-Clockwise
-			if (Input::IsKeyPressed(AMBER_KEY_Q))
-				m_CameraRotation += m_CameraRotationSpeed * dt;
+			if (Input::IsKeyPressed(AMBER_KEY_R))
+				m_CameraRotation += glm::radians(m_CameraRotationSpeed * dt);
 
 			// Rotate Clockwise
-			if (Input::IsKeyPressed(AMBER_KEY_E))
-				m_CameraRotation -= m_CameraRotationSpeed * dt;
+			if (Input::IsKeyPressed(AMBER_KEY_T))
+				m_CameraRotation -= glm::radians(m_CameraRotationSpeed * dt);
 
 			m_Camera.SetRotationZ(
 				m_CameraRotation

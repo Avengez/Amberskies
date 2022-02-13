@@ -164,162 +164,14 @@ public:
 			squareIndexBuffer
 		);
 
-		// *********************************
-
-		std::string vertexSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) in vec3 a_Position;
-				layout(location = 1) in vec4 a_Color;
-
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_ModelMatrix;
-
-				out vec4 v_Color;
-
-				void main()
-				{
-					v_Color = a_Color;
-					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
-				}
-		)";
-
-		std::string fragmentSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) out vec4 f_Color;
-
-				in vec4 v_Color;
-
-				void main()
-				{
-					f_Color = v_Color;
-				}
-		)";
-
-		m_Shader =
-			Amber::Shader::Create(
-				"BasicTriangleShader",
-				vertexSource,
-				fragmentSource
-		);
+		// *********************************	
 		
-
-		std::string flatColorVertexSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) in vec3 a_Position;
-				
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_ModelMatrix;
-
-				out vec3 v_Position;
-
-				void main()
-				{
-					v_Position = a_Position;
-					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
-				}
-		)";
-
-		std::string flatColorFragmentSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) out vec4 f_Color;
-
-				in vec3 v_Position;
-
-				uniform vec4 u_Color;
-
-				void main()
-				{
-					f_Color = u_Color;
-				}
-		)";
-
-		m_FlatColorShader =
-			Amber::Shader::Create(
-				"FlatColorShader",
-				flatColorVertexSource,
-				flatColorFragmentSource
-		);
-		
-
-
-
-		std::string textureVertexSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) in vec3 a_Position;
-				layout(location = 1) in vec2 a_TextureCoord;
-				
-				uniform mat4 u_ViewProjection;
-				uniform mat4 u_ModelMatrix;
-
-				out vec2 v_TextureCoord;
-
-				void main()
-				{
-					v_TextureCoord = a_TextureCoord;
-					gl_Position = u_ViewProjection * u_ModelMatrix * vec4(a_Position, 1.0f);
-				}
-		)";
-
-		std::string textureFragmentSource =
-			R"(
-				#version 330 core
-				
-				layout(location = 0) out vec4 f_Color;
-
-				in vec2 v_TextureCoord;
-
-				uniform sampler2D u_Texture;
-
-				
-
-				void main()
-				{
-					f_Color = texture(u_Texture, v_TextureCoord);
-				}
-		)";
-
-		/*m_TextureShader.reset(
-			Amber::Shader::Create(
-				textureVertexSource,
-				textureFragmentSource
-			)
-		);*/
-
-		// ***** Loading Shaders from files *****
-		// ***** Using the Shader Library   *****
-		auto textureShader = 
-			m_ShaderLibrary.Load(
-				"Assets/OpenGL_Shaders/Texture.glsl"
-		);
-		
-
-
-		int slot =
-			0;
+		m_ShaderLibrary.Initialize();
 
 		m_TestTexture =
 			Amber::Texture2D::Create(
 				"Assets/Textures/Checkerboard.png"
 		);
-
-		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			textureShader
-			)->Bind();
-
-		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			textureShader)->UploadUniformInt(
-				"u_Texture", slot
-			);
 
 	}
 
@@ -367,11 +219,13 @@ public:
 				glm::vec3(0.1f)
 			);
 
-		
+		auto flatColorShader = m_ShaderLibrary.Get(
+			"FlatColor"
+		);
 
-		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			m_FlatColorShader
-		)->Bind();
+		flatColorShader->Bind();
+
+		
 
 		for (int indexY = -10; indexY < 10; indexY++)
 		{
@@ -381,7 +235,7 @@ public:
 				glm::vec3 position(
 					indexX * 0.11,
 					indexY * 0.11,
-					0.0f
+					-0.5f
 				);
 
 				glm::mat4 squareModelMatrix =
@@ -403,7 +257,7 @@ public:
 					);
 
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
-						m_FlatColorShader)->UploadUniformFloat4(
+						flatColorShader)->UploadUniformFloat4(
 							"u_Color", guiColor
 						);
 
@@ -419,14 +273,14 @@ public:
 					);
 
 					std::dynamic_pointer_cast<Amber::OpenGLShader>(
-						m_FlatColorShader)->UploadUniformFloat4(
+						flatColorShader)->UploadUniformFloat4(
 							"u_Color", blueColor
 					);
 				
 				}
 
 				Amber::Renderer::Submit(
-					m_FlatColorShader,
+					flatColorShader,
 					m_SquareVertexArray,
 					squareModelMatrix
 				);
@@ -441,9 +295,7 @@ public:
 				"Texture"
 		);
 
-		std::dynamic_pointer_cast<Amber::OpenGLShader>(
-			textureShader
-			)->Bind();
+		textureShader->Bind();
 
 		u32 slot =
 			0;
@@ -538,7 +390,7 @@ private:
 
 	Amber::Ref<Amber::Shader> m_Shader;
 
-	Amber::Ref<Amber::Shader> m_FlatColorShader;
+	//Amber::Ref<Amber::Shader> m_FlatColorShader;
 
 
 	Amber::Ref<Amber::VertexArray> m_VertexArray;

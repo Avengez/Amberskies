@@ -70,7 +70,7 @@ namespace Amber
 			) *
 			glm::rotate(
 				glm::mat4(1.0f),
-				glm::radians(m_RotationZ),
+				m_RotationZ,
 				glm::vec3(0, 0, 1)
 		);
 		
