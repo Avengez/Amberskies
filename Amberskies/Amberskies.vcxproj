@@ -183,7 +183,7 @@
     <ClCompile Include="Source\Amberskies\Core\Application.cpp" />
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp" />
     <ClCompile Include="Source\Amberskies\Render2D\TextureAPI.cpp" />
-    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamerra.cpp" />
+    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamera.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\OpenGLTexture2D.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\glad.c" />
     <ClCompile Include="Source\Amberskies\GUI\ImGuiLayer.cpp" />

@@ -22,7 +22,8 @@
 #include <glm/glm.hpp>
 
 #include "Amberskies/Renderer/RenderCommand.h"
-#include "Amberskies/Render2D/OrthographicCamera.h"
+//#include "Amberskies/Render2D/OrthographicCamera.h"
+#include "Amberskies/Renderer/PerspectiveCamera.h"
 #include "Amberskies/Renderer/ShaderAPI.h"
 
 
@@ -51,7 +52,7 @@ namespace Amber
 		);
 
 		static void BeginScene(
-			OrthographicCamera& camera
+			PerspectiveCamera& camera
 		);
 
 		static void EndScene();

@@ -32,7 +32,7 @@ public:
 
 	ExampleLayer() : 
 		Layer("Example"),
-		m_CameraController(1920.0f / 1080.0f, true)
+		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f)
 	{
 
 		Amber::RenderCommand::SetClearColor(
@@ -200,7 +200,7 @@ public:
 		}
 
 		// *** Update ***
-		m_CameraController.OnUpdate(
+		m_Camera.OnUpdate(
 			deltaTime
 		);
 
@@ -209,7 +209,7 @@ public:
 		// *** Render ***
 		Amber::RenderCommand::Clear();
 
-		Amber::Renderer::BeginScene(m_CameraController.GetCamera());
+		Amber::Renderer::BeginScene(m_Camera);
 
 
 
@@ -346,7 +346,7 @@ public:
 	)	override
 	{
 
-		m_CameraController.OnEvent(
+		m_Camera.OnEvent(
 			event
 		);
 
@@ -399,7 +399,7 @@ private:
 
 	Amber::Ref<Amber::Texture2D> m_TestTexture;
 
-	Amber::OrthographicCameraController m_CameraController;
+	Amber::PerspectiveCamera m_Camera;
 
 	float m_SimpleTimer = 0.0f;
 

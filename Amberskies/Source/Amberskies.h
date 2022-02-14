@@ -51,6 +51,7 @@
 //*******************************
 #include "Amberskies/Renderer/Buffer.h"
 //#include "Amberskies/Render2D/OrthographicCamera.h"
+#include "Amberskies/Renderer/PerspectiveCamera.h"
 #include "Amberskies/Renderer/RenderCommand.h"
 #include "Amberskies/Renderer/Renderer.h"
 #include "Amberskies/Renderer/ShaderAPI.h"

@@ -269,7 +269,7 @@
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamerra.cpp">
+    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

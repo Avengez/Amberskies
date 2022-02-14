@@ -52,12 +52,13 @@ namespace Amber
 
 
 	void Renderer::BeginScene(
-		OrthographicCamera& camera
+		PerspectiveCamera& camera
 	)
 	{
 
 		m_SceneData->ViewProjectionMatrix =
-			camera.GetViewProjectionMatrix();
+			camera.GetProjection() * 
+			camera.GetViewMatrix();
 
 	}
 
