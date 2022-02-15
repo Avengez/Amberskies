@@ -129,6 +129,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Source\Amberskies.h" />
     <ClInclude Include="Source\Amberskies\Core\UUID.h" />
+    <ClInclude Include="Source\Amberskies\ECS\Components.h" />
     <ClInclude Include="Source\Amberskies\ECS\Scene.h" />
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h" />
     <ClInclude Include="Source\Amberskies\Render2D\TextureAPI.h" />

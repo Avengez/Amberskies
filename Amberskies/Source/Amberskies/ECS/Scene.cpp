@@ -3,7 +3,7 @@
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 14/02/2022
+* Project Created by Frazor Sharp : 15/02/2022
 *
 * Twitch : Simple Server Programming in C/C++
 *
@@ -51,6 +51,15 @@ namespace Amber
 	
 	
 	Scene::~Scene()
+	{
+
+		// Empty
+
+	}
+
+
+
+	void Scene::OnUpdate(DeltaTime deltaTime)
 	{
 	}
 

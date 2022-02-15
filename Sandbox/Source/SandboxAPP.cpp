@@ -44,6 +44,14 @@ public:
 			}
 		);
 	
+
+
+		/*
+		*  would like to replace with ECS
+		*  ie:
+		*  auto sqaure = m_CurrentScene->CreateEntity()
+		*  square.AddComponent(Component)
+		*/
 		m_VertexArray.reset(
 			Amber::VertexArray::Create()
 		);
@@ -205,7 +213,7 @@ public:
 		);
 
 
-
+		// will be able to currentScene.OnUpdate(deltaTime)
 		// *** Render ***
 		Amber::RenderCommand::Clear();
 

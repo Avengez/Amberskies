@@ -38,6 +38,9 @@
 #include "Amberskies/Core/Layer.h"
 #include "Amberskies/Core/Log.h"
 
+#include "Amberskies/ECS/Components.h"
+#include "Amberskies/ECS/Scene.h"
+
 #include "Amberskies/Gui/ImGuiLayer.h"
 
 #include "Amberskies/Input/Input.h"

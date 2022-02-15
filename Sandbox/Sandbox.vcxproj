@@ -97,11 +97,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\SandboxApp.cpp" />
+    <ClCompile Include="Source\Test2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Amberskies\Amberskies.vcxproj">
       <Project>{6b20e90d-42cb-4156-9869-32829df9851c}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Test2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

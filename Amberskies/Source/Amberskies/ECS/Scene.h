@@ -18,6 +18,8 @@
 
 
 #include "Common.h"
+#include "Amberskies/Core/DeltaTime.h"
+#include "Amberskies/ECS/Components.h"
 
 
 
@@ -34,6 +36,8 @@ namespace Amber
 		Scene();
 
 		~Scene();
+
+		void OnUpdate(DeltaTime deltaTime);
 
 	};
 
