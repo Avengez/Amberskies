@@ -53,9 +53,8 @@ public:
 		*  auto sqaure = m_CurrentScene->CreateEntity()
 		*  square.AddComponent(Component)
 		*/
-		m_VertexArray.reset(
-			Amber::VertexArray::Create()
-		);
+		m_VertexArray =
+			Amber::VertexArray::Create();
 
 		float vertices[3 * 7] =
 		{
@@ -71,12 +70,12 @@ public:
 
 		Amber::Ref<Amber::VertexBuffer> vertexBuffer;
 
-		vertexBuffer.reset(
+		vertexBuffer =
 			Amber::VertexBuffer::Create(
 				vertices,
 				sizeof(vertices)
-			)
 		);
+		
 
 		Amber::BufferLayout layout =
 		{
@@ -104,12 +103,12 @@ public:
 
 		Amber::Ref<Amber::IndexBuffer> indexBuffer;
 
-		indexBuffer.reset(
+		indexBuffer =
 			Amber::IndexBuffer::Create(
 				indices,
 				sizeof(indices) / sizeof(u32)
-			)
 		);
+		
 
 		m_VertexArray->SetIndexBuffer(
 			indexBuffer
@@ -117,9 +116,8 @@ public:
 
 		// *********************************
 
-		m_SquareVertexArray.reset(
-			Amber::VertexArray::Create()
-		);
+		m_SquareVertexArray =
+			Amber::VertexArray::Create();
 
 		float squareVertices[5 * 4] =
 		{
@@ -135,11 +133,10 @@ public:
 
 		Amber::Ref<Amber::VertexBuffer> squareVertexBuffer;
 
-		squareVertexBuffer.reset(
+		squareVertexBuffer =
 			Amber::VertexBuffer::Create(
 				squareVertices,
 				sizeof(squareVertices)
-			)
 		);
 
 		squareVertexBuffer->SetLayout(
@@ -162,13 +159,12 @@ public:
 
 		Amber::Ref<Amber::IndexBuffer> squareIndexBuffer;
 
-		squareIndexBuffer.reset(
+		squareIndexBuffer =
 			Amber::IndexBuffer::Create(
 				squareIndices,
 				sizeof(squareIndices) / sizeof(u32)
-			)
 		);
-
+		
 		m_SquareVertexArray->SetIndexBuffer(
 			squareIndexBuffer
 		);

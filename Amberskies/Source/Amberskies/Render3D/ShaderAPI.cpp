@@ -128,9 +128,9 @@ namespace Amber
 	void ShaderLibrary::Initialize()
 	{
 
-		Load(
+		/*Load(
 			"../Amberskies/Assets/OpenGL_Shaders/FlatColor.glsl"
-		);
+		);*/
 		
 		Load(
 			"../Amberskies/Assets/OpenGL_Shaders/Texture.glsl"
@@ -200,7 +200,7 @@ namespace Amber
 			);
 
 		AMBER_ASSERT(
-			!Exists(shaderName),
+			Exists(shaderName),
 			"[ShaderAPI] Load : Shader already exists"
 		);
 

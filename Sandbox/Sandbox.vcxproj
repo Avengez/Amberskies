@@ -97,7 +97,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\SandboxApp.cpp" />
-    <ClCompile Include="Source\stb_image.cpp" />
     <ClCompile Include="Source\Test2DLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +105,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\stb_image.h" />
     <ClInclude Include="Source\Test2DLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

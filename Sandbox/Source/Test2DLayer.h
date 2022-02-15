@@ -4,7 +4,7 @@
 * ________________________________________________________
 * Project Created by Frazor Sharp : 15/02/2022
 *
-* Twitch : Simple Server Programming in C/C++
+* Twitch : Mini Game Engine Programming in C/C++
 *
 * Contact Email : daocamberskies@googlemail.com
 * Github		: https://github.com/Avengez/Amberskies.git
@@ -27,11 +27,11 @@
 	{
 		Amber::PerspectiveCamera m_Camera;
 
-		Amber::ShaderLibrary m_ShaderLibrary;
+		Amber::Ref<Amber::ShaderLibrary> m_ShaderLibrary;
 
-		Amber::Ref<Amber::Texture2D> m_TestTexture;
+		//Amber::Ref<Amber::Texture2D> m_TestTexture;
 
-		Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
+		//Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
 
 		glm::vec4 m_SquareColor = glm::vec4(1.0f);
 
@@ -58,8 +58,6 @@
 		) override;
 
 	private:
-
-		void CreateSquare();
 
 		bool OnKeyPressed(
 			Amber::KeyPressedEvent& keyEvent

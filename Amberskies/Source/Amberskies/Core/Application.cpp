@@ -25,7 +25,7 @@
 
 #include "Amberskies/Render3D/Renderer.h"
 
-
+#include <GLFW/glfw3.h>
 
 
 
@@ -86,10 +86,10 @@ namespace Amber
 
 			float time =
 				1.0f;
-#ifdef _DEBUG
+
 			time =
-				(float)ImGui::GetTime();
-#endif
+				(float)glfwGetTime();
+
 			DeltaTime deltaTime = 
 				time - m_LastFrameTime;
 

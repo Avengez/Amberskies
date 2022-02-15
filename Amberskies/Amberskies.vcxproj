@@ -133,6 +133,7 @@
     <ClInclude Include="Source\Amberskies\ECS\Entity.h" />
     <ClInclude Include="Source\Amberskies\ECS\Scene.h" />
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h" />
+    <ClInclude Include="Source\Amberskies\Render2D\Render2D.h" />
     <ClInclude Include="Source\Amberskies\Render2D\TextureAPI.h" />
     <ClInclude Include="Source\Amberskies\Render3D\PerspectiveCamera.h" />
     <ClInclude Include="Source\Platform\OpenGL\glad.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="Source\Amberskies\ECS\Entity.cpp" />
     <ClCompile Include="Source\Amberskies\ECS\Scene.cpp" />
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp" />
+    <ClCompile Include="Source\Amberskies\Render2D\Render2D.cpp" />
     <ClCompile Include="Source\Amberskies\Render2D\TextureAPI.cpp" />
     <ClCompile Include="Source\Amberskies\Render3D\PerspectiveCamera.cpp" />
     <ClCompile Include="Source\Platform\OpenGL\OpenGLTexture2D.cpp" />

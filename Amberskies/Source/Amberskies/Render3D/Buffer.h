@@ -214,7 +214,7 @@ namespace Amber
 			const BufferLayout& layout
 		)  = 0;
 
-		static VertexBuffer* Create(
+		static Ref<VertexBuffer> Create(
 			float* vertices,
 			u32 size
 		);
@@ -236,7 +236,7 @@ namespace Amber
 
 		virtual u32 GetCount() const = 0;
 
-		static IndexBuffer* Create(
+		static Ref<IndexBuffer> Create(
 			u32* indices,
 			u32 count
 		);

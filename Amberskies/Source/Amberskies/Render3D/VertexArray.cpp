@@ -26,7 +26,7 @@
 namespace Amber
 {
 
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 
 		switch (Renderer::GetAPI())
@@ -47,7 +47,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return new OpenGLVertexArray();
+				return CreateRef<OpenGLVertexArray>();
 
 				break;
 

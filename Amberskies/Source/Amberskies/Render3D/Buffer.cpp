@@ -24,7 +24,7 @@
 
 namespace Amber
 {
-	VertexBuffer* VertexBuffer::Create(
+	Ref<VertexBuffer> VertexBuffer::Create(
 		float* vertices, 
 		u32 size)
 	{
@@ -43,7 +43,7 @@ namespace Amber
 
 			case RendererAPI::API::OpenGL:	
 			{
-				return new OpenGLVertexBuffer(
+				return CreateRef<OpenGLVertexBuffer>(
 					vertices,
 					size
 				);
@@ -69,7 +69,7 @@ namespace Amber
 
 
 
-	IndexBuffer* IndexBuffer::Create(
+	Ref<IndexBuffer> IndexBuffer::Create(
 		u32* indices, 
 		u32 size)
 	{
@@ -92,7 +92,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:	
 			{
 
-				return new OpenGLIndexBuffer(
+				return CreateRef<OpenGLIndexBuffer>(
 					indices,
 					size
 				);

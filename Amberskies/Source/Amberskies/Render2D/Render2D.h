@@ -2,7 +2,7 @@
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 19/01/2022
+* Project Created by Frazor Sharp : 15/02/2022
 *
 * Twitch : Mini Game Engine Programming in C/C++
 *
@@ -18,53 +18,34 @@
 
 
 #include "Common.h"
-
-#include <glm/glm.hpp>
-
-#include "Amberskies/Render3D/RenderCommand.h"
 #include "Amberskies/Render3D/PerspectiveCamera.h"
 #include "Amberskies/Render3D/ShaderAPI.h"
 
-
-
 namespace Amber
 {
-	
-	class Renderer
+	class Render2D
 	{
-
-		struct SceneData
-		{
-			glm::mat4 ViewProjectionMatrix;
-		};
-
-		static SceneData* m_SceneData;
-
 
 	public:
 
 		static void Initialize();
 
-		static void OnWindowResize(
-			u32 width,
-			u32 height
-		);
+		static void Shutdown();
 
 		static void BeginScene(
-			PerspectiveCamera& camera
+			const PerspectiveCamera& camera
 		);
 
 		static void EndScene();
 
-		static void Submit(
-			const Ref<Shader>& shader,
-			const Ref<VertexArray>& vertexArray,
-			const glm::mat4& modelTransform = glm::mat4(1.0f)
+		static void DrawQuad(
+			const glm::vec3& position,
+			const glm::vec2& size,
+			const glm::vec4& color
 		);
 
-		inline static RendererAPI::API GetAPI() { 
-			return RendererAPI::GetAPI(); }
-		
-	};
 
+
+
+	};
 }
