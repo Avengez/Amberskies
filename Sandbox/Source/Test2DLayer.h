@@ -22,11 +22,16 @@
 
 
 
-namespace Amber
-{
+
 	class Test2DLayer : public Amber::Layer
 	{
-		PerspectiveCamera m_Camera;
+		Amber::PerspectiveCamera m_Camera;
+
+		Amber::ShaderLibrary m_ShaderLibrary;
+
+		Amber::Ref<Amber::Texture2D> m_TestTexture;
+
+		Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
 
 	public:
 
@@ -39,26 +44,28 @@ namespace Amber
 		virtual void OnDetach() override;
 
 		virtual void OnUpdate(
-			DeltaTime deltaTime
+			Amber::DeltaTime deltaTime
 		) override;
 
 		virtual void OnImGuiRender() override;
 
 		virtual void OnEvent(
-			Event& event
+			Amber::Event& event
 		) override;
 
 	private:
 
+		void CreateSquare();
+
 		bool OnKeyPressed(
-			KeyPressedEvent& keyEvent
+			Amber::KeyPressedEvent& keyEvent
 		);
 
 		bool OnMouseButtonPressed(
-			MouseButtonPressedEvent& mouseEvent
+			Amber::MouseButtonPressedEvent& mouseEvent
 		);
 
 		void NewScene();
 
 	};
-}
+

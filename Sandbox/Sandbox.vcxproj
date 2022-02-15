@@ -97,7 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\SandboxApp.cpp" />
-    <ClCompile Include="Source\Test2D.cpp" />
+    <ClCompile Include="Source\Test2DLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Amberskies\Amberskies.vcxproj">
@@ -105,7 +105,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Test2D.h" />
+    <ClInclude Include="Source\Test2DLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

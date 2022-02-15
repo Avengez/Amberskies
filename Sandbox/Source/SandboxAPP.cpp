@@ -23,6 +23,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <Platform/OpenGL/OpenGLShader.h>
 
+#include "Test2DLayer.h"
+
 
 
 class ExampleLayer : public Amber::Layer
@@ -424,8 +426,13 @@ public:
 
 	Sandbox()
 	{
-		PushLayer(
+
+		/*PushLayer(
 			new ExampleLayer()
+		);*/
+
+		PushLayer(
+			new Test2DLayer()
 		);
 
 	}

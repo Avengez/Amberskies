@@ -60,8 +60,8 @@ namespace Amber
 		DeltaTime deltaTime)
 	{
 		
-		if (Input::IsKeyPressed(AMBER_KEY_LEFT_ALT))
-		{
+		//if (Input::IsKeyPressed(AMBER_KEY_LEFT_ALT))
+		//{
 			const glm::vec2& mouse
 				{ Input::GetMouseX(), 
 				  Input::GetMouseY() };
@@ -78,7 +78,7 @@ namespace Amber
 				MouseRotate(delta);
 			else if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_RIGHT))
 				MouseZoom(delta.y);
-		}
+		//}
 
 		UpdateView();
 
