@@ -17,6 +17,42 @@
 
 
 
-//#include <Amberskies.h>
-//#include <imgui.h>
+#include <Amberskies.h>
+
+
+
+
+class Sand_Rogue : public Amber::Application
+{
+
+public:
+
+	Sand_Rogue()
+	{
+		
+		// Empty
+
+	}
+
+	~Sand_Rogue()
+	{
+		//empty
+	}
+
+};
+
+
+
+//*******************************
+// Main Entry Point for the User
+//*******************************
+#include "Amberskies/Core/MainEntryPoint.h"
+
+Amber::Application* Amber::CreateApplication()
+{
+
+	return new Sand_Rogue();
+
+}
+
 
