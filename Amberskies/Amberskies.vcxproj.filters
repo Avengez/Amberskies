@@ -183,6 +183,9 @@
     <ClInclude Include="Source\Amberskies\ECS\Components.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Amberskies\ECS\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Amberskies\Core\Application.cpp">
@@ -285,6 +288,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Amberskies\ECS\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Amberskies\ECS\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
