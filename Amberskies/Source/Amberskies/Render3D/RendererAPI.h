@@ -21,7 +21,7 @@
 
 #include <glm/glm.hpp>
 
-#include "Amberskies/Renderer/VertexArray.h"
+#include "Amberskies/Render3D/VertexArray.h"
 
 
 namespace Amber

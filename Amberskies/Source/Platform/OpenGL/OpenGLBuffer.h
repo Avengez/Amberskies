@@ -19,7 +19,7 @@
 
 #include "Common.h"
 
-#include "Amberskies/Renderer/Buffer.h"
+#include "Amberskies/Render3D/Buffer.h"
 
 
 

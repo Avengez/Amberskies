@@ -20,7 +20,7 @@
 #include "Common.h"
 #include "Amberskies/Core/UUID.h"
 #include "Amberskies/Render2D/TextureAPI.h"
-#include "Amberskies/Renderer/PerspectiveCamera.h"
+#include "Amberskies/Render3D/PerspectiveCamera.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

@@ -19,7 +19,7 @@
 
 #include "Common.h"
 
-#include "Amberskies/Renderer/VertexArray.h"
+#include "Amberskies/Render3D/VertexArray.h"
 
 
 namespace Amber

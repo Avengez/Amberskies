@@ -51,16 +51,23 @@
 
 
 //*******************************
-//		Renderer
+//		Render2D
 //*******************************
-#include "Amberskies/Renderer/Buffer.h"
-//#include "Amberskies/Render2D/OrthographicCamera.h"
-#include "Amberskies/Renderer/PerspectiveCamera.h"
-#include "Amberskies/Renderer/RenderCommand.h"
-#include "Amberskies/Renderer/Renderer.h"
-#include "Amberskies/Renderer/ShaderAPI.h"
-#include "Amberskies//Render2D/TextureAPI.h"
-#include "Amberskies/Renderer/VertexArray.h"
+#include "Amberskies/Render2D/OrthographicCamera.h"
+#include "Amberskies/Render2D/TextureAPI.h"
+ 
+
+//*******************************
+//		Render3D
+//*******************************
+#include "Amberskies/Render3D/Buffer.h"
+
+#include "Amberskies/Render3D/PerspectiveCamera.h"
+#include "Amberskies/Render3D/RenderCommand.h"
+#include "Amberskies/Render3D/Renderer.h"
+#include "Amberskies/Render3D/ShaderAPI.h"
+
+#include "Amberskies/Render3D/VertexArray.h"
 
 
 

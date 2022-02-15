@@ -36,7 +36,7 @@
     <ClInclude Include="Source\Amberskies\Core\WindowAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\GFXContext.h">
+    <ClInclude Include="Source\Amberskies\Render3D\GFXContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Core\Layer.h">
@@ -60,7 +60,7 @@
     <ClInclude Include="Source\Amberskies\GUI\ImGuiLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\ShaderAPI.h">
+    <ClInclude Include="Source\Amberskies\Render3D\ShaderAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\ImGui\backends\imgui_impl_opengl3.h">
@@ -123,16 +123,16 @@
     <ClInclude Include="Source\Amberskies\Render2D\OrthographicCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\RenderCommand.h">
+    <ClInclude Include="Source\Amberskies\Render3D\RenderCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\Renderer.h">
+    <ClInclude Include="Source\Amberskies\Render3D\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\RendererAPI.h">
+    <ClInclude Include="Source\Amberskies\Render3D\RendererAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\VertexArray.h">
+    <ClInclude Include="Source\Amberskies\Render3D\VertexArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Platform\OpenGL\OpenGLBuffer.h">
@@ -153,7 +153,7 @@
     <ClInclude Include="Source\Platform\Windows\WindowsWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\Buffer.h">
+    <ClInclude Include="Source\Amberskies\Render3D\Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Platform\OpenGL\OpenGLShader.h">
@@ -171,7 +171,7 @@
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Amberskies\Renderer\PerspectiveCamera.h">
+    <ClInclude Include="Source\Amberskies\Render3D\PerspectiveCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Amberskies\Core\UUID.h">
@@ -203,7 +203,7 @@
     <ClCompile Include="Source\Amberskies\GUI\ImGuiLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\ShaderAPI.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\ShaderAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Dependencies\ImGui\backends\imgui_impl_opengl3.cpp">
@@ -233,16 +233,16 @@
     <ClCompile Include="Source\Amberskies\Render2D\OrthographicCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\RenderCommand.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\RenderCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\Renderer.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\RendererAPI.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\RendererAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\VertexArray.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -263,7 +263,7 @@
     <ClCompile Include="Source\Platform\Windows\WindowsWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\Buffer.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\Buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Platform\OpenGL\OpenGLShader.cpp">
@@ -281,7 +281,7 @@
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamera.cpp">
+    <ClCompile Include="Source\Amberskies\Render3D\PerspectiveCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Amberskies\Core\UUID.cpp">

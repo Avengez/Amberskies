@@ -21,10 +21,10 @@
 
 #include <glm/glm.hpp>
 
-#include "Amberskies/Renderer/RenderCommand.h"
+#include "Amberskies/Render3D/RenderCommand.h"
 //#include "Amberskies/Render2D/OrthographicCamera.h"
-#include "Amberskies/Renderer/PerspectiveCamera.h"
-#include "Amberskies/Renderer/ShaderAPI.h"
+#include "Amberskies/Render3D/PerspectiveCamera.h"
+#include "Amberskies/Render3D/ShaderAPI.h"
 
 
 
