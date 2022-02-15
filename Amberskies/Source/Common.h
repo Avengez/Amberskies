@@ -74,6 +74,7 @@
 
 
 
+#include "Amberskies/Core/UUID.h"
 #include "Amberskies/Core/Log.h"
 #include "Platform/OpenGL/glad.h"
 

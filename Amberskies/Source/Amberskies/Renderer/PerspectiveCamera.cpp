@@ -385,7 +385,7 @@ namespace Amber
 		);
 
 		float speed = 
-			distance * distance * 2.5;
+			distance * distance * 2.5f; 
 
 		speed = 
 			std::min(
