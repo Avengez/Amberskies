@@ -18,6 +18,7 @@
 
 
 #include <Amberskies.h>
+#include "Core.h"
 
 
 
@@ -30,7 +31,9 @@ public:
 	Sand_Rogue()
 	{
 		
-		// Empty
+		PushLayer(
+			new CoreLayer()
+		);
 
 	}
 
