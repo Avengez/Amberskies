@@ -129,6 +129,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Source\Amberskies.h" />
     <ClInclude Include="Source\Amberskies\Core\UUID.h" />
+    <ClInclude Include="Source\Amberskies\ECS\Scene.h" />
     <ClInclude Include="Source\Amberskies\Input\OrthographicCameraController.h" />
     <ClInclude Include="Source\Amberskies\Render2D\TextureAPI.h" />
     <ClInclude Include="Source\Amberskies\Renderer\PerspectiveCamera.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Source\Amberskies\Core\Application.cpp" />
     <ClCompile Include="Source\Amberskies\Core\UUID.cpp" />
+    <ClCompile Include="Source\Amberskies\ECS\Scene.cpp" />
     <ClCompile Include="Source\Amberskies\Input\OrthographicCameraController.cpp" />
     <ClCompile Include="Source\Amberskies\Render2D\TextureAPI.cpp" />
     <ClCompile Include="Source\Amberskies\Renderer\PerspectiveCamera.cpp" />
