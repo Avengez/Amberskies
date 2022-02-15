@@ -97,16 +97,23 @@
 			1.0f
 		);
 
-		m_RotationRad += 
+		m_RotationRad +=
 			glm::radians(
 				1.0f
-		);
+			);
 
 		Amber::Render2D::DrawQuad(
 			position,
 			m_RotationRad,
 			size,
 			m_SquareColor
+		);
+
+		Amber::Render2D::DrawQuad(
+			{ 0.5f, 0.0f, 0.01f },
+			-m_RotationRad,
+			{ 0.5f, 2.0f },
+			{ 0.5f, 0.2f, 0.05f, 0.5f}
 		);
 
 		Amber::Render2D::EndScene();
