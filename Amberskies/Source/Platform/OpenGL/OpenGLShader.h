@@ -55,6 +55,7 @@ namespace Amber
 
 		virtual void Unbind() const override;
 
+
 		virtual void SetMat4(
 			const std::string& name,
 			const glm::mat4 value
@@ -69,6 +70,12 @@ namespace Amber
 			const std::string& name,
 			const glm::vec4 value
 		) const override;
+
+		virtual void SetInt(
+			const std::string& name,
+			const int value
+		) const override;
+
 
 		virtual const std::string& GetName() const override {
 			return m_Name; }

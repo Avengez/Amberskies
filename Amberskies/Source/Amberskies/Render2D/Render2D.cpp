@@ -47,12 +47,16 @@ namespace Amber
 		s_State.vertexArray =
 			VertexArray::Create();
 
-		float squareVertices[3 * 4] =
+		float squareVertices[5 * 4] =
 		{
 			-0.5f, -0.5f, 0.0f,			// btm left
+			 0.0f,  0.0f,				// Texture coords
 			 0.5f, -0.5f, 0.0f,			// btm right
+			 1.0f,  0.0f,
 			 0.5f,  0.5f, 0.0f,			// top right
+			 1.0f,  1.0f,
 			-0.5f,  0.5f, 0.0f,			// top left
+			 0.0f,  1.0f
 		};
 
 		Ref<VertexBuffer> squareVertexBuffer;
@@ -65,8 +69,8 @@ namespace Amber
 		
 		squareVertexBuffer->SetLayout(
 			{
-				{ ShaderDataType::Float3, "a_Postion" }
-				//{ ShaderDataType::Float2, "a_TextureCoord"}
+				{ ShaderDataType::Float3, "a_Postion" },
+				{ ShaderDataType::Float2, "a_TextureCoord"}
 			}
 		);
 
@@ -143,7 +147,8 @@ namespace Amber
 		const glm::vec3& position,  
 		const float rotationRad,
 		const glm::vec2& size, 
-		const glm::vec4& color)
+		const glm::vec4& color,
+		const Ref<Texture2D> texture)
 	{
 
 		glm::mat4 modelMatrix =
@@ -165,6 +170,13 @@ namespace Amber
 		);
 
 		s_State.shader->Bind();
+
+		texture->Bind(0);
+
+		s_State.shader->SetInt(
+			"u_Texture",
+			0
+		);
 
 		s_State.vertexArray->Bind();
 

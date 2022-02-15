@@ -21,6 +21,8 @@
 #include "Amberskies/Render3D/PerspectiveCamera.h"
 #include "Amberskies/Render3D/ShaderAPI.h"
 
+#include "Amberskies/Render2D/TextureAPI.h"
+
 namespace Amber
 {
 	class Render2D
@@ -39,10 +41,11 @@ namespace Amber
 		static void EndScene();
 
 		static void DrawQuad(
-			const glm::vec3& position,
-			const float rotationRad,
-			const glm::vec2& size,
-			const glm::vec4& color
+			const glm::vec3& position ,
+			const float rotationRad ,
+			const glm::vec2& size ,
+			const glm::vec4& color ,
+			const Ref<Texture2D> texture
 		);
 
 

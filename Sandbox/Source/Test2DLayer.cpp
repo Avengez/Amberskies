@@ -41,6 +41,11 @@
 
 		Amber::Render2D::Initialize();
 
+		m_TestTexture =
+			Amber::Texture2D::Create(
+				"Assets/Textures/Checkerboard.png"
+			);
+
 	}
 
 
@@ -106,15 +111,16 @@
 			position,
 			m_RotationRad,
 			size,
-			m_SquareColor
+			m_SquareColor,
+			m_TestTexture
 		);
 
-		Amber::Render2D::DrawQuad(
+		/*Amber::Render2D::DrawQuad(
 			{ 0.5f, 0.0f, 0.01f },
 			-m_RotationRad,
 			{ 0.5f, 2.0f },
 			{ 0.5f, 0.2f, 0.05f, 0.5f}
-		);
+		);*/
 
 		Amber::Render2D::EndScene();
 

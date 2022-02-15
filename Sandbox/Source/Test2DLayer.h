@@ -29,9 +29,7 @@
 
 		Amber::Ref<Amber::ShaderLibrary> m_ShaderLibrary;
 
-		//Amber::Ref<Amber::Texture2D> m_TestTexture;
-
-		//Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
+		Amber::Ref<Amber::Texture2D> m_TestTexture;
 
 		glm::vec4 m_SquareColor = glm::vec4(1.0f);
 

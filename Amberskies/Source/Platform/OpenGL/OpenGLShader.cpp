@@ -267,6 +267,27 @@ namespace Amber
 
 
 
+	void OpenGLShader::SetInt(
+		const std::string& name,
+		const int value
+	) const
+	{
+
+		GLint location =
+			glGetUniformLocation(
+				m_RendererID,
+				name.c_str()
+			);
+
+		glUniform1i(
+			location,
+			value
+		);
+
+	}
+
+
+
 	void OpenGLShader::UploadUniformMat4(
 		const std::string& name,
 		const glm::mat4& matrix4x)
