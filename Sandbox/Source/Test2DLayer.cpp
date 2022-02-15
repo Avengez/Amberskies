@@ -46,6 +46,14 @@
 				"Assets/Textures/Checkerboard.png"
 			);
 
+		m_SquareColor =
+			glm::vec4(
+				0.10f,
+				0.15f,
+				0.30f,
+				1.0f
+		);
+
 	}
 
 
@@ -93,13 +101,13 @@
 		/**/
 
 		glm::vec3 position(
-			1.0f,
-			1.0f,
+			0.0f,
+			0.0f,
 			0.0f
 		);
 
 		glm::vec2 size(
-			1.0f
+			10.0f
 		);
 
 		m_RotationRad +=

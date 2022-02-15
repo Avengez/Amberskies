@@ -33,7 +33,9 @@ in vec2 v_TextureCoord;
 void main()
 {
 
-	f_Color = texture(u_Texture, v_TextureCoord) * u_Color;
+	int scale = 10;
+
+	f_Color = texture(u_Texture, v_TextureCoord * scale) * u_Color;
 	
 	//f_Color = u_Color;
 
