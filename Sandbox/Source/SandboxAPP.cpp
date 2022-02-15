@@ -431,6 +431,11 @@ public:
 
 
 
+//*******************************
+// Main Entry Point for the User
+//*******************************
+#include "Amberskies/Core/MainEntryPoint.h"
+
 Amber::Application* Amber::CreateApplication()
 {
 
