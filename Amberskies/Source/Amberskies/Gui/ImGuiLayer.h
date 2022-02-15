@@ -16,6 +16,9 @@
 
 
 
+#ifdef _DEBUG
+
+
 
 #include "Common.h"
 
@@ -54,3 +57,4 @@ namespace Amber
 	};
 
 }
+#endif // DEBUG

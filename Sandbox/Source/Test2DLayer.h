@@ -33,6 +33,10 @@
 
 		Amber::Ref<Amber::VertexArray> m_SquareVertexArray;
 
+		glm::vec4 m_SquareColor = glm::vec4(1.0f);
+
+		bool m_ShowFirstWindow = true;
+
 	public:
 
 		Test2DLayer();
@@ -46,9 +50,9 @@
 		virtual void OnUpdate(
 			Amber::DeltaTime deltaTime
 		) override;
-
+#ifdef _DEBUG
 		virtual void OnImGuiRender() override;
-
+#endif
 		virtual void OnEvent(
 			Amber::Event& event
 		) override;

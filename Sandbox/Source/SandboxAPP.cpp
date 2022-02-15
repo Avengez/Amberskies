@@ -16,11 +16,10 @@
 
 
 
-
+//#include "stb_image.h"
 #include <Amberskies.h>
-#include <imgui.h>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+
+
 #include <Platform/OpenGL/OpenGLShader.h>
 
 #include "Test2DLayer.h"
@@ -324,9 +323,11 @@ public:
 	}
 
 
-
+#ifdef _DEBUG
 	virtual void OnImGuiRender() override
 	{
+
+
 		
 		if (m_ShowFirstWindow)
 		{
@@ -347,8 +348,10 @@ public:
 
 		}
 
-	}
 
+
+	}
+#endif
 
 
 	void OnEvent(

@@ -18,12 +18,12 @@
 
 
 #include "Common.h"
-
+#include "Platform/OpenGL/glad.h"
 #include <GLFW/glfw3.h>
 
 #include "Amberskies/Render3D/GFXContext.h"
 
-#include "Platform/OpenGL/glad.h"
+
 
 
 

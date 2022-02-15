@@ -57,13 +57,14 @@ namespace Amber
 
 		Renderer::Initialize();
 
+#ifdef _DEBUG
 		m_ImGuiLayer =
 			new ImGuiLayer();
-
+		
 		PushOverlay(
 			m_ImGuiLayer
 		);
-
+#endif // DEBUG
 	}
 
 
@@ -84,8 +85,11 @@ namespace Amber
 		{
 
 			float time =
+				1.0f;
+#ifdef _DEBUG
+			time =
 				(float)ImGui::GetTime();
-
+#endif
 			DeltaTime deltaTime = 
 				time - m_LastFrameTime;
 
@@ -110,14 +114,14 @@ namespace Amber
 			
 			}
 
-
-
+#ifdef _DEBUG
 			m_ImGuiLayer->Begin();
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 
 			m_ImGuiLayer->End();
+#endif // DEBUG
 
 			m_Window->OnUpdate();
 				

@@ -24,7 +24,11 @@
 #include "Amberskies/Events/Event.h"
 #include "Amberskies/Events/ApplicationEvent.h"
 
+#ifdef _DEBUG
 #include "Amberskies/Gui/ImGuiLayer.h"
+#endif // DEBUG
+
+
 
 
 
@@ -46,7 +50,9 @@ namespace Amber
 
 		std::unique_ptr<Window> m_Window;
 
+#ifdef _DEBUG
 		ImGuiLayer* m_ImGuiLayer;
+#endif // DEBUG
 
 		float m_LastFrameTime = 0.0f;
 

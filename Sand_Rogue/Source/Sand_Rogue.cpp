@@ -18,6 +18,7 @@
 
 
 #include <Amberskies.h>
+#include "stb_image.h"
 #include "Core.h"
 
 

@@ -46,7 +46,9 @@ namespace Amber
 
 		virtual void OnUpdate(DeltaTime deltaTime) {}
 
+#ifdef _DEBUG
 		virtual void OnImGuiRender() {}
+#endif // DEBUG
 
 		virtual void OnEvent(
 			Event& event

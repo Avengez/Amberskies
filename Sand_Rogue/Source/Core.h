@@ -39,7 +39,9 @@
 			Amber::DeltaTime deltaTime
 		) override;
 
+#ifdef _DEBUG
 		virtual void OnImGuiRender() override;
+#endif // DEBUG
 
 		virtual void OnEvent(
 			Amber::Event& event

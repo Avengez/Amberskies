@@ -30,6 +30,22 @@
 
 // main include file for the user of the Engine.
 
+#include <algorithm>
+#include <array>
+#include <fstream>
+#include <functional>
+#include <iostream>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+
+#include <glm/gtc/type_ptr.hpp>
+
+
 
 
 #include "Amberskies/Core/Application.h"
@@ -41,7 +57,15 @@
 #include "Amberskies/ECS/Components.h"
 #include "Amberskies/ECS/Scene.h"
 
+//#include "Amberskies/Events/Event.h"
+//#include "Amberskies/Events/ApplicationEvent.h"
+#include "Amberskies/Events/KeyEvent.h"
+//#include "Amberskies/Events/MouseEvent.h"
+
+#ifdef _DEBUG
+#include <imgui.h>
 #include "Amberskies/Gui/ImGuiLayer.h"
+#endif
 
 #include "Amberskies/Input/Input.h"
 #include "Amberskies/Input/KeyCodes.h"

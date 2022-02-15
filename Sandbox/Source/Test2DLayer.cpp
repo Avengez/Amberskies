@@ -16,6 +16,11 @@
 
 
 
+
+#include <Platform/OpenGL/OpenGLShader.h>
+
+
+
 	Test2DLayer::Test2DLayer()
 		:
 		Layer("Test2DLayer"),
@@ -85,6 +90,11 @@
 
 		m_TestTexture->Bind(slot);
 
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(
+			textureShader)->UploadUniformFloat4(
+				"u_Color", m_SquareColor
+			);
+
 		Amber::Renderer::Submit(
 			textureShader,
 			m_SquareVertexArray
@@ -95,16 +105,58 @@
 	}
 
 
-
+#ifdef _DEBUG
 	void Test2DLayer::OnImGuiRender()
 	{
-	}
 
+
+
+
+
+
+		if (m_ShowFirstWindow)
+		{
+
+			ImGui::Begin(
+				"Settings",
+				&m_ShowFirstWindow
+			);
+
+			ImGui::ColorEdit4(
+				"Square Color",
+				glm::value_ptr(
+					m_SquareColor
+				)
+			);
+
+			ImGui::End();
+
+		}
+
+	}
+#endif // DEBUG
 
 
 	void Test2DLayer::OnEvent(
 		Amber::Event& event)
 	{
+
+		m_Camera.OnEvent(
+			event
+		);
+
+		Amber::EventDispatcher dispatcher(
+			event
+		);
+
+		dispatcher.Dispatch<Amber::KeyPressedEvent>(
+			BIND_EVENT_FN(Test2DLayer::OnKeyPressed)
+			);
+
+		dispatcher.Dispatch<Amber::MouseButtonPressedEvent>(
+			BIND_EVENT_FN(Test2DLayer::OnMouseButtonPressed)
+			);
+
 	}
 
 
@@ -143,6 +195,7 @@
 			{
 				{ Amber::ShaderDataType::Float3, "a_Postion" },
 				{ Amber::ShaderDataType::Float2, "a_TextureCoord"}
+				//{ Amber::ShaderDataType::Float4, "u_Color"}
 			}
 		);
 

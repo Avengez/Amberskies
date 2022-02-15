@@ -14,6 +14,10 @@
 *
 * ______________________________________________________*/
 
+
+
+
+#include <GLFW/glfw3.h>
 CoreLayer::CoreLayer()
 	:
 	Layer("CoreLayer"),
@@ -33,9 +37,13 @@ void CoreLayer::OnUpdate(Amber::DeltaTime deltaTime)
 {
 }
 
+#ifdef _DEBUG
 void CoreLayer::OnImGuiRender()
 {
 }
+#endif // DEBUG
+
+
 
 void CoreLayer::OnEvent(Amber::Event& event)
 {

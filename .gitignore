@@ -370,3 +370,5 @@ FodyWeavers.xsd
 /Sand_Rogue/Sand_Rogue.vcxproj
 /Sand_Rogue/Sand_Rogue.vcxproj.filters
 /bin-intermediate/Debug-x64/Sand_Rogue
+/bin-intermediate/Release-x64/Sand_Rogue/Sand_Rogue.tlog
+/bin-intermediate/Release-x64

@@ -61,14 +61,14 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(SolutionDir)Amberskies\Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include\;$(SolutionDir)Amberskies\Dependencies\ImGui;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Amberskies\Dependencies\ImGui;$(ProjectDir)Source;$(SolutionDir)Amberskies\Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include\;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\glm</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26812</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Amberskies\Dependencies\GLFW\lib-vc2022;$(SolutionDir)x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -82,7 +82,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(SolutionDir)Amberskies\Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include\;$(SolutionDir)Amberskies\Dependencies\ImGui;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(SolutionDir)Amberskies\Source;$(SolutionDir)Amberskies\Dependencies\spdlog\include\;$(SolutionDir)Amberskies\Dependencies\GLFW\include;$(SolutionDir)Amberskies\Dependencies\glm</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26812;4006</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -90,13 +90,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Amberskies\Dependencies\GLFW\lib-vc2022;$(SolutionDir)x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\SandboxApp.cpp" />
+    <ClCompile Include="Source\stb_image.cpp" />
     <ClCompile Include="Source\Test2DLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +106,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\stb_image.h" />
     <ClInclude Include="Source\Test2DLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

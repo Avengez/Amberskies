@@ -16,6 +16,9 @@
 
 
 
+#ifdef _DEBUG
+
+
 
 #include <GLFW/glfw3.h>
 
@@ -195,3 +198,4 @@ namespace Amber
 	}
 
 }
+#endif // DEBUG
