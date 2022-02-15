@@ -40,6 +40,7 @@ namespace Amber
 
 		static void DrawQuad(
 			const glm::vec3& position,
+			const float rotationRad,
 			const glm::vec2& size,
 			const glm::vec4& color
 		);

@@ -36,6 +36,8 @@
 		glm::vec4 m_SquareColor = glm::vec4(1.0f);
 
 		bool m_ShowFirstWindow = true;
+		
+		float m_RotationRad = 0.0f;
 
 	public:
 

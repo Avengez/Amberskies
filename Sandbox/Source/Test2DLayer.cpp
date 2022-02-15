@@ -17,10 +17,6 @@
 
 
 
-#include <Platform/OpenGL/OpenGLShader.h>
-
-
-
 	Test2DLayer::Test2DLayer()
 		:
 		Layer("Test2DLayer"),
@@ -92,6 +88,8 @@
 		/**/
 
 		glm::vec3 position(
+			1.0f,
+			1.0f,
 			0.0f
 		);
 
@@ -99,8 +97,14 @@
 			1.0f
 		);
 
+		m_RotationRad += 
+			glm::radians(
+				1.0f
+		);
+
 		Amber::Render2D::DrawQuad(
 			position,
+			m_RotationRad,
 			size,
 			m_SquareColor
 		);

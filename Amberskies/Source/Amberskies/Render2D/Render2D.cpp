@@ -20,7 +20,7 @@
 #include "Amberskies/Render3D/VertexArray.h"
 #include "Amberskies/Render3D/RenderCommand.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
+
 
 namespace Amber
 {
@@ -119,9 +119,14 @@ namespace Amber
 			camera.GetProjection() *
 			camera.GetViewMatrix();
 
-		std::dynamic_pointer_cast<OpenGLShader>(
-			s_State.shader)->UploadUniformMat4(
-				"u_ViewProjection", viewProjectionMatrix
+		s_State.shader->SetMat4(
+			"u_ViewProjection", 
+			viewProjectionMatrix
+		);
+
+		s_State.shader->SetMat4(
+			"u_ModelMatrix", 
+			glm::mat4(1.0)
 		);
 
 	}
@@ -134,17 +139,43 @@ namespace Amber
 
 
 
-	void Render2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
+	void Render2D::DrawQuad(
+		const glm::vec3& position,  
+		const float rotationRad,
+		const glm::vec2& size, 
+		const glm::vec4& color)
 	{
+
+		glm::mat4 modelMatrix =
+			glm::translate(
+				glm::mat4(1.0f),
+				position
+			) *
+			glm::rotate(
+				glm::mat4(1.0),
+				rotationRad,
+				{0.0f, 0.0f ,1.0f}
+			) *
+			glm::scale(
+				glm::mat4(1.0f),
+				glm::vec3(
+					size,
+					1.0f
+				)
+		);
 
 		s_State.shader->Bind();
 
 		s_State.vertexArray->Bind();
 
-		std::dynamic_pointer_cast<OpenGLShader>(
-			s_State.shader)->UploadUniformFloat4(
-				"u_Color", 
-				color
+		s_State.shader->SetFloat4(
+			"u_Color", 
+			color
+		);
+
+		s_State.shader->SetMat4(
+			"u_ModelMatrix",
+			modelMatrix
 		);
 
 		RenderCommand::DrawIndexed(
