@@ -27,17 +27,10 @@
 	{
 		Amber::PerspectiveCamera m_Camera;
 
-		Amber::Ref<Amber::ShaderLibrary> m_ShaderLibrary;
-
 		Amber::Ref<Amber::Texture2D> m_TestTexture;
-
-		Amber::Ref<Amber::Texture2D> m_WhiteTexture;
-
-		glm::vec4 m_SquareColor = glm::vec4(1.0f);
 
 		bool m_ShowFirstWindow = true;
 		
-		float m_RotationRad = 0.0f;
 
 	public:
 

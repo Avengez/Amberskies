@@ -126,9 +126,7 @@ namespace Amber
 	struct MeshComponent
 	{
 
-		
-
-		MeshComponent() = default;
+		/*MeshComponent() = default;
 
 		MeshComponent(
 			const MeshComponent&
@@ -136,8 +134,8 @@ namespace Amber
 
 		MeshComponent(
 			
-		) //:
-			 {}
+		) :
+			 {}*/
 
 	};
 

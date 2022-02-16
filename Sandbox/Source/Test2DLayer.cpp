@@ -16,6 +16,24 @@
 
 
 
+struct QuadProperties
+{
+
+	glm::vec3 position = 
+		{ 0.0f, 0.0f, 0.0f };
+
+	glm::vec2 size = 
+		{ 1.0f, 1.0f };
+
+	glm::vec4 color = 
+		{ 1.0f, 1.0f, 1.0f, 1.0f };
+
+	float rotationRadians = 0.0f;
+
+};
+
+QuadProperties g_Quad1;
+QuadProperties g_Quad2;
 
 	Test2DLayer::Test2DLayer()
 		:
@@ -32,14 +50,39 @@
 
 		Amber::Renderer::Initialize();
 
-		m_SquareColor =
-			glm::vec4(
-				0.0f,
-				0.0f,
+
+		// Initialize the first Quad
+		g_Quad1.position =
+			glm::vec3(
 				1.0f,
-				1.0f
+				1.0f,
+				0.0f
 		);
 
+
+
+		// Initialize the second Quad
+		g_Quad2.position =
+			glm::vec3(
+				1.0f,
+				0.0f,
+				0.01f
+		);
+
+		g_Quad2.color =
+			glm::vec4(
+				1.0f,
+				0.25f,
+				0.25f,
+				0.5f
+		);
+
+		g_Quad2.size =
+			{ 1.0f, 2.0f };
+
+
+
+		// Initialize the background color
 		Amber::RenderCommand::SetClearColor(
 			{
 			0.05f,
@@ -49,6 +92,9 @@
 			}
 		);
 
+
+
+		// Initialize the test texture
 		m_TestTexture =
 			Amber::Texture2D::Create(
 				"Assets/Textures/Checkerboard.png"
@@ -76,54 +122,38 @@
 			deltaTime
 		);
 
+		// Rotate the Quads += anti-clockwise for openGL
+		g_Quad1.rotationRadians +=
+			glm::radians(
+				1.0f
+			);
 
-		// will be able to currentScene.OnUpdate(deltaTime)
+		g_Quad2.rotationRadians +=
+			glm::radians(
+				-1.0f
+			);
+
+
+
+		// will be able to move to currentScene.OnUpdate(deltaTime)
 		// *** Render ***
 		Amber::RenderCommand::Clear();
 
 		Amber::Render2D::BeginScene(m_Camera);
 
-		glm::vec3 position(
-			1.0f,
-			1.0f,
-			0.0f
-		);
-
-		glm::vec2 size(
-			1.0f
-		);
-
 		Amber::Render2D::DrawQuad(
-			position,
-			size,
-			m_RotationRad,
+			g_Quad1.position,
+			g_Quad1.size,
+			g_Quad1.rotationRadians,
 			m_TestTexture,
-			m_SquareColor
-		);
-
-		m_RotationRad +=
-			glm::radians(
-				1.0f
-			);
-
-		glm::vec3 thePosition(
-			1.0f, 
-			0.0f, 
-			0.01f
-		);
-
-		glm::vec4 theColor(
-			1.0f, 
-			0.25f, 
-			0.25f, 
-			0.5f
+			g_Quad1.color
 		);
 
 		Amber::Render2D::DrawQuad(
-			thePosition,
-			{ 1.0f, 2.0f },
-			-m_RotationRad,
-			theColor
+			g_Quad2.position,
+			g_Quad2.size,
+			g_Quad2.rotationRadians,
+			g_Quad2.color
 		);
 
 		Amber::Render2D::EndScene();
@@ -146,7 +176,7 @@
 			ImGui::ColorEdit4(
 				"Square Color",
 				glm::value_ptr(
-					m_SquareColor
+					g_Quad1.color
 				)
 			);
 

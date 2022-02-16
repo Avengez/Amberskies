@@ -17,7 +17,6 @@
 
 
 
-
 #include "stb_image.h"
 
 
@@ -41,11 +40,6 @@ namespace Amber
 			GL_TEXTURE_2D,
 			1,
 			&m_RendererID
-		);
-
-		AMBER_TRACE(
-			"White Texture Id : {0}",
-			m_RendererID
 		);
 
 		glTextureStorage2D(
@@ -146,11 +140,6 @@ namespace Amber
 			GL_TEXTURE_2D,
 			1,
 			&m_RendererID
-		);
-
-		AMBER_TRACE(
-			"Checker Texture Id : {0}",
-			m_RendererID
 		);
 
 		glTextureStorage2D(
