@@ -105,7 +105,7 @@ QuadProperties g_Quad2;
 		// Initialize the test texture
 		m_TestTexture =
 			Amber::Texture2D::Create(
-				"Assets/Textures/Checkerboard.png"
+				"Assets/Textures/TestTexture.png"
 			);
 
 	}
