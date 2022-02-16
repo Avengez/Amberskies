@@ -4,7 +4,7 @@
 * ________________________________________________________
 * Project Created by Frazor Sharp : 15/02/2022
 *
-* Twitch : Mini Game Engine Programming in C/C++
+* Twitch : Sandbox Programming in C/C++
 *
 * Contact Email : daocamberskies@googlemail.com
 * Github		: https://github.com/Avengez/Amberskies.git

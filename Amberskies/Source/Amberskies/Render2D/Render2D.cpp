@@ -31,8 +31,6 @@ namespace Amber
 		Ref<VertexArray> vertexArray;
 		
 		Ref<Shader> shader;
-
-		Ref<Texture2D> whiteTexture;
 		
 	};
 
@@ -95,20 +93,6 @@ namespace Amber
 		);
 
 		// *********************************	
-
-		s_State.whiteTexture =
-			Amber::Texture2D::Create(
-				1,
-				1
-			);
-
-		u32 whiteTextureData =
-			0xffffffff;
-
-		s_State.whiteTexture->SetData(
-			&whiteTextureData,
-			sizeof(u32)
-		);
 		
 		s_State.shader = Shader::Create(
 			"../Amberskies/Assets/OpenGL_Shaders/Texture.glsl"

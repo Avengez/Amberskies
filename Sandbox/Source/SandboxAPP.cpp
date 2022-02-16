@@ -3,7 +3,7 @@
 * ________________________________________________________
 * Project Created by Frazor Sharp : 16/01/2022
 *
-* Twitch : Simple Server Programming in C/C++
+* Twitch : Sandbox Programming in C/C++
 *
 * Contact Email : daocamberskies@googlemail.com
 * Github		: https://github.com/Avengez/Amberskies.git

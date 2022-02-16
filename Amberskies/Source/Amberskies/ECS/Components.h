@@ -4,7 +4,7 @@
 * ________________________________________________________
 * Project Created by Frazor Sharp : 15/02/2022
 *
-* Twitch : Simple Server Programming in C/C++
+* Twitch : Mini Game Engine Programming in C/C++
 *
 * Contact Email : daocamberskies@googlemail.com
 * Github		: https://github.com/Avengez/Amberskies.git
@@ -121,6 +121,24 @@ namespace Amber
 			);
 
 		}
+	};
+
+	struct MeshComponent
+	{
+
+		
+
+		MeshComponent() = default;
+
+		MeshComponent(
+			const MeshComponent&
+		) = default;
+
+		MeshComponent(
+			
+		) //:
+			 {}
+
 	};
 
 	struct SpriteRendererComponent
