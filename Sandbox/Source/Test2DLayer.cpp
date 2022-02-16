@@ -23,6 +23,23 @@
 		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f)
 	{
 
+	}
+
+
+
+	void Test2DLayer::OnAttach()
+	{
+
+		Amber::Renderer::Initialize();
+
+		m_SquareColor =
+			glm::vec4(
+				0.0f,
+				0.0f,
+				1.0f,
+				1.0f
+		);
+
 		Amber::RenderCommand::SetClearColor(
 			{
 			0.05f,
@@ -32,27 +49,10 @@
 			}
 		);
 
-	}
-
-
-
-	void Test2DLayer::OnAttach()
-	{
-
-		Amber::Render2D::Initialize();
-
 		m_TestTexture =
 			Amber::Texture2D::Create(
 				"Assets/Textures/Checkerboard.png"
 			);
-
-		m_SquareColor =
-			glm::vec4(
-				0.10f,
-				0.15f,
-				0.30f,
-				1.0f
-		);
 
 	}
 
@@ -81,33 +81,24 @@
 		// *** Render ***
 		Amber::RenderCommand::Clear();
 
-
-
-		// *** Render ***
 		Amber::Render2D::BeginScene(m_Camera);
 
-		/*auto textureShader =
-			m_ShaderLibrary.Get(
-				"Texture"
-			);
-
-		textureShader->Bind();
-
-		u32 slot =
-			0;
-
-		m_TestTexture->Bind(slot);*/
-
-		/**/
-
 		glm::vec3 position(
-			0.0f,
-			0.0f,
+			1.0f,
+			1.0f,
 			0.0f
 		);
 
 		glm::vec2 size(
-			10.0f
+			1.0f
+		);
+
+		Amber::Render2D::DrawQuad(
+			position,
+			size,
+			m_RotationRad,
+			m_TestTexture,
+			m_SquareColor
 		);
 
 		m_RotationRad +=
@@ -115,20 +106,25 @@
 				1.0f
 			);
 
-		Amber::Render2D::DrawQuad(
-			position,
-			m_RotationRad,
-			size,
-			m_SquareColor,
-			m_TestTexture
+		glm::vec3 thePosition(
+			1.0f, 
+			0.0f, 
+			0.01f
 		);
 
-		/*Amber::Render2D::DrawQuad(
-			{ 0.5f, 0.0f, 0.01f },
+		glm::vec4 theColor(
+			1.0f, 
+			0.25f, 
+			0.25f, 
+			0.5f
+		);
+
+		Amber::Render2D::DrawQuad(
+			thePosition,
+			{ 1.0f, 2.0f },
 			-m_RotationRad,
-			{ 0.5f, 2.0f },
-			{ 0.5f, 0.2f, 0.05f, 0.5f}
-		);*/
+			theColor
+		);
 
 		Amber::Render2D::EndScene();
 

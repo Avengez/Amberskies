@@ -47,7 +47,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return std::make_shared<OpenGLTexture2D>(
+				return CreateRef<OpenGLTexture2D>(
 					filePath
 				);
 
@@ -69,6 +69,54 @@ namespace Amber
 
 		return nullptr;
 
+	}
+
+	Ref<Texture2D> Texture2D::Create(
+		u32 width, 
+		u32 height)
+	{
+
+		switch (Renderer::GetAPI())
+		{
+
+		case RendererAPI::API::None:
+		{
+
+			AMBER_ASSERT(
+				false,
+				"[TextureAPI] no Renderer API specified."
+			);
+
+			break;
+
+		}
+
+		case RendererAPI::API::OpenGL:
+		{
+
+			return CreateRef<OpenGLTexture2D>(
+				width,
+				height
+			);
+
+			break;
+
+		}
+
+		default:
+		{
+
+			AMBER_ASSERT(
+				false,
+				"[VertexArray] Unknown Renderer API."
+			);
+
+		}
+
+		}
+
+		return nullptr;
+	
 	}
 
 }

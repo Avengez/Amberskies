@@ -31,6 +31,8 @@ namespace Amber
 		Ref<VertexArray> vertexArray;
 		
 		Ref<Shader> shader;
+
+		Ref<Texture2D> whiteTexture;
 		
 	};
 
@@ -38,11 +40,6 @@ namespace Amber
 
 	void Render2D::Initialize()
 	{
-
-		/*m_TestTexture =
-			Amber::Texture2D::Create(
-				"Assets/Textures/Checkerboard.png"
-			);*/
 
 		s_State.vertexArray =
 			VertexArray::Create();
@@ -99,8 +96,29 @@ namespace Amber
 
 		// *********************************	
 
+		s_State.whiteTexture =
+			Amber::Texture2D::Create(
+				1,
+				1
+			);
+
+		u32 whiteTextureData =
+			0xffffffff;
+
+		s_State.whiteTexture->SetData(
+			&whiteTextureData,
+			sizeof(u32)
+		);
+		
 		s_State.shader = Shader::Create(
 			"../Amberskies/Assets/OpenGL_Shaders/Texture.glsl"
+		);
+
+		s_State.shader->Bind();
+
+		s_State.shader->SetInt(
+			"u_Texture",
+			0
 		);
 		
 	}
@@ -117,20 +135,18 @@ namespace Amber
 	void Render2D::BeginScene(const PerspectiveCamera& camera)
 	{
 
-		s_State.shader->Bind();
-
+		
 		glm::mat4 viewProjectionMatrix =
 			camera.GetProjection() *
 			camera.GetViewMatrix();
 
+
+		
+		s_State.shader->Bind();
+
 		s_State.shader->SetMat4(
 			"u_ViewProjection", 
 			viewProjectionMatrix
-		);
-
-		s_State.shader->SetMat4(
-			"u_ModelMatrix", 
-			glm::mat4(1.0)
 		);
 
 	}
@@ -139,17 +155,77 @@ namespace Amber
 
 	void Render2D::EndScene()
 	{
+
+		// Empty
+
+	}
+
+	void Render2D::DrawQuad(
+		const glm::vec3& position,
+		const glm::vec2& size,
+		const float rotationRad,
+		const glm::vec4& color)
+	{
+		s_State.shader->SetFloat4(
+			"u_Color",
+			color
+		);
+
+		//s_State.whiteTexture->Bind();
+		s_State.shader->SetInt(
+			"u_HasTexture",
+			0
+		);
+	
+		glm::mat4 modelMatrix =
+			glm::translate(
+				glm::mat4(1.0f),
+				position
+			) *
+			glm::rotate(
+				glm::mat4(1.0),
+				rotationRad,
+				{ 0.0f, 0.0f ,1.0f }
+			) *
+			glm::scale(
+				glm::mat4(1.0f),
+				glm::vec3(
+					size,
+					1.0f
+				)
+			);
+
+		s_State.shader->SetMat4(
+			"u_ModelMatrix",
+			modelMatrix
+		);
+
+		s_State.vertexArray->Bind();
+
+		RenderCommand::DrawIndexed(
+			s_State.vertexArray
+		);
+
 	}
 
 
-
 	void Render2D::DrawQuad(
-		const glm::vec3& position,  
+		const glm::vec3& position,
+		const glm::vec2& size,
 		const float rotationRad,
-		const glm::vec2& size, 
-		const glm::vec4& color,
-		const Ref<Texture2D> texture)
+		const Ref<Texture2D> texture,
+		const glm::vec4& color)
 	{
+
+		s_State.shader->SetFloat4(
+			"u_Color",
+			color
+		);
+
+		s_State.shader->SetInt(
+			"u_HasTexture",
+			1
+		);
 
 		glm::mat4 modelMatrix =
 			glm::translate(
@@ -159,7 +235,7 @@ namespace Amber
 			glm::rotate(
 				glm::mat4(1.0),
 				rotationRad,
-				{0.0f, 0.0f ,1.0f}
+				{0.0f, 0.0f, 1.0f}
 			) *
 			glm::scale(
 				glm::mat4(1.0f),
@@ -169,26 +245,14 @@ namespace Amber
 				)
 		);
 
-		s_State.shader->Bind();
-
-		texture->Bind(0);
-
-		s_State.shader->SetInt(
-			"u_Texture",
-			0
-		);
-
-		s_State.vertexArray->Bind();
-
-		s_State.shader->SetFloat4(
-			"u_Color", 
-			color
-		);
-
 		s_State.shader->SetMat4(
 			"u_ModelMatrix",
 			modelMatrix
 		);
+
+		s_State.vertexArray->Bind();
+
+		texture->Bind();
 
 		RenderCommand::DrawIndexed(
 			s_State.vertexArray

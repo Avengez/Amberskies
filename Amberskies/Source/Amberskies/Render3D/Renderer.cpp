@@ -18,6 +18,7 @@
 
 
 #include <Platform/OpenGL/OpenGLShader.h>
+#include "Amberskies/Render2D/Render2D.h"
 
 namespace Amber
 {
@@ -30,6 +31,8 @@ namespace Amber
 	{
 
 		RenderCommand::Initialize();
+
+		Render2D::Initialize();
 
 	}
 

@@ -36,7 +36,16 @@ namespace Amber
 
 		GLuint m_RendererID;
 
+		GLenum m_InternalFormat;
+
+		GLenum m_DataFormat;
+
 	public:
+
+		OpenGLTexture2D(
+			u32 width,
+			u32 height
+		);
 
 		OpenGLTexture2D(
 			const std::string& filePath
@@ -51,6 +60,11 @@ namespace Amber
 		virtual u32 GetHeight() const override {
 			return m_Height;
 		}
+
+		virtual void SetData(
+			void* data,
+			u32 size
+		) override;
 
 		virtual void Bind(
 			u32 slot = 0

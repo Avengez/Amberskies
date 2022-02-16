@@ -31,6 +31,8 @@
 
 		Amber::Ref<Amber::Texture2D> m_TestTexture;
 
+		Amber::Ref<Amber::Texture2D> m_WhiteTexture;
+
 		glm::vec4 m_SquareColor = glm::vec4(1.0f);
 
 		bool m_ShowFirstWindow = true;
