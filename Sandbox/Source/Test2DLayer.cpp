@@ -16,6 +16,8 @@
 
 
 
+
+// *** How to use a struct for Quad properties *****************
 struct QuadProperties
 {
 
@@ -35,11 +37,17 @@ struct QuadProperties
 QuadProperties g_Quad1;
 QuadProperties g_Quad2;
 
+//**************************************************************
+
+
+
 	Test2DLayer::Test2DLayer()
 		:
 		Layer("Test2DLayer"),
 		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f)
 	{
+
+		// Empty
 
 	}
 
@@ -216,7 +224,11 @@ QuadProperties g_Quad2;
 	bool Test2DLayer::OnKeyPressed(
 		Amber::KeyPressedEvent& keyEvent)
 	{
+
+		// Empty
+
 		return false;
+
 	}
 
 
@@ -224,12 +236,18 @@ QuadProperties g_Quad2;
 	bool Test2DLayer::OnMouseButtonPressed(
 		Amber::MouseButtonPressedEvent& mouseEvent)
 	{
+
+		// Empty
+
 		return false;
+	
 	}
 
 
 
 	void Test2DLayer::NewScene()
 	{
+
+		// Empty
 
 	}
