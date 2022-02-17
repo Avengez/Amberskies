@@ -72,11 +72,11 @@ namespace Amber
 			m_InitialMousePosition = 
 				mouse;
 
-			if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_MIDDLE))
+			if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_RIGHT))
 				MousePan(delta);
 			else if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_LEFT))
 				MouseRotate(delta);
-			else if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_RIGHT))
+			else if (Input::IsMouseButtonPressed(AMBER_MOUSE_BUTTON_MIDDLE))
 				MouseZoom(delta.y);
 		}
 

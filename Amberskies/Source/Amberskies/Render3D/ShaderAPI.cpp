@@ -46,7 +46,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return std::make_shared<OpenGLShader>(
+				return CreateRef<OpenGLShader>(
 					filePath
 				);
 
@@ -95,7 +95,7 @@ namespace Amber
 			case RendererAPI::API::OpenGL:
 			{
 
-				return std::make_shared<OpenGLShader>(
+				return CreateRef<OpenGLShader>(
 					shaderName,
 					shaderVertexSource,
 					shaderFragmentSource
@@ -128,25 +128,13 @@ namespace Amber
 	void ShaderLibrary::Initialize()
 	{
 
-		/*Load(
+		Load(
 			"../Amberskies/Assets/OpenGL_Shaders/FlatColor.glsl"
-		);*/
+		);
 		
 		Load(
 			"../Amberskies/Assets/OpenGL_Shaders/Texture.glsl"
 		);
-
-		//int slot =
-		//	0;
-
-		//std::dynamic_pointer_cast<OpenGLShader>(
-		//	textureShader
-		//	)->Bind();
-
-		//std::dynamic_pointer_cast<OpenGLShader>(
-		//	textureShader)->UploadUniformInt(
-		//		"u_Texture", slot
-		//	);
 
 	}
 

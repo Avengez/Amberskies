@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\SandboxApp.cpp">
+    <ClCompile Include="Source\Test2DLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Test2DLayer.cpp">
+    <ClCompile Include="Source\SandboxAPP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
