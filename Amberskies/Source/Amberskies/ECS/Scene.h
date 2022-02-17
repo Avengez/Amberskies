@@ -33,12 +33,12 @@ namespace Amber
 
 		
 
-		typedef struct {
+		typedef struct Object{
 
 			i32 entity_id = UNUSED;
 			void* component[64];
 
-		} Object;
+		}Object;
 
 		// registry m_Registry
 		Ref<Object> m_Registry[MAX_ENTITIES];

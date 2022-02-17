@@ -25,10 +25,10 @@
 namespace Amber
 {
 	
-	typedef struct {
+	typedef struct Entities{
 
 		i32 entity_id[MAX_ENTITIES] = {UNUSED};
 
-	} Entities;
+	}Entities;
 
 }

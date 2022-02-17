@@ -45,7 +45,7 @@ QuadProperties g_Quad2;
 		:
 		Layer("Test2DLayer"),
 		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f),
-		m_MainScene(new Amber::Scene(1, "Main Scene"))
+		m_MainScene(new Amber::Scene())
 	{
 
 		// Empty
@@ -63,29 +63,9 @@ QuadProperties g_Quad2;
 		// Initialize the first Quad
 
 
+		// quad1
 
-
-		//***********************************************************************************
-		// 
-		// NEED TO : initialize the container for holding entites at start of AddNewEntity()
-		//
-		// ************************************************************************************
-		// 
-		// 
-		// 
-		// 
-		//Amber::Entity* quad1 = m_MainScene->AddNewEntity(
-		//	"Quad1"
-		//);
-
-		//quad1->addComponent(
-		//	Amber::Component::MaterialComponent
-		//);
-
-		//// m_MainScene->SetPosition(quad1, glmvec3(...))
-		//((Amber::ModelMatrixComponent*)quad1->GetComponent(
-		//	Amber::Component::ModelMatrixComponent
-		//))->Position =
+		//Position =
 		//	glm::vec3(
 		//		1.0f,
 		//		1.0f,
@@ -96,27 +76,16 @@ QuadProperties g_Quad2;
 
 		// Initialize the second Quad
 
-		//Amber::Entity* quad2 = m_MainScene->AddNewEntity(
-		//	"Quad2"
-		//);
+		// quad2
 
-		//quad2->addComponent(
-		//	Amber::Component::MaterialComponent
-		//);
-
-		//// m_MainScene->SetPosition(quad2, glmvec3(...))
-		//((Amber::ModelMatrixComponent*)quad2->GetComponent(
-		//	Amber::Component::ModelMatrixComponent
-		//))->Position =
+		//Position =
 		//	glm::vec3(
 		//		1.0f,
 		//		0.0f,
 		//		0.01f
 		//);
 
-		//((Amber::MaterialComponent*)quad2->GetComponent(
-		//	Amber::Component::MaterialComponent
-		//))->color =
+		//color =
 		//	glm::vec4(
 		//		1.0f,
 		//		0.25f,
@@ -124,9 +93,7 @@ QuadProperties g_Quad2;
 		//		0.5f
 		//);
 
-		//((Amber::ModelMatrixComponent*)quad2->GetComponent(
-		//	Amber::Component::ModelMatrixComponent
-		//))->Scale =
+		//Scale =
 		//	{ 1.0f, 2.0f, 0.0f };
 
 
