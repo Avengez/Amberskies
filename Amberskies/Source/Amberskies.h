@@ -55,6 +55,7 @@
 #include "Amberskies/Core/Log.h"
 
 #include "Amberskies/ECS/Components.h"
+#include "Amberskies/ECS/Entity.h"
 #include "Amberskies/ECS/Scene.h"
 
 //#include "Amberskies/Events/Event.h"

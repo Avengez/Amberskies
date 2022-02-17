@@ -20,31 +20,34 @@
 #include "Common.h"
 #include "Amberskies/Core/UUID.h"
 #include "Amberskies/ECS/Components.h"
-#include "Amberskies/ECS/Scene.h"
 
+class Scene;
 
 namespace Amber
 {
 	class Entity
 	{
 
-		u32 m_EntityHandle = NULL;
+		u32 m_EntityHandle = 0;
 
-		Scene* m_Scene = nullptr;
+		u8 m_SceneID;
+
+		std::vector<std::vector<void*>> m_ComponentRegistry;
 
 	public:
 
-		Entity() = default;
-
-		Entity(u32 entityHandle, Scene* scene);
+		Entity(
+			u32 entityHandle, 
+			u8 sceneID
+		);
 
 		Entity(const Entity& other) = default;
 
-		//bool addComponent(Component component)
+		bool addComponent(Component component);
 
 		//bool addOrReplaceComponent(Component component)
 
-		// Components GetComponent()
+		void* GetComponent(Component component);
 
 		//bool RemoveComponent(Component component)
 
@@ -54,8 +57,8 @@ namespace Amber
 
 		//operator entity() const { return m_EntityHandle; }
 
-		operator uint32_t() const { 
-			return (uint32_t)m_EntityHandle; 
+		operator u32() const { 
+			return (u32)m_EntityHandle; 
 		}
 
 		//UUID GetUUID() { return GetComponent<IDComponent>().ID; }
@@ -65,8 +68,8 @@ namespace Amber
 		bool operator==(const Entity& other) const 
 		{
 
-			return m_EntityHandle == other.m_EntityHandle && 
-						m_Scene == other.m_Scene;
+			return m_EntityHandle == other.m_EntityHandle &&
+				m_SceneID == other.m_SceneID;
 		
 		}
 
@@ -76,4 +79,5 @@ namespace Amber
 		}
 
 	};
+
 }

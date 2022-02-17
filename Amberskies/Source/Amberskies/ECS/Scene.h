@@ -19,6 +19,8 @@
 
 #include "Common.h"
 #include "Amberskies/Core/DeltaTime.h"
+
+#include "Amberskies/ECS/Entity.h"
 #include "Amberskies/ECS/Components.h"
 
 
@@ -29,15 +31,66 @@ namespace Amber
 	class Scene
 	{
 
-		// registry m_Registry
+		u8 m_ID;
+
+		std::string m_Name;
+
+		std::vector<Entity*> m_EntityRegistry;
 
 	public:
 
-		Scene();
+		Scene(
+			u8 id,
+			const std::string& name
+		);
 
 		~Scene();
 
-		void OnUpdate(DeltaTime deltaTime);
+		void OnUpdate(
+			DeltaTime deltaTime
+		);
+
+		Entity* AddNewEntity(
+			const std::string& name
+		);
+
+		void RemoveEntity(
+			Entity entity
+		);
+
+		Entity* GetEntity(
+			const std::string& name
+		);
+
+		void AddComponent(
+			Entity* entity,
+			Component component
+		);
+
+		void* GetComponent(
+			Entity* entity,
+			Component component
+		);
+
+		void RemoveComponent(
+			Entity entity,
+			void* component
+		);
+
+		void* View(
+			void* component
+		);
+
+	private:
+
+		bool EntityExists(
+			Entity entity
+		);
+
+		bool ComponentExists(
+			Entity entity,
+			void* component
+		);
 
 	};
 

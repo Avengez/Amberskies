@@ -96,7 +96,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\SandboxApp.cpp" />
+    <ClCompile Include="Source\SandboxAPP.cpp" />
     <ClCompile Include="Source\Test2DLayer.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,8 @@
 	{
 		Amber::PerspectiveCamera m_Camera;
 
+		Amber::Scene* m_MainScene;
+
 		Amber::Ref<Amber::Texture2D> m_TestTexture;
 
 		bool m_ShowFirstWindow = true;

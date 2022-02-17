@@ -44,7 +44,8 @@ QuadProperties g_Quad2;
 	Test2DLayer::Test2DLayer()
 		:
 		Layer("Test2DLayer"),
-		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f)
+		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f),
+		m_MainScene(new Amber::Scene(1, "Main Scene"))
 	{
 
 		// Empty
@@ -60,33 +61,73 @@ QuadProperties g_Quad2;
 
 
 		// Initialize the first Quad
-		g_Quad1.position =
-			glm::vec3(
-				1.0f,
-				1.0f,
-				0.0f
-		);
+
+
+
+
+		//***********************************************************************************
+		// 
+		// NEED TO : initialize the container for holding entites at start of AddNewEntity()
+		//
+		// ************************************************************************************
+		// 
+		// 
+		// 
+		// 
+		//Amber::Entity* quad1 = m_MainScene->AddNewEntity(
+		//	"Quad1"
+		//);
+
+		//quad1->addComponent(
+		//	Amber::Component::MaterialComponent
+		//);
+
+		//// m_MainScene->SetPosition(quad1, glmvec3(...))
+		//((Amber::ModelMatrixComponent*)quad1->GetComponent(
+		//	Amber::Component::ModelMatrixComponent
+		//))->Position =
+		//	glm::vec3(
+		//		1.0f,
+		//		1.0f,
+		//		0.0f
+		//);
 
 
 
 		// Initialize the second Quad
-		g_Quad2.position =
-			glm::vec3(
-				1.0f,
-				0.0f,
-				0.01f
-		);
 
-		g_Quad2.color =
-			glm::vec4(
-				1.0f,
-				0.25f,
-				0.25f,
-				0.5f
-		);
+		//Amber::Entity* quad2 = m_MainScene->AddNewEntity(
+		//	"Quad2"
+		//);
 
-		g_Quad2.size =
-			{ 1.0f, 2.0f };
+		//quad2->addComponent(
+		//	Amber::Component::MaterialComponent
+		//);
+
+		//// m_MainScene->SetPosition(quad2, glmvec3(...))
+		//((Amber::ModelMatrixComponent*)quad2->GetComponent(
+		//	Amber::Component::ModelMatrixComponent
+		//))->Position =
+		//	glm::vec3(
+		//		1.0f,
+		//		0.0f,
+		//		0.01f
+		//);
+
+		//((Amber::MaterialComponent*)quad2->GetComponent(
+		//	Amber::Component::MaterialComponent
+		//))->color =
+		//	glm::vec4(
+		//		1.0f,
+		//		0.25f,
+		//		0.25f,
+		//		0.5f
+		//);
+
+		//((Amber::ModelMatrixComponent*)quad2->GetComponent(
+		//	Amber::Component::ModelMatrixComponent
+		//))->Scale =
+		//	{ 1.0f, 2.0f, 0.0f };
 
 
 
@@ -117,6 +158,8 @@ QuadProperties g_Quad2;
 
 		Amber::Render2D::Shutdown();
 
+		delete m_MainScene;
+
 	}
 
 
@@ -131,6 +174,7 @@ QuadProperties g_Quad2;
 		);
 
 		// Rotate the Quads += anti-clockwise for openGL
+		//Entity* quad1 = m_MainScene->
 		g_Quad1.rotationRadians +=
 			glm::radians(
 				1.0f
@@ -149,6 +193,7 @@ QuadProperties g_Quad2;
 
 		Amber::Render2D::BeginScene(m_Camera);
 
+		
 		Amber::Render2D::DrawQuad(
 			g_Quad1.position,
 			g_Quad1.size,
