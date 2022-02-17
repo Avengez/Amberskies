@@ -18,6 +18,8 @@
 
 
 #include "Common.h"
+#include "ECS.h"
+
 #include "Amberskies/Core/UUID.h"
 #include "Amberskies/Render2D/TextureAPI.h"
 #include "Amberskies/Render3D/PerspectiveCamera.h"
@@ -33,15 +35,27 @@
 namespace Amber
 {
 	
-	struct IDComponent
+	typedef enum {
+		COMP_UUID = 0,
+		//COMP_MODEL,
+		//COMP_PRIMARY_CHARACTERISTICS,
+		//COMP_SECONDARY_CHARACTERISTICS,
+		//COMP_COMBAT_STATS,
+		//COMP_MONSTER_STATS
+
+		//COMP_COUNT     
+
+	} Component;
+
+	struct UUIDComponent
 	{
 
 		UUID ID;
 
-		IDComponent() = default;
+		UUIDComponent() = default;
 
-		IDComponent(
-			const IDComponent&
+		UUIDComponent(
+			const UUIDComponent&
 		) = default;
 
 	};
@@ -122,11 +136,11 @@ namespace Amber
 
 		}
 	};
-
+/*
 	struct MeshComponent
 	{
 
-		/*MeshComponent() = default;
+		MeshComponent() = default;
 
 		MeshComponent(
 			const MeshComponent&
@@ -134,8 +148,8 @@ namespace Amber
 
 		MeshComponent(
 			
-		) :
-			 {}*/
+		) //:
+			 {}
 
 	};
 
@@ -229,5 +243,5 @@ namespace Amber
 		BoxCollider2DComponent() = default;
 		BoxCollider2DComponent(const BoxCollider2DComponent&) = default;
 	};
-
+	*/
 }

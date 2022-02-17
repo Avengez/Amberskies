@@ -23,29 +23,6 @@ namespace Amber
 	Scene::Scene()
 	{
 
-		/* ideas based on github entt
-		*  struct TransformComponent
-		* {
-		*		Data
-		* };
-		* 
-		*  u32 entity = m_Registry.create
-		* 
-		*  
-		*  m_Registry.emplace(targetEntity, Component)
-		*		.remove
-		*		.clear
-		*		.get
-		*		.group (componentType, componentType) use in same way as view
-		*		.connect to ie: OnComponentConstruct()
-		*	auto view = 	.view(componentType)
-		* 
-		*	for (auto entity : view)
-		*   {
-		*      do stuff
-		*   }
-		* 
-		*/
 	}
 	
 	
@@ -53,7 +30,7 @@ namespace Amber
 	Scene::~Scene()
 	{
 
-		// Empty
+		
 
 	}
 
@@ -63,4 +40,24 @@ namespace Amber
 	{
 	}
 
+	i32 Scene::AddEntity(std::string& name)
+	{
+		i32 generatedID = m_ID;
+
+		m_ID++;
+
+		m_Entities->entity_id[generatedID] = 
+			generatedID; // register in list of Entities
+
+		m_Registry[generatedID]->entity_id = 
+			generatedID;  // register in list of Components
+
+		// Add base components here (All entities must have these)
+
+		return generatedID;
+	}
+
+	
+
 }
+

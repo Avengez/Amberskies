@@ -1,9 +1,8 @@
-
-#include "Entity.h"
+#pragma once
 
 /**
 * ________________________________________________________
-* Project Created by Frazor Sharp : 15/02/2022
+* Project Created by Frazor Sharp : 17/02/2022
 *
 * Twitch : Mini Game Engine Programming in C/C++
 *
@@ -15,19 +14,9 @@
 * ______________________________________________________*/
 
 
+#define UNUSED  -1
+#define MAX_ENTITIES 1024
 
-
-namespace Amber
-{
-
-	Entity::Entity(u32 entityHandle, Scene* scene)
-		:
-		m_EntityHandle(entityHandle),
-		m_Scene(scene)
-	{
-
-		// Empty
-
-	}
-
-}
+#include "Components.h"
+#include "Entity.h"
+#include "Scene.h"
