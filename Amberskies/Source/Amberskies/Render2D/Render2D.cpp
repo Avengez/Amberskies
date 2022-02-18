@@ -201,6 +201,20 @@ namespace Amber
 		const glm::vec4& color)
 	{
 
+		if (texture == nullptr)
+		{
+
+			DrawQuad(
+				position,
+				size,
+				rotationRad,
+				color
+			);
+
+			return;
+
+		}
+
 		s_State.shader->SetFloat4(
 			"u_Color",
 			color

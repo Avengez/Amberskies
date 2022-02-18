@@ -21,12 +21,13 @@
 #include "ECS.h"
 
 #include "Amberskies/Core/UUID.h"
-#include "Amberskies/Render2D/TextureAPI.h"
-#include "Amberskies/Render3D/PerspectiveCamera.h"
+
+
+//#include "Amberskies/Render2D/TextureAPI.h"
+//#include "Amberskies/Render3D/PerspectiveCamera.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
@@ -39,13 +40,30 @@ namespace Amber
 		COMP_UUID = 0,
 		COMP_NAME,
 		COMP_TRANSFORM,
-		//COMP_SECONDARY_CHARACTERISTICS,
-		//COMP_COMBAT_STATS,
-		//COMP_MONSTER_STATS
+		COMP_EXAMPLE,
 
 		COMP_COUNT     
 
 	} Component;
+
+	struct ExampleComponent
+	{
+
+		i32 somePieceOfData = 0;
+		// more data if required ....
+
+		// constructor - does not have to be default
+		// can do anything a normal c++ constructor does
+		ExampleComponent() = default;
+
+		// copy constructor - allows you to shallow copy your component if needed
+		ExampleComponent(
+			const ExampleComponent&
+		) = default;
+
+		// overlaod operators if required
+
+	};
 
 	struct UUIDComponent
 	{

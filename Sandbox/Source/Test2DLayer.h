@@ -32,6 +32,8 @@
 		Amber::Ref<Amber::Texture2D> m_TestTexture;
 
 		bool m_ShowFirstWindow = true;
+
+		i32 m_SceneEntities[MAX_ENTITIES] = { UNUSED };
 		
 
 	public:
@@ -55,6 +57,8 @@
 		) override;
 
 	private:
+
+		void EntityRotationSystem();
 
 		bool OnKeyPressed(
 			Amber::KeyPressedEvent& keyEvent

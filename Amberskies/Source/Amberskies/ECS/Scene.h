@@ -71,6 +71,15 @@ namespace Amber
 			return m_Registry[entityID].component[component];
 		}
 
+		void AddExampleCommponent(
+			i32 entityID
+		/*Args if required*/
+		);
+
+		void RemoveExampleComponent(
+			i32 entityID
+		);
+
 	private:
 
 		void AddBaseComponents(

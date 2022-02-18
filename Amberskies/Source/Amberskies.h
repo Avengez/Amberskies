@@ -54,14 +54,12 @@
 #include "Amberskies/Core/Layer.h"
 #include "Amberskies/Core/Log.h"
 
-#include "Amberskies/ECS/Components.h"
-#include "Amberskies/ECS/Entity.h"
-#include "Amberskies/ECS/Scene.h"
+#include "Amberskies/ECS/ECS.h"
 
-//#include "Amberskies/Events/Event.h"
-//#include "Amberskies/Events/ApplicationEvent.h"
+#include "Amberskies/Events/Event.h"
+#include "Amberskies/Events/ApplicationEvent.h"
 #include "Amberskies/Events/KeyEvent.h"
-//#include "Amberskies/Events/MouseEvent.h"
+#include "Amberskies/Events/MouseEvent.h"
 
 #ifdef _DEBUG
 #include <imgui.h>

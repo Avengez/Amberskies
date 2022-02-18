@@ -68,6 +68,8 @@ QuadProperties g_Quad2;
 				"Quad1"
 		);
 
+		m_SceneEntities[quad1] = quad1;
+
 		// Debug output
 		//
 		//auto uuidcomp = (Amber::UUIDComponent *)m_MainScene->EntityLookupComponent(
@@ -107,6 +109,8 @@ QuadProperties g_Quad2;
 				"Quad2"
 		);
 
+		m_SceneEntities[quad2] = quad2;
+
 		auto transformQ2 = (Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
 			quad2,
 			Amber::COMP_TRANSFORM
@@ -119,6 +123,9 @@ QuadProperties g_Quad2;
 				0.01f
 		);
 
+		transformQ2->Scale =
+			{ 1.0f, 2.0f, 0.0f };
+
 		//color =
 		//	glm::vec4(
 		//		1.0f,
@@ -127,8 +134,6 @@ QuadProperties g_Quad2;
 		//		0.5f
 		//);
 
-		transformQ2->Scale =
-			{ 1.0f, 2.0f, 0.0f };
 
 
 
@@ -177,29 +182,10 @@ QuadProperties g_Quad2;
 		// Rotate the Quads += anti-clockwise for openGL
 		//Entity* quad1 = m_MainScene->
 
-		auto transformQuad1 = 
-			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
-				0,
-				Amber::COMP_TRANSFORM
-		);
 
-		auto transformQuad2 =
-			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
-				1,
-				Amber::COMP_TRANSFORM
-		);
+		EntityRotationSystem();
 
-		transformQuad1->RotationRadians.z +=
-			glm::radians(
-				1.0f
-			);
-
-		transformQuad2->RotationRadians.z +=
-			glm::radians(
-				-1.0f
-			);
-
-
+	
 
 		// will be able to move to currentScene.OnUpdate(deltaTime)
 		// *** Render ***
@@ -207,7 +193,19 @@ QuadProperties g_Quad2;
 
 		Amber::Render2D::BeginScene(m_Camera);
 
-		
+		auto transformQuad1 =
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				0,
+				Amber::COMP_TRANSFORM
+			);
+
+
+		auto transformQuad2 =
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				m_SceneEntities[1],
+				Amber::COMP_TRANSFORM
+			);
+
 		Amber::Render2D::DrawQuad(
 			transformQuad1->Translation,
 			{ transformQuad1->Scale.x, transformQuad1->Scale.y },
@@ -220,6 +218,7 @@ QuadProperties g_Quad2;
 			transformQuad2->Translation,
 			{ transformQuad2->Scale.x, transformQuad2->Scale.y },
 			transformQuad2->RotationRadians.z,
+			nullptr,
 			{ 1.0f, 0.5f, 0.25f, 0.5f }
 		);
 
@@ -279,6 +278,33 @@ QuadProperties g_Quad2;
 	}
 
 
+
+	void Test2DLayer::EntityRotationSystem()
+	{
+
+		auto transformQuad1 =
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				0,
+				Amber::COMP_TRANSFORM
+			);
+
+		auto transformQuad2 =
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				1,
+				Amber::COMP_TRANSFORM
+			);
+
+		transformQuad1->RotationRadians.z +=
+			glm::radians(
+				1.0f
+			);
+
+		transformQuad2->RotationRadians.z +=
+			glm::radians(
+				-1.0f
+			);
+
+	}
 
 	bool Test2DLayer::OnKeyPressed(
 		Amber::KeyPressedEvent& keyEvent)

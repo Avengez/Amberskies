@@ -22,7 +22,10 @@ namespace Amber
 
 	Scene::Scene()
 	{
-		
+
+		for (i32 generatedID = 0; generatedID < MAX_ENTITIES; generatedID++)
+				m_Entities->entity_id[generatedID] = UNUSED;
+				
 	}
 	
 	
@@ -30,7 +33,7 @@ namespace Amber
 	Scene::~Scene()
 	{
 
-		
+		// Empty
 
 	}
 
@@ -39,14 +42,22 @@ namespace Amber
 	void Scene::OnUpdate(
 		DeltaTime deltaTime)
 	{
+
+		// Empty
+
 	}
 
 	i32 Scene::AddEntity(
 		const std::string& name)
 	{
-		i32 generatedID = m_ID;
 
-		m_ID++;
+		i32 generatedID = 0;
+
+		for (generatedID; generatedID < MAX_ENTITIES; generatedID++)
+		{
+			if (m_Entities->entity_id[generatedID] == UNUSED)
+				break;
+		}
 
 		m_Entities->entity_id[generatedID] = 
 			generatedID; // register in list of Entities
@@ -86,6 +97,31 @@ namespace Amber
 
 
 
+	void Scene::AddExampleCommponent(
+		i32 entityID)
+	{
+
+		m_Registry[entityID].component[COMP_EXAMPLE] =
+			new ExampleComponent();
+
+	}
+
+	void Scene::RemoveExampleComponent(i32 entityID)
+	{
+
+		void* component = 
+			m_Registry[entityID].component[COMP_EXAMPLE];
+
+		if (component != nullptr)
+			delete component;
+
+		m_Registry[entityID].component[COMP_EXAMPLE] = nullptr;
+
+	}
+
+
+
+
 	void Scene::AddBaseComponents(
 		i32 entityID, 
 		const std::string& name)
@@ -101,10 +137,6 @@ namespace Amber
 			new TransformComponent();
 
 	}
-
-	
-
-	
 
 }
 
