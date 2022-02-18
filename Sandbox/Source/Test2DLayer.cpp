@@ -17,34 +17,9 @@
 
 
 
-// *** How to use a struct for Quad properties *****************
-struct QuadProperties
-{
-
-	glm::vec3 position = 
-		{ 0.0f, 0.0f, 0.0f };
-
-	glm::vec2 size = 
-		{ 1.0f, 1.0f };
-
-	glm::vec4 color = 
-		{ 1.0f, 1.0f, 1.0f, 1.0f };
-
-	float rotationRadians = 0.0f;
-
-};
-
-QuadProperties g_Quad1;
-QuadProperties g_Quad2;
-
-//**************************************************************
-
-
-
 	Test2DLayer::Test2DLayer()
 		:
 		Layer("Test2DLayer"),
-		m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f),
 		m_MainScene(new Amber::Scene())
 	{
 
@@ -59,34 +34,22 @@ QuadProperties g_Quad2;
 
 		Amber::Renderer::Initialize();
 
+		// Initialize the background color
+		Amber::RenderCommand::SetClearColor(
+			{
+			0.05f,
+			0.05f,
+			0.2f,
+			1.0f
+			}
+		);
+
 
 		// Initialize the first Quad
-
-
 		i32 quad1 =
 			m_MainScene->AddEntity(
 				"Quad1"
 		);
-
-		m_SceneEntities[quad1] = quad1;
-
-		// Debug output
-		//
-		//auto uuidcomp = (Amber::UUIDComponent *)m_MainScene->EntityLookupComponent(
-		//	quad1,
-		//	Amber::COMP_UUID
-		//);
-		//
-		//auto namecomp = (Amber::NameComponent*)m_MainScene->EntityLookupComponent(
-		//	quad1,
-		//	Amber::COMP_NAME
-		//);
-		//
-		//DEV_TRACE(
-		//	"Quad1 : {0} {1}",
-		//	uuidcomp->ID,
-		//	namecomp->Name
-		//);
 
 		auto transformcomp = (Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
 			quad1,
@@ -103,13 +66,10 @@ QuadProperties g_Quad2;
 
 
 		// Initialize the second Quad
-
 		i32 quad2 =
 			m_MainScene->AddEntity(
 				"Quad2"
 		);
-
-		m_SceneEntities[quad2] = quad2;
 
 		auto transformQ2 = (Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
 			quad2,
@@ -126,34 +86,33 @@ QuadProperties g_Quad2;
 		transformQ2->Scale =
 			{ 1.0f, 2.0f, 0.0f };
 
-		//color =
-		//	glm::vec4(
-		//		1.0f,
-		//		0.25f,
-		//		0.25f,
-		//		0.5f
-		//);
-
-
-
-
-		// Initialize the background color
-		Amber::RenderCommand::SetClearColor(
-			{
-			0.05f,
-			0.05f,
-			0.2f,
-			1.0f
-			}
-		);
-
 
 
 		// Initialize the test texture
 		m_TestTexture =
 			Amber::Texture2D::Create(
 				"Assets/Textures/TestTexture.png"
-			);
+		);
+
+
+
+		// Initialize Materials
+		m_MainScene->AddMaterialCommponent(
+			0,
+			glm::vec4(1.0f), // allways set to white if solid texture
+			m_TestTexture
+		);
+
+		m_MainScene->AddMaterialCommponent(
+			1,
+			glm::vec4(
+				1.0f,
+				0.25f,
+				0.25f,
+				0.5f   // 0.5 Alpha = 50% see through
+			),
+			nullptr	   // no texture = color only
+		);
 
 	}
 
@@ -174,10 +133,7 @@ QuadProperties g_Quad2;
 		Amber::DeltaTime deltaTime)
 	{
 
-		// *** Update ***
-		m_Camera.OnUpdate(
-			deltaTime
-		);
+		
 
 		// Rotate the Quads += anti-clockwise for openGL
 		//Entity* quad1 = m_MainScene->
@@ -187,42 +143,12 @@ QuadProperties g_Quad2;
 
 	
 
-		// will be able to move to currentScene.OnUpdate(deltaTime)
-		// *** Render ***
-		Amber::RenderCommand::Clear();
+		
+		
 
-		Amber::Render2D::BeginScene(m_Camera);
-
-		auto transformQuad1 =
-			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
-				0,
-				Amber::COMP_TRANSFORM
-			);
-
-
-		auto transformQuad2 =
-			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
-				m_SceneEntities[1],
-				Amber::COMP_TRANSFORM
-			);
-
-		Amber::Render2D::DrawQuad(
-			transformQuad1->Translation,
-			{ transformQuad1->Scale.x, transformQuad1->Scale.y },
-			transformQuad1->RotationRadians.z,
-			m_TestTexture,
-			g_Quad1.color
+		m_MainScene->OnUpdate(
+			deltaTime
 		);
-
-		Amber::Render2D::DrawQuad(
-			transformQuad2->Translation,
-			{ transformQuad2->Scale.x, transformQuad2->Scale.y },
-			transformQuad2->RotationRadians.z,
-			nullptr,
-			{ 1.0f, 0.5f, 0.25f, 0.5f }
-		);
-
-		Amber::Render2D::EndScene();
 
 	}
 
@@ -234,6 +160,13 @@ QuadProperties g_Quad2;
 		if (m_ShowFirstWindow)
 		{
 
+			auto materialQuad1 =
+				(Amber::MaterialComponent*)m_MainScene->EntityLookupComponent(
+					0,
+					Amber::COMP_MATERIAL
+				);
+
+
 			ImGui::Begin(
 				"Settings",
 				&m_ShowFirstWindow
@@ -242,7 +175,7 @@ QuadProperties g_Quad2;
 			ImGui::ColorEdit4(
 				"Square Color",
 				glm::value_ptr(
-					g_Quad1.color
+					materialQuad1->Color
 				)
 			);
 
@@ -256,15 +189,15 @@ QuadProperties g_Quad2;
 
 
 	void Test2DLayer::OnEvent(
-		Amber::Event& event)
+		Amber::Event& e)
 	{
 
-		m_Camera.OnEvent(
-			event
+		m_MainScene->OnEvent(
+			e
 		);
 
 		Amber::EventDispatcher dispatcher(
-			event
+			e
 		);
 
 		dispatcher.Dispatch<Amber::KeyPressedEvent>(

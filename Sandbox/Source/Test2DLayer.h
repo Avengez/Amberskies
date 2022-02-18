@@ -25,15 +25,12 @@
 
 	class Test2DLayer : public Amber::Layer
 	{
-		Amber::PerspectiveCamera m_Camera;
 
 		Amber::Scene* m_MainScene;
 
 		Amber::Ref<Amber::Texture2D> m_TestTexture;
 
 		bool m_ShowFirstWindow = true;
-
-		i32 m_SceneEntities[MAX_ENTITIES] = { UNUSED };
 		
 
 	public:

@@ -21,20 +21,38 @@
 CoreLayer::CoreLayer()
 	:
 	Layer("CoreLayer"),
-	m_Camera(45, 1920.0f / 1080.0f, 0.5f, 100.0f)
+	m_MainScene(new Amber::Scene())
 {
 }
 
 void CoreLayer::OnAttach()
 {
+
+	Amber::RenderCommand::SetClearColor(
+		{
+		0.10f,
+		0.045f,
+		0.012f,
+		1.0f
+		}
+	);
+
 }
 
 void CoreLayer::OnDetach()
 {
+
+	delete m_MainScene;
+
 }
 
 void CoreLayer::OnUpdate(Amber::DeltaTime deltaTime)
 {
+
+	m_MainScene->OnUpdate(
+		deltaTime
+	);
+
 }
 
 #ifdef _DEBUG
@@ -45,8 +63,13 @@ void CoreLayer::OnImGuiRender()
 
 
 
-void CoreLayer::OnEvent(Amber::Event& event)
+void CoreLayer::OnEvent(Amber::Event& e)
 {
+
+	m_MainScene->OnEvent(
+		e
+	);
+
 }
 
 bool CoreLayer::OnKeyPressed(Amber::KeyPressedEvent& keyEvent)

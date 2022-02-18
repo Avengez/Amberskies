@@ -21,6 +21,7 @@
 #include "Amberskies/ECS/Components.h"
 
 #include "Amberskies/Core/DeltaTime.h"
+#include "Amberskies/Render3D/PerspectiveCamera.h"
 
 
 
@@ -47,6 +48,8 @@ namespace Amber
 
 		i32 m_ID = 0;
 
+		PerspectiveCamera m_Camera;
+
 
 	public:
 
@@ -54,7 +57,13 @@ namespace Amber
 
 		~Scene();
 
-		void OnUpdate(DeltaTime deltaTime);
+		void OnUpdate(
+			DeltaTime deltaTime
+		);
+
+		void OnEvent(
+			Event& event
+		);
 
 		i32 AddEntity(
 			const std::string& name
@@ -80,7 +89,19 @@ namespace Amber
 			i32 entityID
 		);
 
+		void AddMaterialCommponent(
+			i32 entityID, 
+			glm::vec4 color, 
+			Ref<Texture2D> texture
+		);
+
+		void RemoveMaterialComponent(
+			i32 entityID
+		);
+
 	private:
+
+		
 
 		void AddBaseComponents(
 			i32 entityID, 

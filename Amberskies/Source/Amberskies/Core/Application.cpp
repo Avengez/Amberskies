@@ -23,6 +23,8 @@
 
 #include "Amberskies/Input/Input.h"
 
+#include "Amberskies/ECS/Scene.h"
+
 #include "Amberskies/Render3D/Renderer.h"
 
 #include <GLFW/glfw3.h>

@@ -23,7 +23,7 @@
 #include "Amberskies/Core/UUID.h"
 
 
-//#include "Amberskies/Render2D/TextureAPI.h"
+#include "Amberskies/Render2D/TextureAPI.h"
 //#include "Amberskies/Render3D/PerspectiveCamera.h"
 
 #include <glm/glm.hpp>
@@ -40,6 +40,7 @@ namespace Amber
 		COMP_UUID = 0,
 		COMP_NAME,
 		COMP_TRANSFORM,
+		COMP_MATERIAL,
 		COMP_EXAMPLE,
 
 		COMP_COUNT     
@@ -153,6 +154,26 @@ namespace Amber
 			);
 
 		}
+	};
+
+	struct MaterialComponent
+	{
+
+		glm::vec4 Color = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+		Ref<Texture2D> Texture = nullptr;
+
+		// constructor - does not have to be default
+		// can do anything a normal c++ constructor does
+		MaterialComponent() = default;
+
+		// copy constructor - allows you to shallow copy your component if needed
+		MaterialComponent(
+			const MaterialComponent&
+		) = default;
+
+		// overlaod operators if required
+
 	};
 /*
 	struct MeshComponent

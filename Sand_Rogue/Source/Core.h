@@ -23,7 +23,8 @@
 
 	class CoreLayer : public Amber::Layer
 	{
-		Amber::PerspectiveCamera m_Camera;
+		
+		Amber::Scene* m_MainScene;
 
 	public:
 
