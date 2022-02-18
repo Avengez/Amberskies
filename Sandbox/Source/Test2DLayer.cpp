@@ -63,7 +63,22 @@ QuadProperties g_Quad2;
 		// Initialize the first Quad
 
 
-		// quad1
+		i32 quad1 =
+			m_MainScene->AddEntity(
+				"Quad1"
+		);
+
+		auto uuidcomp = m_MainScene->EntityLookupComponent(
+			quad1,
+			Amber::COMP_UUID
+		);
+
+		u64 uuid = static_cast<Amber::UUIDComponent*>(uuidcomp)->ID;
+
+		DEV_TRACE(
+			"Quad1 uuid = {0}",
+			uuid
+		);
 
 		//Position =
 		//	glm::vec3(

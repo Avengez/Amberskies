@@ -41,9 +41,9 @@ namespace Amber
 		}Object;
 
 		// registry m_Registry
-		Ref<Object> m_Registry[MAX_ENTITIES];
+		Object m_Registry[MAX_ENTITIES] = { UNUSED };
 
-		Ref<Entities> m_Entities;
+		Ref<Entities> m_Entities = CreateRef<Entities>();
 
 		i32 m_ID = 0;
 
@@ -56,15 +56,27 @@ namespace Amber
 
 		void OnUpdate(DeltaTime deltaTime);
 
-		i32 AddEntity(std::string& name);
-		void RemoveEntity();
+		i32 AddEntity(
+			const std::string& name
+		);
+
+		void RemoveEntity(
+			i32 entityID
+		);
 
 		void* EntityLookupComponent(
 			i32 entityID,
 			i32 component)
 		{
-			return m_Registry[entityID]->component[component];
+			return m_Registry[entityID].component[component];
 		}
+
+	private:
+
+		void AddBaseComponents(
+			i32 entityID, 
+			const std::string& name
+		);
 
 	};
 

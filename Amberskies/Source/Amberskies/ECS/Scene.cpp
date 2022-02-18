@@ -22,7 +22,7 @@ namespace Amber
 
 	Scene::Scene()
 	{
-
+		
 	}
 	
 	
@@ -36,11 +36,13 @@ namespace Amber
 
 
 
-	void Scene::OnUpdate(DeltaTime deltaTime)
+	void Scene::OnUpdate(
+		DeltaTime deltaTime)
 	{
 	}
 
-	i32 Scene::AddEntity(std::string& name)
+	i32 Scene::AddEntity(
+		const std::string& name)
 	{
 		i32 generatedID = m_ID;
 
@@ -49,13 +51,53 @@ namespace Amber
 		m_Entities->entity_id[generatedID] = 
 			generatedID; // register in list of Entities
 
-		m_Registry[generatedID]->entity_id = 
+		m_Registry[generatedID].entity_id = 
 			generatedID;  // register in list of Components
 
 		// Add base components here (All entities must have these)
+		AddBaseComponents(
+			generatedID,
+			name
+		);
 
 		return generatedID;
 	}
+
+
+
+	void Scene::RemoveEntity(i32 entityID)
+	{
+
+		m_Entities->entity_id[entityID] =
+			UNUSED;
+
+		for (void* component : m_Registry[entityID].component)
+		{
+
+			if(component != nullptr)
+				delete component;
+
+		}
+
+		m_Registry[entityID].entity_id =
+			UNUSED;
+
+	}
+
+
+
+	void Scene::AddBaseComponents(
+		i32 entityID, 
+		const std::string& name)
+	{
+
+
+		m_Registry[entityID].component[COMP_UUID] =
+			new UUIDComponent();
+
+	}
+
+	
 
 	
 
