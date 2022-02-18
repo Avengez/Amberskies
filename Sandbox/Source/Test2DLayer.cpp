@@ -68,16 +68,16 @@ QuadProperties g_Quad2;
 				"Quad1"
 		);
 
-		auto uuidcomp = m_MainScene->EntityLookupComponent(
+		auto uuidcomp = (Amber::UUIDComponent *)m_MainScene->EntityLookupComponent(
 			quad1,
 			Amber::COMP_UUID
 		);
 
-		u64 uuid = static_cast<Amber::UUIDComponent*>(uuidcomp)->ID;
+		//auto uuid = static_cast<Amber::UUIDComponent*>(uuidcomp);
 
 		DEV_TRACE(
 			"Quad1 uuid = {0}",
-			uuid
+			uuidcomp->ID
 		);
 
 		//Position =
