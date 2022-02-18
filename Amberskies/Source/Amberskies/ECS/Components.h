@@ -37,13 +37,13 @@ namespace Amber
 	
 	typedef enum {
 		COMP_UUID = 0,
-		//COMP_MODEL,
-		//COMP_PRIMARY_CHARACTERISTICS,
+		COMP_NAME,
+		COMP_TRANSFORM,
 		//COMP_SECONDARY_CHARACTERISTICS,
 		//COMP_COMBAT_STATS,
 		//COMP_MONSTER_STATS
 
-		//COMP_COUNT     
+		COMP_COUNT     
 
 	} Component;
 
@@ -60,21 +60,21 @@ namespace Amber
 
 	};
 
-	struct TagComponent
+	struct NameComponent
 	{
 
-		std::string Tag;
+		std::string Name;
 
-		TagComponent() = default;
+		NameComponent() = default;
 
-		TagComponent(
-			const TagComponent&
+		NameComponent(
+			const NameComponent&
 		) = default;
 
-		TagComponent(
-			const std::string& tag
+		NameComponent(
+			const std::string& name
 		)	: 
-			Tag(tag) {}
+			Name(name) {}
 
 	};
 
@@ -88,7 +88,7 @@ namespace Amber
 			0.0f 
 		};
 
-		glm::vec3 Rotation = 
+		glm::vec3 RotationRadians = 
 		{ 
 			0.0f, 
 			0.0f, 
@@ -119,7 +119,7 @@ namespace Amber
 			glm::mat4 rotation = 
 				glm::toMat4(
 					glm::quat(
-						Rotation
+						RotationRadians
 					)
 			);
 

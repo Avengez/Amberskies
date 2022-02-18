@@ -68,37 +68,56 @@ QuadProperties g_Quad2;
 				"Quad1"
 		);
 
-		auto uuidcomp = (Amber::UUIDComponent *)m_MainScene->EntityLookupComponent(
-			quad1,
-			Amber::COMP_UUID
-		);
-
-		//auto uuid = static_cast<Amber::UUIDComponent*>(uuidcomp);
-
-		DEV_TRACE(
-			"Quad1 uuid = {0}",
-			uuidcomp->ID
-		);
-
-		//Position =
-		//	glm::vec3(
-		//		1.0f,
-		//		1.0f,
-		//		0.0f
+		// Debug output
+		//
+		//auto uuidcomp = (Amber::UUIDComponent *)m_MainScene->EntityLookupComponent(
+		//	quad1,
+		//	Amber::COMP_UUID
 		//);
+		//
+		//auto namecomp = (Amber::NameComponent*)m_MainScene->EntityLookupComponent(
+		//	quad1,
+		//	Amber::COMP_NAME
+		//);
+		//
+		//DEV_TRACE(
+		//	"Quad1 : {0} {1}",
+		//	uuidcomp->ID,
+		//	namecomp->Name
+		//);
+
+		auto transformcomp = (Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+			quad1,
+			Amber::COMP_TRANSFORM
+		);
+
+		transformcomp->Translation =
+			glm::vec3(
+				1.0f,
+				1.0f,
+				0.0f
+		);
 
 
 
 		// Initialize the second Quad
 
-		// quad2
+		i32 quad2 =
+			m_MainScene->AddEntity(
+				"Quad2"
+		);
 
-		//Position =
-		//	glm::vec3(
-		//		1.0f,
-		//		0.0f,
-		//		0.01f
-		//);
+		auto transformQ2 = (Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+			quad2,
+			Amber::COMP_TRANSFORM
+		);
+
+		transformQ2->Translation =
+			glm::vec3(
+				1.0f,
+				0.0f,
+				0.01f
+		);
 
 		//color =
 		//	glm::vec4(
@@ -108,8 +127,8 @@ QuadProperties g_Quad2;
 		//		0.5f
 		//);
 
-		//Scale =
-		//	{ 1.0f, 2.0f, 0.0f };
+		transformQ2->Scale =
+			{ 1.0f, 2.0f, 0.0f };
 
 
 
@@ -157,12 +176,25 @@ QuadProperties g_Quad2;
 
 		// Rotate the Quads += anti-clockwise for openGL
 		//Entity* quad1 = m_MainScene->
-		g_Quad1.rotationRadians +=
+
+		auto transformQuad1 = 
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				0,
+				Amber::COMP_TRANSFORM
+		);
+
+		auto transformQuad2 =
+			(Amber::TransformComponent*)m_MainScene->EntityLookupComponent(
+				1,
+				Amber::COMP_TRANSFORM
+		);
+
+		transformQuad1->RotationRadians.z +=
 			glm::radians(
 				1.0f
 			);
 
-		g_Quad2.rotationRadians +=
+		transformQuad2->RotationRadians.z +=
 			glm::radians(
 				-1.0f
 			);
@@ -177,18 +209,18 @@ QuadProperties g_Quad2;
 
 		
 		Amber::Render2D::DrawQuad(
-			g_Quad1.position,
-			g_Quad1.size,
-			g_Quad1.rotationRadians,
+			transformQuad1->Translation,
+			{ transformQuad1->Scale.x, transformQuad1->Scale.y },
+			transformQuad1->RotationRadians.z,
 			m_TestTexture,
 			g_Quad1.color
 		);
 
 		Amber::Render2D::DrawQuad(
-			g_Quad2.position,
-			g_Quad2.size,
-			g_Quad2.rotationRadians,
-			g_Quad2.color
+			transformQuad2->Translation,
+			{ transformQuad2->Scale.x, transformQuad2->Scale.y },
+			transformQuad2->RotationRadians.z,
+			{ 1.0f, 0.5f, 0.25f, 0.5f }
 		);
 
 		Amber::Render2D::EndScene();

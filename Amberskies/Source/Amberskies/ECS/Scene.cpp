@@ -91,9 +91,14 @@ namespace Amber
 		const std::string& name)
 	{
 
-
 		m_Registry[entityID].component[COMP_UUID] =
 			new UUIDComponent();
+
+		m_Registry[entityID].component[COMP_NAME] =
+			new NameComponent(name);
+
+		m_Registry[entityID].component[COMP_TRANSFORM] =
+			new TransformComponent();
 
 	}
 
